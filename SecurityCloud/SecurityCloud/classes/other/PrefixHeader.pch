@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  SecurityShield
+//
+//  Created by apple on 17/5/21.
+//  Copyright © 2017年 yc. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "AppDelegate.h"
+#import "AFNetworking.h"
+#import "Const.h"
+#import "BaseViewController.h"
+#import "BaseNavigationController.h"
+#import "BaseTabBarController.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "HttpTool.h"
+#import "UserManager.h"
+#import "MJExtension.h"
+#endif /* PrefixHeader_pch */
