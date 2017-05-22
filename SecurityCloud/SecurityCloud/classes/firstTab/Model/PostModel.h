@@ -22,6 +22,7 @@
 @interface PostImageModel : NSObject
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *imageID;
 
 -(instancetype)initWithImage:(UIImage*)image imageName:(NSString*)imageName;
 @end
