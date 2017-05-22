@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 
 @property (nonatomic,strong) NSMutableArray<PostImageModel*> *images;
+@property (nonatomic,copy) NSMutableArray *postImageIDs;
+@property (nonatomic,copy) NSString *postVoiceID;
 @property (nonatomic,copy) NSString *filePath;
 
 @property (nonatomic,strong) AVAudioPlayer *player;
@@ -85,14 +87,20 @@
         if (self.filePath) {
             NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.filePath]];
             [self postVoice:voiceData voiceName:self.filePath.lastPathComponent finished:^(NSString *responseID) {
-                
+                self.postVoiceID = responseID;
+                if (self.postImageIDs.count == self.images.count) {
+                    //直接传到服务器
+                }
             }];
         }
         
         if (self.images.count > 0) {
             for (PostImageModel *model in self.images) {
-                [self postImages:model.image imageName:model.imageName finished:^(NSArray *responseIDs) {
-                    
+                [self postImages:model.image imageName:model.imageName finished:^(NSString *responseID) {
+                    [self.postImageIDs addObject:responseID];
+                    if (self.postImageIDs.count == self.images.count && self.postVoiceID) {
+                        //直接传到服务器
+                    }
                 }];
             }
         }
@@ -222,20 +230,18 @@
 
 -(void)postVoice:(NSData*)voice voiceName:(NSString*)voiceName finished:(void (^)(NSString *responseID))block{
     [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"2"} voice:voice voiceName:voiceName success:^(id responseObject) {
-        
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            block(responseObject[@"data"][@"id"]);
+        }
     } failure:^(NSError *error) {
         
     }];
 }
 
--(void)postImages:(UIImage*)image imageName:(NSString*)imageName finished:(void (^)(NSArray *responseIDs))block{
+-(void)postImages:(UIImage*)image imageName:(NSString*)imageName finished:(void (^)(NSString *responseID))block{
     [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
-            for (PostImageModel *model in self.images) {
-                if ([model.imageName isEqualToString:imageName]) {
-                    model.imageID = responseObject[@"data"][@"id"];
-                }
-            }
+            block(responseObject[@"data"][@"id"]);
         }
        
     } failure:^(NSError *error) {
@@ -266,7 +272,12 @@
     [self.collectionView reloadData];
 }
 
-
+-(NSMutableArray *)postImageIDs {
+    if (_postImageIDs == nil) {
+        _postImageIDs = [NSMutableArray array];
+    }
+    return _postImageIDs;
+}
 
 -(NSMutableArray *)images {
     if (_images == nil) {
