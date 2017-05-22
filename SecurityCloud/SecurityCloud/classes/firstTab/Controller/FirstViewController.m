@@ -19,7 +19,10 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)pressed:(UIButton *)sender {
-    
+    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSData *recordData) {
+        
+    }];
+    [self.view addSubview:recordSoundView];
 }
 
 - (void)didReceiveMemoryWarning {

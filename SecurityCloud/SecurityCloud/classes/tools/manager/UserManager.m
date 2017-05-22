@@ -16,7 +16,7 @@ MJCodingImplementation
 }
 
 -(void)archiver {
-    NSString *path = NSHomeDirectory();
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     
     
     path = [path stringByAppendingPathComponent:@"singeUser.txt"];
@@ -39,7 +39,9 @@ MJCodingImplementation
 }
 
 +(UserManager*)unArchiver {
-    NSString *path = NSHomeDirectory();
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    
+    
     path = [path stringByAppendingPathComponent:@"singeUser.txt"];
     
     NSData *myData = [NSData dataWithContentsOfFile:path];

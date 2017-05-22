@@ -10,4 +10,5 @@
 typedef void (^RecordSoundViewBlock)(NSData *recordData);
 @interface RecordSoundView : UIView
 @property (nonatomic,assign) RecordSoundViewBlock block;
+-(RecordSoundView*)initWithFrame:(CGRect)frame RecordBlock:(RecordSoundViewBlock)block;
 @end
