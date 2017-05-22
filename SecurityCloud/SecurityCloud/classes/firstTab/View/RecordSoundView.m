@@ -113,7 +113,10 @@
     
     //1.获取沙盒地址
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    filePath = [path stringByAppendingString:@"/Record.wav"];
+    
+    NSString *fileName = [NSString stringWithFormat:@"/%@.wav",[self stringFromDate:[NSDate date]]];
+    
+    filePath = [path stringByAppendingString:fileName];
     
     //2.获取文件路径
     self.recordFileUrl = [NSURL fileURLWithPath:filePath];
@@ -158,6 +161,8 @@
 }
 
 -(void)stop {
+    count = 0;
+    allCount = 0;
     _progressView.progress = 0;
     [self.bgLayer removeFromSuperlayer];
     
@@ -173,6 +178,12 @@
     if ([manager fileExistsAtPath:filePath]){
         
         _noticeLabel.text = [NSString stringWithFormat:@"录了 %ld 秒,文件大小为 %.2fKb",(long)count,[[manager attributesOfItemAtPath:filePath error:nil] fileSize]/1024.0];
+        if (self.block) {
+             self.block(filePath);
+        }
+        
+        [self removeFromSuperview];
+       
         
     }else{
         
@@ -183,6 +194,8 @@
 }
 
 -(void)cancel{
+    count = 0;
+    allCount = 0;
     _progressView.progress = 0;
     [self.bgLayer removeFromSuperlayer];
     
@@ -289,7 +302,13 @@
     self.bgLayer.path = [path CGPath];
 }
 
-
+- (NSString *)stringFromDate:(NSDate *)date{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *destDateString = [dateFormatter stringFromDate:date];
+    return destDateString;
+}
 
 -(CAShapeLayer *)bgLayer {
     if (_bgLayer == nil) {

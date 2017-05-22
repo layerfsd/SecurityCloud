@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^RecordSoundViewBlock)(NSData *recordData);
+typedef void (^RecordSoundViewBlock)(NSString *filePath);
 @interface RecordSoundView : UIView
-@property (nonatomic,assign) RecordSoundViewBlock block;
+@property (nonatomic,copy) RecordSoundViewBlock block;
+
 -(RecordSoundView*)initWithFrame:(CGRect)frame RecordBlock:(RecordSoundViewBlock)block;
 @end

@@ -12,5 +12,7 @@
 #define RootPath @"http://cntp31.lysoo.com/guanli/index.php/admin/api"
 #define UserID @"userID"
 
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #endif /* Const_h */

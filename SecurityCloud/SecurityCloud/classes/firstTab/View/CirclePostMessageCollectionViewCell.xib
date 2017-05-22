@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CirclePostMessageCollectionViewCell" id="gTV-IL-0wX" customClass="CirclePostMessageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_background_photograph_image" translatesAutoresizingMaskIntoConstraints="NO" id="QVs-yr-mZN" customClass="btn_background_photograph_image">
+                        <rect key="frame" x="10" y="10" width="56" height="56"/>
+                        <color key="backgroundColor" red="0.8626509309" green="0.86279940610000005" blue="0.86264163260000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hp9-1z-VPp">
+                        <rect key="frame" x="56" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="O4i-9x-GQQ"/>
+                            <constraint firstAttribute="height" constant="20" id="oks-H7-X71"/>
+                        </constraints>
+                        <state key="normal" image="deletePicture"/>
+                        <connections>
+                            <action selector="cancelClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="TH8-qQ-1zw"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="hp9-1z-VPp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4cG-bq-Mat"/>
+                <constraint firstAttribute="trailing" secondItem="QVs-yr-mZN" secondAttribute="trailing" constant="10" id="4lS-ZD-mN8"/>
+                <constraint firstItem="QVs-yr-mZN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="SfQ-Ob-9Ma"/>
+                <constraint firstAttribute="trailing" secondItem="hp9-1z-VPp" secondAttribute="trailing" id="VhV-jW-cjy"/>
+                <constraint firstAttribute="bottom" secondItem="QVs-yr-mZN" secondAttribute="bottom" constant="10" id="dfv-es-qhU"/>
+                <constraint firstItem="QVs-yr-mZN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="xSr-6Q-9dV"/>
+            </constraints>
+            <size key="customSize" width="50" height="106"/>
+            <connections>
+                <outlet property="x_contentImageView" destination="QVs-yr-mZN" id="lXb-d0-c2I"/>
+                <outlet property="x_deleteButton" destination="hp9-1z-VPp" id="3be-tS-DYV"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="24"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="btn_background_photograph_image" width="56" height="56"/>
+        <image name="deletePicture" width="30" height="30"/>
+    </resources>
+</document>

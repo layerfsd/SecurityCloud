@@ -20,6 +20,23 @@
   parameters:(id)parameters
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure;
+
+//上传图片
++ (void)post:(NSString *)URLString
+  parameters:(id)parameters
+       image:(UIImage*)image
+   imageName:(NSString*)imageName
+     success:(void (^)(id responseObject))success
+     failure:(void (^)(NSError *error))failure;
+
+
+//上传语音
++ (void)post:(NSString *)URLString
+  parameters:(id)parameters
+       voice:(NSData*)voice
+   voiceName:(NSString*)voiceName
+     success:(void (^)(id responseObject))success
+     failure:(void (^)(NSError *error))failure;
 @end
 
 

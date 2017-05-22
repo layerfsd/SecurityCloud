@@ -37,6 +37,15 @@
 		189E935C1ED1BA5700DBD4FC /* RecordSoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E935B1ED1BA5700DBD4FC /* RecordSoundView.xib */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
+		ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */; };
+		ECAC59041ED2A5E100628E85 /* FirstCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAC59021ED2A5E100628E85 /* FirstCollectionViewCell.xib */; };
+		ECAC590B1ED2A9A300628E85 /* FirstTabCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC590A1ED2A9A300628E85 /* FirstTabCellModel.m */; };
+		ECAC590E1ED2B48900628E85 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC590D1ED2B48900628E85 /* PostViewController.m */; };
+		ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC59101ED2B6B500628E85 /* PostModel.m */; };
+		ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC591D1ED2BCB500628E85 /* PostMainViewController.m */; };
+		ECAC59201ED2BCB500628E85 /* PostMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAC591E1ED2BCB500628E85 /* PostMainViewController.xib */; };
+		ECAC59241ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC59221ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m */; };
+		ECAC59251ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAC59231ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.xib */; };
 		F6831D26458445BACEEA1BC3 /* libPods-SecurityCloudUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +131,21 @@
 		ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C921DD6FBB3A2386EA0374BF /* Pods-SecurityCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECAC59001ED2A5E100628E85 /* FirstCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCollectionViewCell.h; sourceTree = "<group>"; };
+		ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCollectionViewCell.m; sourceTree = "<group>"; };
+		ECAC59021ED2A5E100628E85 /* FirstCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCollectionViewCell.xib; sourceTree = "<group>"; };
+		ECAC59091ED2A9A300628E85 /* FirstTabCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTabCellModel.h; sourceTree = "<group>"; };
+		ECAC590A1ED2A9A300628E85 /* FirstTabCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTabCellModel.m; sourceTree = "<group>"; };
+		ECAC590C1ED2B48900628E85 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		ECAC590D1ED2B48900628E85 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		ECAC590F1ED2B6B500628E85 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
+		ECAC59101ED2B6B500628E85 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		ECAC591C1ED2BCB500628E85 /* PostMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMainViewController.h; sourceTree = "<group>"; };
+		ECAC591D1ED2BCB500628E85 /* PostMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMainViewController.m; sourceTree = "<group>"; };
+		ECAC591E1ED2BCB500628E85 /* PostMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostMainViewController.xib; sourceTree = "<group>"; };
+		ECAC59211ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CirclePostMessageCollectionViewCell.h; sourceTree = "<group>"; };
+		ECAC59221ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePostMessageCollectionViewCell.m; sourceTree = "<group>"; };
+		ECAC59231ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CirclePostMessageCollectionViewCell.xib; sourceTree = "<group>"; };
 		F98D6356E48A1E16940F915C /* Pods-SecurityCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloud/Pods-SecurityCloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,8 +263,8 @@
 		189E92FF1ED1590900DBD4FC /* firstTab */ = {
 			isa = PBXGroup;
 			children = (
+				ECAC59081ED2A9A300628E85 /* Model */,
 				189E93001ED1590900DBD4FC /* Controller */,
-				189E93031ED1590900DBD4FC /* Model */,
 				189E93041ED1590900DBD4FC /* View */,
 			);
 			path = firstTab;
@@ -251,23 +275,27 @@
 			children = (
 				189E93011ED1590900DBD4FC /* FirstViewController.h */,
 				189E93021ED1590900DBD4FC /* FirstViewController.m */,
+				ECAC590C1ED2B48900628E85 /* PostViewController.h */,
+				ECAC590D1ED2B48900628E85 /* PostViewController.m */,
+				ECAC591C1ED2BCB500628E85 /* PostMainViewController.h */,
+				ECAC591D1ED2BCB500628E85 /* PostMainViewController.m */,
+				ECAC591E1ED2BCB500628E85 /* PostMainViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		189E93031ED1590900DBD4FC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		189E93041ED1590900DBD4FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ECAC59211ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.h */,
+				ECAC59221ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m */,
+				ECAC59231ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.xib */,
 				189E93561ED1BA1A00DBD4FC /* RecordSoundView.h */,
 				189E93571ED1BA1A00DBD4FC /* RecordSoundView.m */,
 				189E935B1ED1BA5700DBD4FC /* RecordSoundView.xib */,
+				ECAC59001ED2A5E100628E85 /* FirstCollectionViewCell.h */,
+				ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */,
+				ECAC59021ED2A5E100628E85 /* FirstCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +500,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ECAC59081ED2A9A300628E85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECAC59091ED2A9A300628E85 /* FirstTabCellModel.h */,
+				ECAC590A1ED2A9A300628E85 /* FirstTabCellModel.m */,
+				ECAC590F1ED2B6B500628E85 /* PostModel.h */,
+				ECAC59101ED2B6B500628E85 /* PostModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -593,7 +632,10 @@
 				189E93361ED1590900DBD4FC /* Login.storyboard in Resources */,
 				189E92D91ED158E300DBD4FC /* LaunchScreen.storyboard in Resources */,
 				189E92D61ED158E300DBD4FC /* Assets.xcassets in Resources */,
+				ECAC59041ED2A5E100628E85 /* FirstCollectionViewCell.xib in Resources */,
 				189E933F1ED1590900DBD4FC /* Info.plist in Resources */,
+				ECAC59201ED2BCB500628E85 /* PostMainViewController.xib in Resources */,
+				ECAC59251ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.xib in Resources */,
 				189E92D41ED158E300DBD4FC /* Main.storyboard in Resources */,
 				189E935C1ED1BA5700DBD4FC /* RecordSoundView.xib in Resources */,
 			);
@@ -758,9 +800,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECAC59241ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m in Sources */,
 				189E934A1ED166F900DBD4FC /* UserManager.m in Sources */,
 				189E93401ED1590900DBD4FC /* main.m in Sources */,
+				ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */,
 				189E93551ED1A8C700DBD4FC /* LoginNavigationController.m in Sources */,
+				ECAC590E1ED2B48900628E85 /* PostViewController.m in Sources */,
+				ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */,
 				189E933C1ED1590900DBD4FC /* BaseTabBarController.m in Sources */,
 				189E93431ED1590900DBD4FC /* DES3Util.m in Sources */,
 				189E933D1ED1590900DBD4FC /* BaseViewController.m in Sources */,
@@ -769,6 +815,8 @@
 				189E933B1ED1590900DBD4FC /* BaseNavigationController.m in Sources */,
 				189E933E1ED1590900DBD4FC /* AppDelegate.m in Sources */,
 				189E93461ED1590900DBD4FC /* HttpTool.m in Sources */,
+				ECAC590B1ED2A9A300628E85 /* FirstTabCellModel.m in Sources */,
+				ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */,
 				189E93581ED1BA1A00DBD4FC /* RecordSoundView.m in Sources */,
 				189E93521ED16CEB00DBD4FC /* NSString+Utility.m in Sources */,
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,

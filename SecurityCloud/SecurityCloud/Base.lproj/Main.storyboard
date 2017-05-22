@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4S5-Eq-WDW">
-    <device id="retina4_7" orientation="portrait">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4S5-Eq-WDW">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JQR-GG-DuN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c4b-Ho-9yd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -37,7 +38,7 @@
                         <viewControllerLayoutGuide type="bottom" id="V8U-6c-0hw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MVi-40-j3V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -47,37 +48,79 @@
             </objects>
             <point key="canvasLocation" x="466" y="806"/>
         </scene>
-        <!--one-->
+        <!--上报-->
         <scene sceneID="Vx6-17-8EL">
             <objects>
-                <viewController id="fFS-Te-VdK" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController title="上报" id="fFS-Te-VdK" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jgd-Av-Zbq"/>
                         <viewControllerLayoutGuide type="bottom" id="Mhe-eA-Ysi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w3x-cQ-2U2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxe-1B-1DY">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="150" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxe-1B-1DY">
+                                <rect key="frame" x="62.5" y="244" width="195" height="195"/>
+                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qxe-1B-1DY" secondAttribute="height" multiplier="1:1" id="FVW-SN-wSC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="发布"/>
                                 <connections>
                                     <action selector="pressed:" destination="fFS-Te-VdK" eventType="touchUpInside" id="GTs-GV-vUG"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xuN-Gh-cXi">
+                                <rect key="frame" x="0.0" y="64" width="320" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FKA-zd-iDB"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="wtU-w5-k4a">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6hv-fA-i7v">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="fFS-Te-VdK" id="Cjl-h2-vkQ"/>
+                                    <outlet property="delegate" destination="fFS-Te-VdK" id="lsY-3z-kun"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qxe-1B-1DY" firstAttribute="centerX" secondItem="w3x-cQ-2U2" secondAttribute="centerX" id="Qba-dm-a4c"/>
-                            <constraint firstItem="qxe-1B-1DY" firstAttribute="centerY" secondItem="w3x-cQ-2U2" secondAttribute="centerY" id="uUU-Du-WyS"/>
+                            <constraint firstItem="qxe-1B-1DY" firstAttribute="top" secondItem="xuN-Gh-cXi" secondAttribute="bottom" constant="80" id="2da-wK-Gu5"/>
+                            <constraint firstItem="Mhe-eA-Ysi" firstAttribute="top" secondItem="qxe-1B-1DY" secondAttribute="bottom" constant="80" id="Kad-A6-Ykd"/>
+                            <constraint firstItem="xuN-Gh-cXi" firstAttribute="top" secondItem="Jgd-Av-Zbq" secondAttribute="bottom" id="fvS-Rj-Bkc"/>
+                            <constraint firstAttribute="trailing" secondItem="xuN-Gh-cXi" secondAttribute="trailing" id="has-Ij-kZe"/>
+                            <constraint firstItem="xuN-Gh-cXi" firstAttribute="leading" secondItem="w3x-cQ-2U2" secondAttribute="leading" id="m7j-0Z-wBt"/>
+                            <constraint firstItem="qxe-1B-1DY" firstAttribute="centerX" secondItem="w3x-cQ-2U2" secondAttribute="centerX" id="qzV-4y-NzX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="one" id="dmp-XR-J2A"/>
+                    <connections>
+                        <outlet property="collectionView" destination="xuN-Gh-cXi" id="Mm1-KR-TWp"/>
+                        <outlet property="collectionViewHeightConstraint" destination="FKA-zd-iDB" id="OxB-Qu-ebg"/>
+                        <outlet property="flowLayout" destination="wtU-w5-k4a" id="WNo-6O-Sv7"/>
+                        <outlet property="postButton" destination="qxe-1B-1DY" id="zUI-x0-vrk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EJ-VE-Hm9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475" y="-500"/>
+            <point key="canvasLocation" x="474.375" y="-500.7042253521127"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="w8O-20-bjY">
