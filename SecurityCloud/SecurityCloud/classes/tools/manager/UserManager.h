@@ -16,6 +16,7 @@
 @property (nonatomic,copy) NSString *time;
 @property (nonatomic,copy) NSArray<UserLabel *> *biaoqian;
 
++(UserManager *)sharedManager;
 
 -(void)archiver;
 +(UserManager*)unArchiver;

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
-#import "Info+CoreDataClass.h"
+#import "Info.h"
 
 @implementation Info
 

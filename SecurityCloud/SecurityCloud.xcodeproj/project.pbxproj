@@ -35,6 +35,11 @@
 		189E93551ED1A8C700DBD4FC /* LoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E93541ED1A8C700DBD4FC /* LoginNavigationController.m */; };
 		189E93581ED1BA1A00DBD4FC /* RecordSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E93571ED1BA1A00DBD4FC /* RecordSoundView.m */; };
 		189E935C1ED1BA5700DBD4FC /* RecordSoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189E935B1ED1BA5700DBD4FC /* RecordSoundView.xib */; };
+		18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C8DF1ED322060004136A /* Model.xcdatamodeld */; };
+		18A7C8F51ED329440004136A /* InfoImagesTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C8F41ED329440004136A /* InfoImagesTransformer.m */; };
+		18A7C8FD1ED32AD30004136A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A7C8FC1ED32AD30004136A /* CoreData.framework */; };
+		18A7C9021ED32BAD0004136A /* Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C8FF1ED32BAD0004136A /* Info.m */; };
+		18A7C9031ED32BAD0004136A /* Info+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C9011ED32BAD0004136A /* Info+CoreDataProperties.m */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
 		ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */; };
@@ -124,6 +129,15 @@
 		189E93561ED1BA1A00DBD4FC /* RecordSoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSoundView.h; sourceTree = "<group>"; };
 		189E93571ED1BA1A00DBD4FC /* RecordSoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSoundView.m; sourceTree = "<group>"; };
 		189E935B1ED1BA5700DBD4FC /* RecordSoundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordSoundView.xib; sourceTree = "<group>"; };
+		18A7C8E01ED322060004136A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		18A7C8E21ED323240004136A /* SecurityCloud-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SecurityCloud-Bridging-Header.h"; sourceTree = "<group>"; };
+		18A7C8F31ED329440004136A /* InfoImagesTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoImagesTransformer.h; sourceTree = "<group>"; };
+		18A7C8F41ED329440004136A /* InfoImagesTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoImagesTransformer.m; sourceTree = "<group>"; };
+		18A7C8FC1ED32AD30004136A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		18A7C8FE1ED32BAD0004136A /* Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Info.h; sourceTree = "<group>"; };
+		18A7C8FF1ED32BAD0004136A /* Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Info.m; sourceTree = "<group>"; };
+		18A7C9001ED32BAD0004136A /* Info+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataProperties.h"; sourceTree = "<group>"; };
+		18A7C9011ED32BAD0004136A /* Info+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataProperties.m"; sourceTree = "<group>"; };
 		18E376709EAA6BC37A3BE23F /* Pods-SecurityCloudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.debug.xcconfig"; sourceTree = "<group>"; };
 		31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EF7FEB590E3FB51839A607 /* Pods-SecurityCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloud/Pods-SecurityCloud.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A7C8FD1ED32AD30004136A /* CoreData.framework in Frameworks */,
 				B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +255,7 @@
 		189E92FC1ED1590900DBD4FC /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				18A7C8DE1ED321EB0004136A /* coreData */,
 				189E92FD1ED1590900DBD4FC /* const_h */,
 				189E93051ED1590900DBD4FC /* login */,
 				189E930F1ED1590900DBD4FC /* main */,
@@ -477,6 +493,21 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		18A7C8DE1ED321EB0004136A /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				18A7C8FE1ED32BAD0004136A /* Info.h */,
+				18A7C8FF1ED32BAD0004136A /* Info.m */,
+				18A7C9001ED32BAD0004136A /* Info+CoreDataProperties.h */,
+				18A7C9011ED32BAD0004136A /* Info+CoreDataProperties.m */,
+				18A7C8DF1ED322060004136A /* Model.xcdatamodeld */,
+				18A7C8E21ED323240004136A /* SecurityCloud-Bridging-Header.h */,
+				18A7C8F31ED329440004136A /* InfoImagesTransformer.h */,
+				18A7C8F41ED329440004136A /* InfoImagesTransformer.m */,
+			);
+			path = coreData;
+			sourceTree = "<group>";
+		};
 		59C300EC29CFBF94945F7FCE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +524,7 @@
 		E683A1B13FB55F26ED659AC6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A7C8FC1ED32AD30004136A /* CoreData.framework */,
 				ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */,
 				CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */,
 				31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */,
@@ -588,6 +620,7 @@
 					189E92C51ED158E300DBD4FC = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 5F55UWPDJH;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					189E92DE1ED158E300DBD4FC = {
@@ -805,6 +838,8 @@
 				189E93401ED1590900DBD4FC /* main.m in Sources */,
 				ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */,
 				189E93551ED1A8C700DBD4FC /* LoginNavigationController.m in Sources */,
+				18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */,
+				18A7C9021ED32BAD0004136A /* Info.m in Sources */,
 				ECAC590E1ED2B48900628E85 /* PostViewController.m in Sources */,
 				ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */,
 				189E933C1ED1590900DBD4FC /* BaseTabBarController.m in Sources */,
@@ -826,6 +861,8 @@
 				189E93381ED1590900DBD4FC /* RegisterFinishedViewController.m in Sources */,
 				189E93451ED1590900DBD4FC /* Md5Util.m in Sources */,
 				189E93371ED1590900DBD4FC /* LoginViewController.m in Sources */,
+				18A7C8F51ED329440004136A /* InfoImagesTransformer.m in Sources */,
+				18A7C9031ED32BAD0004136A /* Info+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,12 +1012,16 @@
 			baseConfigurationReference = 34EF7FEB590E3FB51839A607 /* Pods-SecurityCloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5F55UWPDJH;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SecurityCloud/classes/other/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SecurityCloud/classes/other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opo.SecurityCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SecurityCloud/classes/coreData/SecurityCloud-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -989,12 +1030,15 @@
 			baseConfigurationReference = F98D6356E48A1E16940F915C /* Pods-SecurityCloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5F55UWPDJH;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SecurityCloud/classes/other/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SecurityCloud/classes/other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.opo.SecurityCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SecurityCloud/classes/coreData/SecurityCloud-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1092,6 +1136,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		18A7C8DF1ED322060004136A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18A7C8E01ED322060004136A /* Model.xcdatamodel */,
+			);
+			currentVersion = 18A7C8E01ED322060004136A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 189E92BE1ED158E300DBD4FC /* Project object */;
 }

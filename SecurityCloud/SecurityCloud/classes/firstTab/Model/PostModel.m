@@ -9,10 +9,13 @@
 #import "PostModel.h"
 
 @implementation PostModel
-
+MJCodingImplementation
 @end
 
 @implementation PostImageModel
+
+MJCodingImplementation
+
 -(instancetype)initWithImage:(UIImage*)image imageName:(NSString*)imageName{
     if (self = [super init]) {
         self.image = image;

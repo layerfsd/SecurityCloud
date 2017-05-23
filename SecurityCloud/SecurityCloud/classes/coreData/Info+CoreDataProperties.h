@@ -6,8 +6,8 @@
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
-#import ".Info+CoreDataClass.h"
-
+#import "Info.h"
+#import "PostModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<Info *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *content;
-@property (nullable, nonatomic, retain) NSObject *images;
+@property (nullable, nonatomic, retain) NSString *images;
 @property (nullable, nonatomic, copy) NSString *voicePath;
 
 @end

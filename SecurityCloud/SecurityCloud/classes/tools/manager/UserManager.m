@@ -10,11 +10,21 @@
 #import "LoginNavigationController.h"
 @implementation UserManager
 
+static UserManager *manager;
+
++(UserManager *)sharedManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [UserManager new];
+    });
+    return manager;
+}
+
 MJCodingImplementation
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"userID":@"id"};
 }
-
+//归档
 -(void)archiver {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     
@@ -37,7 +47,7 @@ MJCodingImplementation
         NSLog(@"归档不成功!!!");
     }
 }
-
+//解档
 +(UserManager*)unArchiver {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     
@@ -52,27 +62,43 @@ MJCodingImplementation
     user = [unarchiver decodeObjectForKey:@"UserManager"];
     //完成反归档
     [unarchiver finishDecoding];
+    
+    //解档完需要初始化单例
+    [self initShare:user];
+    
     return user;
 }
 
++(void)initShare:(UserManager*)user {
+    [UserManager sharedManager].userID = user.userID;
+    [UserManager sharedManager].name = user.name;
+    [UserManager sharedManager].password = user.password;
+    [UserManager sharedManager].tel = user.tel;
+    [UserManager sharedManager].time = user.time;
+    [UserManager sharedManager].biaoqian = user.biaoqian;
+}
+
+//主页
 -(void)goToMain {
     UIStoryboard *mainSb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     BaseNavigationController *nv = [mainSb instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
     appDelegate.window.rootViewController = nv;
 }
-
+//登录
 -(void)goToLogin {
     UIStoryboard *mainSb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginNavigationController *nv = [mainSb instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
     appDelegate.window.rootViewController = nv;
 }
 
+//储存电话号码
 +(void)setTelNum:(NSString*)tel {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:tel forKey:@"tel"];
     [userDefault synchronize];
 
 }
+//获取电话号码
 +(NSString*)getTelNum {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     return (NSString*)[userDefault stringForKey:@"tel"];

@@ -11,7 +11,7 @@
 #import "CirclePostMessageCollectionViewCell.h"
 #import "RecordSoundView.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "Info.h"
 #define colum 5
 #define cellWidth (kScreenWidth - 20)/colum
 @interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate>
@@ -24,24 +24,28 @@
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 
 @property (nonatomic,strong) NSMutableArray<PostImageModel*> *images;
-@property (nonatomic,copy) NSMutableArray *postImageIDs;
+@property (nonatomic,copy) NSMutableArray<NSString*> *postImageIDs;
 @property (nonatomic,copy) NSString *postVoiceID;
 @property (nonatomic,copy) NSString *filePath;
 
 @property (nonatomic,strong) AVAudioPlayer *player;
+@property (nonatomic,assign) BOOL posted;
 
 @end
 
 @implementation PostMainViewController
 
 - (IBAction)operationAction:(UIButton *)sender {
-    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
-        self.filePath = filePath;
-        
-       
-    }];
-    [self.view addSubview:recordSoundView];
-    
+    //开启录音组件
+//    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
+//        self.filePath = filePath;
+//        
+//       
+//    }];
+//    [self.view addSubview:recordSoundView];
+    NSArray *infos = [Info MR_findAll];
+    Info *inf = infos.firstObject;
+    NSLog(@"%@",inf.images);
 }
 
 
@@ -77,29 +81,62 @@
     }
     
 }
+
+-(void)postToServerWithData {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:[UserManager sharedManager].userID forKey:@"qingbaoyuanid"];
+    [parameters setValue:_textView.text forKey:@"neirong"];
+    [parameters setValue:[self.postImageIDs componentsJoinedByString:@","] forKey:@"img"];
+    [parameters setValue:self.postVoiceID forKey:@"luyin"];
+    
+    [HttpTool post:@"/qingbaotianjia.html" parameters:parameters success:^(id responseObject) {
+        //添加成功 退出页面
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (IBAction)postToServer:(UIButton *)sender {
+    _posted = NO;
     if (sender.tag == 0) {
+        if (!self.filePath && self.images.count == 0) {
+            //请添加内容再上传
+            return;
+        }
         //提交服务器
         /*
          1.提交语音
          2.提交图片
          */
+        //有语音需要上传
         if (self.filePath) {
             NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.filePath]];
             [self postVoice:voiceData voiceName:self.filePath.lastPathComponent finished:^(NSString *responseID) {
                 self.postVoiceID = responseID;
-                if (self.postImageIDs.count == self.images.count) {
+                if (self.postImageIDs.count == self.images.count && !_posted) {
+                    _posted = YES;
                     //直接传到服务器
+                    [self postToServerWithData];
                 }
             }];
         }
-        
+        //有图片需要上传
         if (self.images.count > 0) {
+            [self.postImageIDs removeAllObjects];
             for (PostImageModel *model in self.images) {
                 [self postImages:model.image imageName:model.imageName finished:^(NSString *responseID) {
                     [self.postImageIDs addObject:responseID];
-                    if (self.postImageIDs.count == self.images.count && self.postVoiceID) {
-                        //直接传到服务器
+                    if (self.postImageIDs.count == self.images.count && !_posted) {
+                        if (self.filePath && self.postVoiceID) {
+                            _posted = YES;
+                            //直接传到服务器
+                            [self postToServerWithData];
+                        }else if(!self.filePath){
+                            _posted = YES;
+                            //直接传到服务器
+                            [self postToServerWithData];
+                        }
+                        
                     }
                 }];
             }
@@ -107,7 +144,28 @@
        
     }else{
         //暂存
+        
+        Info *info = [Info MR_createEntity];
+        info.content = _textView.text;
+        info.images = [self imagesPath];
+        info.voicePath = self.filePath;
+        [[NSManagedObjectContext MR_defaultContext] MR_saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
+            //
+        }];
     }
+}
+
+-(NSString*)imagesPath{
+    NSMutableArray *paths = [NSMutableArray array];
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    for (PostImageModel *model in self.images) {
+        NSString *imagePath = [path stringByAppendingPathComponent:model.imageName];
+        NSData *imageData = UIImagePNGRepresentation(model.image);
+        [imageData writeToFile:imagePath atomically:YES];
+        [paths addObject:imagePath];
+    }
+    
+    return [paths componentsJoinedByString:@","];
 }
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
@@ -119,10 +177,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (_model == nil) {
-        _model = [[PostModel alloc] init];
-        _model.contentStr = @"";
-        _model.images = [NSMutableArray array];
-        _model.recordUrl = @"";
+        
     }
     _flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth);
     _collectionView.backgroundColor = [UIColor whiteColor];
@@ -142,10 +197,10 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PostImageModel *imageModel = self.images[indexPath.item - 1];
+    
     CirclePostMessageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell" forIndexPath:indexPath];
     cell.x_deleteButton.hidden = indexPath.item == 0 ? YES : NO;
-    cell.x_contentImageView.image = indexPath.item == 0 ? [UIImage imageNamed:@"btn_background_photograph_image"] : imageModel.image;
+    cell.x_contentImageView.image = indexPath.item == 0 ? [UIImage imageNamed:@"btn_background_photograph_image"] : self.images[indexPath.item - 1].image;
     cell.delegate = self;
     cell.x_deleteButton.tag = indexPath.item - 1;
     return cell;
@@ -203,7 +258,7 @@
         UIImage * avatar = info[UIImagePickerControllerOriginalImage];
         //上传服务器
         NSString * dateStr = [self stringFromDate:[NSDate date]];
-        
+        dateStr = [dateStr stringByAppendingString:@".png"];
         PostImageModel *model = [[PostImageModel alloc] initWithImage:avatar imageName:dateStr];
         
         [self.images addObject:model];
@@ -216,6 +271,7 @@
     NSString * dateStr = [self stringFromDate:[NSDate date]];
     for (int j = 0; j< photos.count; j++) {
         NSString * str = [NSString stringWithFormat:@"%@-%ld",dateStr,(long)j];
+        str = [str stringByAppendingString:@".png"];
         // 上传的图片名称
         PostImageModel *model = [[PostImageModel alloc] initWithImage:photos[j] imageName:str];
         [self.images addObject:model];
@@ -252,7 +308,7 @@
 - (NSString *)stringFromDate:(NSDate *)date{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *destDateString = [dateFormatter stringFromDate:date];
     return destDateString;
 }
