@@ -19,6 +19,9 @@
 #import "UserManager.h"
 #import "MJExtension.h"
 #import "Masonry.h"
+#import "QMapKit.h"
+
+
 
 #import "TZImagePickerController.h"
 #endif /* PrefixHeader_pch */
