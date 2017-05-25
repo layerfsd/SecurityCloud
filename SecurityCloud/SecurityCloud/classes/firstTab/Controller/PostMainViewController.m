@@ -11,18 +11,23 @@
 #import "CirclePostMessageCollectionViewCell.h"
 #import "RecordSoundView.h"
 #import <AVFoundation/AVFoundation.h>
-#import "Info.h"
+#import "Info+CoreDataClass.h"
+#import "ImageModel+CoreDataClass.h"
 #import "UITextView+Placeholder.h"
-#define colum 5
+#import "CoreDataHelper.h"
+#define colum 4
 #define cellWidth (kScreenWidth - 20)/colum
 @interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
+@property (weak, nonatomic) IBOutlet UIView *topVIew;
+@property (weak, nonatomic) IBOutlet UIView *recordView;
 
 @property (nonatomic,strong) NSMutableArray<PostImageModel*> *images;
 @property (nonatomic,copy) NSMutableArray<NSString*> *postImageIDs;
@@ -85,84 +90,159 @@
 
 -(void)postToServerWithData {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:[UserManager sharedManager].userID forKey:@"qingbaoyuanid"];
+    [parameters setValue:UserID forKey:@"qingbaoyuanid"];
     [parameters setValue:_textView.text forKey:@"neirong"];
     [parameters setValue:[self.postImageIDs componentsJoinedByString:@","] forKey:@"img"];
     [parameters setValue:self.postVoiceID forKey:@"luyin"];
+    [parameters setValue:[UserManager sharedManager].address forKey:@"dizhi"];
+    [parameters setValue:[UserManager sharedManager].location forKey:@"zuobiao"];
     
     [HttpTool post:@"/qingbaotianjia.html" parameters:parameters success:^(id responseObject) {
-        //添加成功 退出页面
+        //添加成功 退出页面 清楚本地数据
+        [self cancelInfo];
+        [SVProgressHUD showSuccessWithStatus:@"上传成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         
     }];
 }
 
+-(void)cancelInfo {
+    if (_info) {
+        for (PostImageModel *model in self.images) {
+            ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:model.imageName].firstObject;
+            [imageModel MR_deleteEntity];
+        }
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        
+        Info *thisInfo = [CoreDataHelper findInfoByTime:_info.creatTime];
+        [thisInfo MR_deleteEntity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
+    }
+}
+
+-(BOOL)check {
+    if (!self.filePath && self.images.count == 0 && [NSString isEmpty:_textView.text]) {
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)postToServer:(UIButton *)sender {
     _posted = NO;
+    if (![self check]) {
+        //请添加内容再上传
+        [SVProgressHUD showErrorWithStatus:@"请添加内容"];
+        return;
+    }
     if (sender.tag == 0) {
-        if (!self.filePath && self.images.count == 0) {
-            //请添加内容再上传
-            return;
-        }
+      
         //提交服务器
         /*
          1.提交语音
          2.提交图片
          */
         //有语音需要上传
+        
+        
+        //线程并行
+        dispatch_group_t group = dispatch_group_create();
+        
         if (self.filePath) {
             NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.filePath]];
-            [self postVoice:voiceData voiceName:self.filePath.lastPathComponent finished:^(NSString *responseID) {
-                self.postVoiceID = responseID;
-                if (self.postImageIDs.count == self.images.count && !_posted) {
-                    _posted = YES;
-                    //直接传到服务器
-                    [self postToServerWithData];
+            dispatch_group_enter(group);
+            [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"2"} voice:voiceData voiceName:self.filePath.lastPathComponent success:^(id responseObject) {
+                if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+                    self.postVoiceID = responseObject[@"data"][@"id"];
                 }
+                dispatch_group_leave(group);
+            } failure:^(NSError *error) {
+                dispatch_group_leave(group);
             }];
         }
         //有图片需要上传
         if (self.images.count > 0) {
             [self.postImageIDs removeAllObjects];
             for (PostImageModel *model in self.images) {
-                [self postImages:model.image imageName:model.imageName finished:^(NSString *responseID) {
-                    [self.postImageIDs addObject:responseID];
-                    if (self.postImageIDs.count == self.images.count && !_posted) {
-                        if (self.filePath && self.postVoiceID) {
-                            _posted = YES;
-                            //直接传到服务器
-                            [self postToServerWithData];
-                        }else if(!self.filePath){
-                            _posted = YES;
-                            //直接传到服务器
-                            [self postToServerWithData];
-                        }
-                        
+                dispatch_group_enter(group);
+                [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:model.image imageName:model.imageName success:^(id responseObject) {
+                    if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+                        [self.postImageIDs addObject:responseObject[@"data"][@"id"]];
                     }
+                    dispatch_group_leave(group);
+                } failure:^(NSError *error) {
+                    dispatch_group_leave(group);
                 }];
             }
         }
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^(){
+            //初始化页面或更新页面
+            [self postToServerWithData];
+        });
        
     }else{
         //暂存
+         NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+        if (_info) {
+            //修改数据 并保存
+            for (PostImageModel *model in self.images) {
+                NSData *imageData = UIImagePNGRepresentation(model.image);
+                ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:model.imageName].firstObject;
+                imageModel.imageData = imageData;
+                imageModel.imageName = model.imageName;
+                [localContext MR_saveToPersistentStoreAndWait];
+            }
+            
+            Info *thisInfo = [CoreDataHelper findInfoByTime:_info.creatTime];
+            thisInfo.content = _textView.text;
+            thisInfo.images = [self imagesPath];
+            thisInfo.voicePath = self.filePath;
+            thisInfo.userID = UserID;
+            thisInfo.creatTime = [NSDate date];
+            [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+                [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }else{
+            //添加新数据
+            //保存所有的图片
+            for (PostImageModel *model in self.images) {
+                NSData *imageData = UIImagePNGRepresentation(model.image);
+                ImageModel *imageModel = [ImageModel MR_createEntityInContext:localContext];
+                imageModel.imageData = imageData;
+                imageModel.imageName = model.imageName;
+                [localContext MR_saveToPersistentStoreAndWait];
+            }
+            
+            //保存情报信息
+            Info *info = [Info MR_createEntityInContext:localContext];
+            info.content = _textView.text;
+            info.images = [self imagesPath];
+            info.voicePath = self.filePath;
+            info.userID = UserID;
+            info.creatTime = [NSDate date];
+            
+            
+            // 保存修改到当前上下文中.
+            [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
+                [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+       
         
-        Info *info = [Info MR_createEntity];
-        info.content = _textView.text;
-        info.images = [self imagesPath];
-        info.voicePath = self.filePath;
-        [[NSManagedObjectContext MR_defaultContext] MR_saveWithBlockAndWait:^(NSManagedObjectContext * _Nonnull localContext) {
-            //
-        }];
+       
+        
     }
 }
 
+//图片数组字段
 -(NSString*)imagesPath{
     NSMutableArray *paths = [NSMutableArray array];
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     for (PostImageModel *model in self.images) {
-        NSString *imagePath = [path stringByAppendingPathComponent:model.imageName];
-        NSData *imageData = UIImagePNGRepresentation(model.image);
-        [imageData writeToFile:imagePath atomically:YES];
+        NSString *imagePath = model.imageName;
         [paths addObject:imagePath];
     }
     
@@ -175,17 +255,59 @@
     }
 }
 
+-(void)initData {
+    if (![NSString isEmpty:_info.images]) {
+        NSArray<NSString*> *imageNames = [_info.images componentsSeparatedByString:@","];
+        for (NSString *imageName in imageNames) {
+            ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:imageName].firstObject;
+            UIImage *image = [UIImage imageWithData:imageModel.imageData];
+            PostImageModel *model = [[PostImageModel alloc] initWithImage:image imageName:imageName];
+            [self.images addObject:model];
+            [self collectionViewLayout];
+        }
+
+    }
+       if (_info.voicePath) {
+        //初始化语音
+        self.filePath = _info.voicePath;
+    }
+    
+    if (![NSString isEmpty:_info.content]) {
+        _textView.text = _info.content;
+    }
+   
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (_model == nil) {
-        
-    }
-    _containerViewHeightConstraint.constant = self.view.bounds.size.height;
-    _textView.placeholder = @"请输入举报内容";
+   
+    self.title = @"上报";
+    
+    [_containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
+        make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
+    }];
+    _topVIew.layer.cornerRadius = 5;
+    _topVIew.layer.masksToBounds = YES;
+    _topVIew.layer.borderWidth = 0.6;
+    _topVIew.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    _recordView.layer.cornerRadius = 5;
+    _recordView.layer.masksToBounds = YES;
+    _recordView.layer.borderWidth = 0.6;
+    _recordView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
     _flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth);
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:@"CirclePostMessageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell"];
     [self collectionViewLayout];
+    
+    if (_info != nil) {
+        //初始化数据
+        [self initData];
+    }
+    _textView.placeholder = @"请输入举报内容";
 }
 
 - (void)didReceiveMemoryWarning {

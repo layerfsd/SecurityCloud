@@ -17,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Model.sqlite"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Model"];
     self.keyCheck = [[QAppKeyCheck alloc] init];
     [self.keyCheck start:@"BIIBZ-EOBAS-6CFOT-624LR-G7N3K-Q3BHD" withDelegate:self];
     UserManager *user = [UserManager unArchiver];
@@ -26,7 +26,6 @@
         [user goToMain];
     }
     [self configLocationManager];
-    [self startSingleLocation];
     
     return YES;
 }
@@ -91,12 +90,12 @@
     [self.locationManager startUpdatingLocation];
 }
 
-- (void)startSingleLocation {
-    [self.locationManager requestLocationWithCompletionBlock:
-     ^(TencentLBSLocation *location, NSError *error) {
-         NSLog(@"%@, %@, %@", location.location, location.name, location.address);
-     }];
-}
+//- (void)startSingleLocation {
+//    [self.locationManager requestLocationWithCompletionBlock:
+//     ^(TencentLBSLocation *location, NSError *error) {
+//        NSLog(@"%@, %@, %@", location.location, location.name, location.address);
+//     }];
+//}
 
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager
                  didFailWithError:(NSError *)error {
@@ -140,7 +139,9 @@
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager
                 didUpdateLocation:(TencentLBSLocation *)location {
     //定位结果
-    NSLog(@"location:%@", location.location);
+//    NSLog(@"location:%@", location.location);
+    [UserManager sharedManager].address = location.address;
+    [UserManager sharedManager].location = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.latitude,location.location.coordinate.longitude];
     [self.locationManager stopUpdatingLocation];
 }
 

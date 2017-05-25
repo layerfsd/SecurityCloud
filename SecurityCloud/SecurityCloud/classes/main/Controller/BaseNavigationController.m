@@ -17,10 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.barTintColor = navColor;
-    
-    //设置字体颜色
-    
     self.navigationBar.tintColor = [UIColor whiteColor];
+    //设置字体颜色
+    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
+    
 }
 
 - (void)didReceiveMemoryWarning {

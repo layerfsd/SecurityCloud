@@ -21,7 +21,11 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        success(responseObject);
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            success(responseObject);
+        }else{
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
@@ -40,7 +44,12 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        success(responseObject);
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            success(responseObject);
+        }else{
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
@@ -66,18 +75,15 @@
         
         [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/png"];
         
-         
-     
-         /*
-         @“video/quicktime” 视频流
-         
-         */
-
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        success(responseObject);
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            success(responseObject);
+        }else{
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
@@ -113,7 +119,11 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        success(responseObject);
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            success(responseObject);
+        }else{
+            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);

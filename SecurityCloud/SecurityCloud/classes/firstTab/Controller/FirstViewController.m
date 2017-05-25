@@ -11,6 +11,9 @@
 #import "FirstTabCellModel.h"
 #import "FirstCollectionViewCell.h"
 #import "PostMainViewController.h"
+#import "CoreDataHelper.h"
+#import "DraftBoxListViewController.h"
+#import "PostedListViewController.h"
 #define colum 5
 #define cellW kScreenWidth / colum
 #define cellH cellW * 100 / 80.0
@@ -31,8 +34,7 @@
     [self initModels];
     [self initCollectionView];
     
-//    _postButton.layer.masksToBounds = YES;
-//    _postButton.layer.cornerRadius = _postButton.frame.size.width * 0.5;
+
 }
 
 -(void)initModels {
@@ -79,6 +81,18 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //点击事件
+    if (indexPath.item == 0) {
+        //草稿箱
+        DraftBoxListViewController *draftBoxListViewController = [[DraftBoxListViewController alloc] init];
+        [self.navigationController pushViewController:draftBoxListViewController animated:YES];
+        
+    }
+    if (indexPath.item == 1) {
+        //草稿箱
+        PostedListViewController *postedListViewController = [[PostedListViewController alloc] init];
+        [self.navigationController pushViewController:postedListViewController animated:YES];
+        
+    }
 }
 
 

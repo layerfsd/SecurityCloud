@@ -2,12 +2,12 @@
 //  Info+CoreDataProperties.h
 //  SecurityCloud
 //
-//  Created by apple on 17/5/22.
+//  Created by hsgene_xu on 2017/5/25.
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
-#import "Info.h"
-#import "PostModel.h"
+#import "Info+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<Info *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *content;
-@property (nullable, nonatomic, retain) NSString *images;
+@property (nullable, nonatomic, copy) NSDate *creatTime;
+@property (nullable, nonatomic, copy) NSString *images;
+@property (nullable, nonatomic, copy) NSString *userID;
 @property (nullable, nonatomic, copy) NSString *voicePath;
 
 @end

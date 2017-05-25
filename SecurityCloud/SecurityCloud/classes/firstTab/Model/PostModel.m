@@ -10,6 +10,21 @@
 
 @implementation PostModel
 MJCodingImplementation
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"ID":@"id"};
+}
+
+@end
+
+@implementation FileModel
+MJCodingImplementation
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"ID":@"id"};
+}
 @end
 
 @implementation PostImageModel

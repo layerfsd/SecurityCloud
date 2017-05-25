@@ -10,12 +10,13 @@
 #import "LoginNavigationController.h"
 @implementation UserManager
 
-static UserManager *manager;
+
 
 +(UserManager *)sharedManager {
+    static UserManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [UserManager new];
+        manager = [[self alloc] init];
     });
     return manager;
 }
@@ -65,12 +66,12 @@ MJCodingImplementation
     [unarchiver finishDecoding];
     
     //解档完需要初始化单例
-    [self initShare:user];
+    [[UserManager sharedManager] initShare:user];
     
     return user;
 }
 
-+(void)initShare:(UserManager*)user {
+-(void)initShare:(UserManager*)user {
     [UserManager sharedManager].userID = user.userID;
     [UserManager sharedManager].name = user.name;
     [UserManager sharedManager].password = user.password;
@@ -82,7 +83,7 @@ MJCodingImplementation
 //主页
 -(void)goToMain {
     UIStoryboard *mainSb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    BaseNavigationController *nv = [mainSb instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
+    BaseNavigationController *nv = [mainSb instantiateViewControllerWithIdentifier:@"BaseTabBarController"];
     appDelegate.window.rootViewController = nv;
 }
 //登录
@@ -103,6 +104,35 @@ MJCodingImplementation
 +(NSString*)getTelNum {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     return (NSString*)[userDefault stringForKey:@"tel"];
+}
+
+//储存地址
+-(void)setAddress:(NSString*)address {
+    _address = address;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:address forKey:@"address"];
+    [userDefault synchronize];
+}
+//获取地址
+-(NSString*)getAddress {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    return (NSString*)[userDefault stringForKey:@"address"];
+}
+
+
+
+//储存经纬度
+-(void)setLocation:(NSString*)location {
+    _location = location;
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:location forKey:@"location"];
+    [userDefault synchronize];
+    
+}
+//获取经纬度
+-(NSString*)getLocation {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    return (NSString*)[userDefault stringForKey:@"location"];
 }
 
 @end

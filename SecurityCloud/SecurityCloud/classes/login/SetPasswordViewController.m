@@ -7,7 +7,7 @@
 //
 
 #import "SetPasswordViewController.h"
-#import "NSString+Utility.h"
+
 #import "Md5Util.h"
 @interface SetPasswordViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;

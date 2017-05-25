@@ -15,6 +15,8 @@
 @property (nonatomic,copy) NSString *tel;
 @property (nonatomic,copy) NSString *time;
 @property (nonatomic,copy) NSArray<UserLabel *> *biaoqian;
+@property (nonatomic,copy) NSString *address;
+@property (nonatomic,copy) NSString *location;
 
 +(UserManager *)sharedManager;
 
@@ -27,6 +29,13 @@
 
 +(void)setTelNum:(NSString*)tel;
 +(NSString*)getTelNum;
+
+-(void)initShare:(UserManager*)user;
+//+(void)setAddress:(NSString*)address;
+//+(NSString*)getAddress;
+//
+//+(void)setLocation:(NSString*)location;
+//+(NSString*)getLocation;
 @end
 
 //标签

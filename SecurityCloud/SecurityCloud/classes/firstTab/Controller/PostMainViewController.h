@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
-@class PostModel;
+
+@class Info;
 @interface PostMainViewController : BaseViewController
-@property (nonatomic,strong) PostModel *model;
+//有数据进来 可以编辑修改
+@property (nonatomic,strong) Info *info;
 @end
 
 

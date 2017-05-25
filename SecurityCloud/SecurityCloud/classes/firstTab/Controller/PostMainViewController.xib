@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="collectionView" destination="4Md-Hb-QLv" id="eFU-fL-RKy"/>
                 <outlet property="collectionViewHeightConstraint" destination="o4I-t2-2Rr" id="WaS-PT-Se2"/>
+                <outlet property="containerView" destination="Q1f-wV-HhI" id="fjG-kX-aZQ"/>
                 <outlet property="containerViewHeightConstraint" destination="bBJ-As-5Zx" id="hR0-cw-hjI"/>
                 <outlet property="flowLayout" destination="CAD-wF-bdd" id="FA3-HF-FNG"/>
                 <outlet property="recordButton" destination="fGZ-zs-SqF" id="Pbs-06-OIb"/>
@@ -75,17 +76,21 @@
                                         <constraint firstItem="4Md-Hb-QLv" firstAttribute="leading" secondItem="qmS-gs-wkj" secondAttribute="leading" id="sT0-Rp-eKG"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8n-MS-XMM">
-                                    <rect key="frame" x="6" y="509" width="175" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8n-MS-XMM">
+                                    <rect key="frame" x="20" y="540" width="157.5" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="GU5-Kb-iQz"/>
+                                    </constraints>
                                     <state key="normal" title="暂存"/>
                                     <connections>
                                         <action selector="postToServer:" destination="-1" eventType="touchUpInside" id="1mS-JP-biY"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxb-IX-ybS">
-                                    <rect key="frame" x="260" y="509" width="101" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxb-IX-ybS">
+                                    <rect key="frame" x="197.5" y="540" width="157.5" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="KYV-Ns-dV9"/>
+                                    </constraints>
                                     <state key="normal" title="提交"/>
                                     <connections>
                                         <action selector="postToServer:" destination="-1" eventType="touchUpInside" id="n3C-0S-niP"/>
@@ -131,10 +136,16 @@
                             <constraints>
                                 <constraint firstItem="VeE-o9-16H" firstAttribute="top" secondItem="qmS-gs-wkj" secondAttribute="bottom" constant="5" id="7Hb-xf-tNG"/>
                                 <constraint firstAttribute="trailing" secondItem="qmS-gs-wkj" secondAttribute="trailing" constant="10" id="Do1-hW-FVk"/>
+                                <constraint firstItem="Oxb-IX-ybS" firstAttribute="leading" secondItem="i8n-MS-XMM" secondAttribute="trailing" constant="20" id="Rww-Em-gOD"/>
+                                <constraint firstAttribute="trailing" secondItem="Oxb-IX-ybS" secondAttribute="trailing" constant="20" id="UY5-oy-s4x"/>
+                                <constraint firstItem="i8n-MS-XMM" firstAttribute="leading" secondItem="Q1f-wV-HhI" secondAttribute="leading" constant="20" id="WAK-uF-Ksb"/>
                                 <constraint firstAttribute="height" constant="600" id="bBJ-As-5Zx"/>
                                 <constraint firstItem="qmS-gs-wkj" firstAttribute="leading" secondItem="Q1f-wV-HhI" secondAttribute="leading" constant="10" id="bPW-Do-z47"/>
                                 <constraint firstItem="qmS-gs-wkj" firstAttribute="top" secondItem="Q1f-wV-HhI" secondAttribute="top" constant="10" id="evo-yE-W0C"/>
+                                <constraint firstItem="Oxb-IX-ybS" firstAttribute="centerY" secondItem="i8n-MS-XMM" secondAttribute="centerY" id="fxp-Zb-PoF"/>
                                 <constraint firstAttribute="trailing" secondItem="VeE-o9-16H" secondAttribute="trailing" constant="10" id="rul-Uv-RBH"/>
+                                <constraint firstItem="Oxb-IX-ybS" firstAttribute="width" secondItem="i8n-MS-XMM" secondAttribute="width" id="tpO-ma-CtD"/>
+                                <constraint firstAttribute="bottom" secondItem="i8n-MS-XMM" secondAttribute="bottom" constant="20" id="uan-VL-vbu"/>
                                 <constraint firstItem="VeE-o9-16H" firstAttribute="leading" secondItem="Q1f-wV-HhI" secondAttribute="leading" constant="10" id="uud-JG-muf"/>
                             </constraints>
                         </view>

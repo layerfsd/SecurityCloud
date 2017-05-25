@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "NSString+Utility.h"
+
 #import "Md5Util.h"
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;

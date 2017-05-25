@@ -2,14 +2,12 @@
 //  Info+CoreDataClass.h
 //  SecurityCloud
 //
-//  Created by apple on 17/5/22.
+//  Created by hsgene_xu on 2017/5/25.
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-@class NSObject;
 
 NS_ASSUME_NONNULL_BEGIN
 
