@@ -12,6 +12,7 @@
 #import "RecordSoundView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Info.h"
+#import "UITextView+Placeholder.h"
 #define colum 5
 #define cellWidth (kScreenWidth - 20)/colum
 @interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate>
@@ -179,6 +180,8 @@
     if (_model == nil) {
         
     }
+    _containerViewHeightConstraint.constant = self.view.bounds.size.height;
+    _textView.placeholder = @"请输入举报内容";
     _flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth);
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:@"CirclePostMessageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell"];

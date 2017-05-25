@@ -20,7 +20,7 @@
 #import "MJExtension.h"
 #import "Masonry.h"
 #import "QMapKit.h"
-
+#import "IQKeyboardManager.h"
 
 
 #import "TZImagePickerController.h"
