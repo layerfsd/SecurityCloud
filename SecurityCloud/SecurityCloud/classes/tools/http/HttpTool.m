@@ -14,13 +14,16 @@
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure
 {
+    [SVProgressHUD show];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
     }];
 }
@@ -30,13 +33,17 @@
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
 {
+    [SVProgressHUD show];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
         success(responseObject);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
     }];
        
@@ -50,7 +57,7 @@
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
 {
-    
+    [SVProgressHUD showWithStatus:@"提交数据中..."];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -69,8 +76,10 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
     }];
     
@@ -84,7 +93,7 @@
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
 {
-    
+    [SVProgressHUD show];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -103,8 +112,10 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
     }];
 }

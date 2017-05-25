@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4S5-Eq-WDW">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4S5-Eq-WDW">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--two-->
+        <!--探索-->
         <scene sceneID="34S-H2-L1W">
             <objects>
                 <viewController id="LA9-sw-LYn" customClass="SecondViewController" sceneMemberID="viewController">
@@ -23,16 +24,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="two" id="QvN-dj-Kvc"/>
+                    <tabBarItem key="tabBarItem" title="探索" id="QvN-dj-Kvc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8R-yi-jnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="475" y="155"/>
         </scene>
-        <!--three-->
+        <!--个人信息-->
         <scene sceneID="xfz-L5-a95">
             <objects>
-                <viewController id="Sch-XC-GqK" customClass="ThirdViewController" sceneMemberID="viewController">
+                <viewController title="个人信息" id="Sch-XC-GqK" customClass="ThirdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rCH-dp-hU6"/>
                         <viewControllerLayoutGuide type="bottom" id="V8U-6c-0hw"/>
@@ -40,18 +41,37 @@
                     <view key="view" contentMode="scaleToFill" id="MVi-40-j3V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-d7-2pu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sch-XC-GqK" id="gx5-L9-EB3"/>
+                                    <outlet property="delegate" destination="Sch-XC-GqK" id="GzQ-a4-7jy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="d8y-d7-2pu" secondAttribute="trailing" id="EZI-XZ-Ot4"/>
+                            <constraint firstItem="V8U-6c-0hw" firstAttribute="top" secondItem="d8y-d7-2pu" secondAttribute="bottom" id="Yln-Fj-ePV"/>
+                            <constraint firstItem="d8y-d7-2pu" firstAttribute="leading" secondItem="MVi-40-j3V" secondAttribute="leading" id="je8-DW-EeZ"/>
+                            <constraint firstItem="d8y-d7-2pu" firstAttribute="top" secondItem="MVi-40-j3V" secondAttribute="top" id="wtL-sZ-Ahz"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="three" id="dAJ-Te-3mM"/>
+                    <tabBarItem key="tabBarItem" title="我" id="dAJ-Te-3mM"/>
+                    <connections>
+                        <outlet property="tableView" destination="d8y-d7-2pu" id="6xg-df-Vja"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ij-FC-ggo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="806"/>
+            <point key="canvasLocation" x="465" y="805.9859154929577"/>
         </scene>
-        <!--上报-->
+        <!--首页-->
         <scene sceneID="Vx6-17-8EL">
             <objects>
-                <viewController title="上报" id="fFS-Te-VdK" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController title="首页" id="fFS-Te-VdK" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jgd-Av-Zbq"/>
                         <viewControllerLayoutGuide type="bottom" id="Mhe-eA-Ysi"/>
@@ -61,13 +81,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="150" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxe-1B-1DY">
-                                <rect key="frame" x="62.5" y="244" width="195" height="195"/>
+                                <rect key="frame" x="56" y="271" width="208" height="208"/>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qxe-1B-1DY" secondAttribute="height" multiplier="1:1" id="FVW-SN-wSC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="发布"/>
+                                <state key="normal" title="我要上报"/>
                                 <connections>
                                     <action selector="pressed:" destination="fFS-Te-VdK" eventType="touchUpInside" id="GTs-GV-vUG"/>
                                 </connections>
@@ -102,15 +122,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qxe-1B-1DY" firstAttribute="top" secondItem="xuN-Gh-cXi" secondAttribute="bottom" constant="80" id="2da-wK-Gu5"/>
-                            <constraint firstItem="Mhe-eA-Ysi" firstAttribute="top" secondItem="qxe-1B-1DY" secondAttribute="bottom" constant="80" id="Kad-A6-Ykd"/>
+                            <constraint firstItem="Mhe-eA-Ysi" firstAttribute="top" secondItem="qxe-1B-1DY" secondAttribute="bottom" constant="40" id="Kad-A6-Ykd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qxe-1B-1DY" secondAttribute="trailing" constant="40" id="Tfk-8y-7UC"/>
                             <constraint firstItem="xuN-Gh-cXi" firstAttribute="top" secondItem="Jgd-Av-Zbq" secondAttribute="bottom" id="fvS-Rj-Bkc"/>
+                            <constraint firstItem="qxe-1B-1DY" firstAttribute="leading" secondItem="w3x-cQ-2U2" secondAttribute="leadingMargin" constant="40" id="fxd-pv-KuO"/>
                             <constraint firstAttribute="trailing" secondItem="xuN-Gh-cXi" secondAttribute="trailing" id="has-Ij-kZe"/>
                             <constraint firstItem="xuN-Gh-cXi" firstAttribute="leading" secondItem="w3x-cQ-2U2" secondAttribute="leading" id="m7j-0Z-wBt"/>
                             <constraint firstItem="qxe-1B-1DY" firstAttribute="centerX" secondItem="w3x-cQ-2U2" secondAttribute="centerX" id="qzV-4y-NzX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="one" id="dmp-XR-J2A"/>
+                    <tabBarItem key="tabBarItem" title="首页" id="dmp-XR-J2A"/>
                     <connections>
                         <outlet property="collectionView" destination="xuN-Gh-cXi" id="Mm1-KR-TWp"/>
                         <outlet property="collectionViewHeightConstraint" destination="FKA-zd-iDB" id="OxB-Qu-ebg"/>

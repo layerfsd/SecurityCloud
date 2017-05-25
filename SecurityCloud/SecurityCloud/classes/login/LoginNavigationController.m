@@ -26,6 +26,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (nullable UIViewController *)childViewControllerForStatusBarStyle{
+    //返回当前控制器
+    return self.topViewController;
+}
+
 /*
 #pragma mark - Navigation
 

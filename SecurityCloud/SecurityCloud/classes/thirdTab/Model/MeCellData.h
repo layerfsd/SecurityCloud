@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface MeCellData : NSObject
+@property (nonatomic,copy) NSString *titleStr;
+@property (nonatomic,copy) NSString *imageName;
 
++(instancetype)initWithTitle:(NSString*)title imageName:(NSString*)imageName;
 @end

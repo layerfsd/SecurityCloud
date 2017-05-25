@@ -22,6 +22,7 @@ static UserManager *manager;
 
 MJCodingImplementation
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
     return @{@"userID":@"id"};
 }
 //归档

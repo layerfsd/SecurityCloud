@@ -10,9 +10,9 @@
 #define Const_h
 //api 前部
 #define RootPath @"http://cntp31.lysoo.com/guanli/index.php/admin/api"
-#define UserID @"userID"
+#define UserID [UserManager sharedManager].userID
 
-
+#define navColor [UIColor colorWithRed:16.0/255 green:106.0/255 blue:219.0/255 alpha:1]
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #endif /* Const_h */

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>安防云需要访问您的位置功能</string>
-	<key>NSLocationUsageDescription</key>
-	<string>安防云需要访问您的位置功能</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -31,6 +27,10 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>安防云需要访问您的位置功能</string>
+	<key>NSLocationUsageDescription</key>
+	<string>安防云需要访问您的位置功能</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>安防云需要访问您的位置功能</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>安防云需要访问您的麦克风功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -50,8 +50,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -60,5 +58,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

@@ -16,12 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationBar.barTintColor = navColor;
+    
+    //设置字体颜色
+    
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (nullable UIViewController *)childViewControllerForStatusBarStyle{
+    //返回当前控制器
+    return self.topViewController;
 }
 
 /*

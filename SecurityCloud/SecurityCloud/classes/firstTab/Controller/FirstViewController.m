@@ -31,24 +31,24 @@
     [self initModels];
     [self initCollectionView];
     
-    _postButton.layer.masksToBounds = YES;
-    _postButton.layer.cornerRadius = _postButton.frame.size.width * 0.5;
+//    _postButton.layer.masksToBounds = YES;
+//    _postButton.layer.cornerRadius = _postButton.frame.size.width * 0.5;
 }
 
 -(void)initModels {
     FirstTabCellModel *model0 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
     
-    FirstTabCellModel *model1 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+    FirstTabCellModel *model1 = [[FirstTabCellModel alloc] initWithTitle:@"已上传" image:nil];
     
-    FirstTabCellModel *model2 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+    FirstTabCellModel *model2 = [[FirstTabCellModel alloc] initWithTitle:@"被采用" image:nil];
     
-    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"信息中心" image:nil];
     
-    FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+    FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"待处理" image:nil];
     
-    FirstTabCellModel *model5 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+   
     
-    [self.models addObjectsFromArray:@[model0,model1,model2,model3,model4,model5]];
+    [self.models addObjectsFromArray:@[model0,model1,model2,model3,model4]];
 }
 -(void)initCollectionView {
     NSInteger row = ((self.models.count - 1) / colum) + 1;

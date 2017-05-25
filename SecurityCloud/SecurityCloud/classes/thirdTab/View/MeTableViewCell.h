@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MeCellData;
 @interface MeTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) MeCellData *model;
 @end

@@ -40,6 +40,13 @@
 		18A7C8FD1ED32AD30004136A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A7C8FC1ED32AD30004136A /* CoreData.framework */; };
 		18A7C9021ED32BAD0004136A /* Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C8FF1ED32BAD0004136A /* Info.m */; };
 		18A7C9031ED32BAD0004136A /* Info+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7C9011ED32BAD0004136A /* Info+CoreDataProperties.m */; };
+		18F1E13D1ED5AA1C00C16EE6 /* MeCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1E13C1ED5AA1C00C16EE6 /* MeCellData.m */; };
+		18F1E1461ED5AC7E00C16EE6 /* MeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1E1441ED5AC7E00C16EE6 /* MeHeadTableViewCell.m */; };
+		18F1E1471ED5AC7E00C16EE6 /* MeHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F1E1451ED5AC7E00C16EE6 /* MeHeadTableViewCell.xib */; };
+		18F1E14B1ED5B19F00C16EE6 /* MeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1E1491ED5B19F00C16EE6 /* MeTableViewCell.m */; };
+		18F1E14C1ED5B19F00C16EE6 /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F1E14A1ED5B19F00C16EE6 /* MeTableViewCell.xib */; };
+		18F1E14F1ED5B51400C16EE6 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F1E14E1ED5B51400C16EE6 /* UserModel.m */; };
+		18F9428D1ED5CC070016765D /* MyTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F9428C1ED5CC070016765D /* MyTagViewController.m */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
 		EC949D4E1ED43784005FDD04 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9D1ED43784005FDD04 /* city.json */; };
@@ -335,6 +342,18 @@
 		18A7C9001ED32BAD0004136A /* Info+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataProperties.h"; sourceTree = "<group>"; };
 		18A7C9011ED32BAD0004136A /* Info+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataProperties.m"; sourceTree = "<group>"; };
 		18E376709EAA6BC37A3BE23F /* Pods-SecurityCloudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.debug.xcconfig"; sourceTree = "<group>"; };
+		18F1E13B1ED5AA1C00C16EE6 /* MeCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeCellData.h; sourceTree = "<group>"; };
+		18F1E13C1ED5AA1C00C16EE6 /* MeCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeCellData.m; sourceTree = "<group>"; };
+		18F1E1431ED5AC7E00C16EE6 /* MeHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeHeadTableViewCell.h; sourceTree = "<group>"; };
+		18F1E1441ED5AC7E00C16EE6 /* MeHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeHeadTableViewCell.m; sourceTree = "<group>"; };
+		18F1E1451ED5AC7E00C16EE6 /* MeHeadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeHeadTableViewCell.xib; sourceTree = "<group>"; };
+		18F1E1481ED5B19F00C16EE6 /* MeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewCell.h; sourceTree = "<group>"; };
+		18F1E1491ED5B19F00C16EE6 /* MeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewCell.m; sourceTree = "<group>"; };
+		18F1E14A1ED5B19F00C16EE6 /* MeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
+		18F1E14D1ED5B51400C16EE6 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		18F1E14E1ED5B51400C16EE6 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		18F9428B1ED5CC070016765D /* MyTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagViewController.h; sourceTree = "<group>"; };
+		18F9428C1ED5CC070016765D /* MyTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagViewController.m; sourceTree = "<group>"; };
 		31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EF7FEB590E3FB51839A607 /* Pods-SecurityCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloud/Pods-SecurityCloud.debug.xcconfig"; sourceTree = "<group>"; };
 		80DDB11C44FDD98569AB508E /* Pods-SecurityCloudUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudUITests/Pods-SecurityCloudUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -865,6 +884,8 @@
 			children = (
 				189E93251ED1590900DBD4FC /* ThirdViewController.h */,
 				189E93261ED1590900DBD4FC /* ThirdViewController.m */,
+				18F9428B1ED5CC070016765D /* MyTagViewController.h */,
+				18F9428C1ED5CC070016765D /* MyTagViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -872,6 +893,10 @@
 		189E93271ED1590900DBD4FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18F1E13B1ED5AA1C00C16EE6 /* MeCellData.h */,
+				18F1E13C1ED5AA1C00C16EE6 /* MeCellData.m */,
+				18F1E14D1ED5B51400C16EE6 /* UserModel.h */,
+				18F1E14E1ED5B51400C16EE6 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -879,6 +904,12 @@
 		189E93281ED1590900DBD4FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				18F1E1431ED5AC7E00C16EE6 /* MeHeadTableViewCell.h */,
+				18F1E1441ED5AC7E00C16EE6 /* MeHeadTableViewCell.m */,
+				18F1E1451ED5AC7E00C16EE6 /* MeHeadTableViewCell.xib */,
+				18F1E1481ED5B19F00C16EE6 /* MeTableViewCell.h */,
+				18F1E1491ED5B19F00C16EE6 /* MeTableViewCell.m */,
+				18F1E14A1ED5B19F00C16EE6 /* MeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1458,6 +1489,7 @@
 				EC949DB11ED43784005FDD04 /* navi_icon_island_in@2x.png in Resources */,
 				EC949DC51ED43784005FDD04 /* navi_icon_left_back@3x.png in Resources */,
 				EC949DE51ED43784005FDD04 /* navi_info_speed_40@2x.png in Resources */,
+				18F1E1471ED5AC7E00C16EE6 /* MeHeadTableViewCell.xib in Resources */,
 				EC949D911ED43784005FDD04 /* navi_icon_fork_left@3x.png in Resources */,
 				EC949DA81ED43784005FDD04 /* navi_icon_island_5@3x.png in Resources */,
 				189E933F1ED1590900DBD4FC /* Info.plist in Resources */,
@@ -1524,6 +1556,7 @@
 				EC949D631ED43784005FDD04 /* bubble_left_press@2x.png in Resources */,
 				EC949DAA1ED43784005FDD04 /* navi_icon_island_6@3x.png in Resources */,
 				EC949D511ED43784005FDD04 /* National_Satellite.png in Resources */,
+				18F1E14C1ED5B19F00C16EE6 /* MeTableViewCell.xib in Resources */,
 				EC949DDE1ED43784005FDD04 /* navi_info_speed_110@2x.png in Resources */,
 				EC949DC61ED43784005FDD04 /* navi_icon_left_front@2x.png in Resources */,
 				EC949D741ED43784005FDD04 /* dottedline_texture_light.png in Resources */,
@@ -1744,7 +1777,9 @@
 				189E934A1ED166F900DBD4FC /* UserManager.m in Sources */,
 				189E93401ED1590900DBD4FC /* main.m in Sources */,
 				ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */,
+				18F9428D1ED5CC070016765D /* MyTagViewController.m in Sources */,
 				189E93551ED1A8C700DBD4FC /* LoginNavigationController.m in Sources */,
+				18F1E13D1ED5AA1C00C16EE6 /* MeCellData.m in Sources */,
 				18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */,
 				18A7C9021ED32BAD0004136A /* Info.m in Sources */,
 				ECAC590E1ED2B48900628E85 /* PostViewController.m in Sources */,
@@ -1761,7 +1796,10 @@
 				ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */,
 				189E93581ED1BA1A00DBD4FC /* RecordSoundView.m in Sources */,
 				189E93521ED16CEB00DBD4FC /* NSString+Utility.m in Sources */,
+				18F1E14F1ED5B51400C16EE6 /* UserModel.m in Sources */,
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,
+				18F1E14B1ED5B19F00C16EE6 /* MeTableViewCell.m in Sources */,
+				18F1E1461ED5AC7E00C16EE6 /* MeHeadTableViewCell.m in Sources */,
 				189E93421ED1590900DBD4FC /* ThirdViewController.m in Sources */,
 				189E93391ED1590900DBD4FC /* RegisterViewController.m in Sources */,
 				189E93441ED1590900DBD4FC /* GTMBase64.m in Sources */,

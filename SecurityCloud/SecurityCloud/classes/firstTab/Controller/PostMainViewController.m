@@ -12,7 +12,7 @@
 #import "RecordSoundView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Info.h"
-#define colum 5
+#define colum 4
 #define cellWidth (kScreenWidth - 20)/colum
 @interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
+@property (weak, nonatomic) IBOutlet UIView *topVIew;
+@property (weak, nonatomic) IBOutlet UIView *recordView;
 
 @property (nonatomic,strong) NSMutableArray<PostImageModel*> *images;
 @property (nonatomic,copy) NSMutableArray<NSString*> *postImageIDs;
@@ -179,6 +181,16 @@
     if (_model == nil) {
         
     }
+    _topVIew.layer.cornerRadius = 5;
+    _topVIew.layer.masksToBounds = YES;
+    _topVIew.layer.borderWidth = 0.6;
+    _topVIew.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    _recordView.layer.cornerRadius = 5;
+    _recordView.layer.masksToBounds = YES;
+    _recordView.layer.borderWidth = 0.6;
+    _recordView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
     _flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth);
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:@"CirclePostMessageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell"];
