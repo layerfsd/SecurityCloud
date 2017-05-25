@@ -49,6 +49,7 @@
 		18F9428D1ED5CC070016765D /* MyTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F9428C1ED5CC070016765D /* MyTagViewController.m */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
+		EC795D811ED65D6E0061C5E1 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D801ED65D6E0061C5E1 /* UITextView+Placeholder.m */; };
 		EC949D4E1ED43784005FDD04 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9D1ED43784005FDD04 /* city.json */; };
 		EC949D4F1ED43784005FDD04 /* mapconfig.dat in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9E1ED43784005FDD04 /* mapconfig.dat */; };
 		EC949D501ED43784005FDD04 /* National.png in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9F1ED43784005FDD04 /* National.png */; };
@@ -360,6 +361,8 @@
 		ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C921DD6FBB3A2386EA0374BF /* Pods-SecurityCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC795D7F1ED65D6E0061C5E1 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		EC795D801ED65D6E0061C5E1 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		EC949C781ED43784005FDD04 /* QAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAnnotation.h; sourceTree = "<group>"; };
 		EC949C791ED43784005FDD04 /* QAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAnnotationView.h; sourceTree = "<group>"; };
 		EC949C7A1ED43784005FDD04 /* QAppKeyCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAppKeyCheck.h; sourceTree = "<group>"; };
@@ -960,6 +963,7 @@
 		189E934B1ED16CCB00DBD4FC /* category */ = {
 			isa = PBXGroup;
 			children = (
+				EC795D7E1ED65D6E0061C5E1 /* UITextView */,
 				189E934F1ED16CEB00DBD4FC /* NSString */,
 			);
 			path = category;
@@ -1030,6 +1034,15 @@
 				31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC795D7E1ED65D6E0061C5E1 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				EC795D7F1ED65D6E0061C5E1 /* UITextView+Placeholder.h */,
+				EC795D801ED65D6E0061C5E1 /* UITextView+Placeholder.m */,
+			);
+			path = UITextView;
 			sourceTree = "<group>";
 		};
 		EC949C761ED4375E005FDD04 /* sdk */ = {
@@ -1805,6 +1818,7 @@
 				189E93441ED1590900DBD4FC /* GTMBase64.m in Sources */,
 				189E93381ED1590900DBD4FC /* RegisterFinishedViewController.m in Sources */,
 				189E93451ED1590900DBD4FC /* Md5Util.m in Sources */,
+				EC795D811ED65D6E0061C5E1 /* UITextView+Placeholder.m in Sources */,
 				189E93371ED1590900DBD4FC /* LoginViewController.m in Sources */,
 				18A7C8F51ED329440004136A /* InfoImagesTransformer.m in Sources */,
 				18A7C9031ED32BAD0004136A /* Info+CoreDataProperties.m in Sources */,
