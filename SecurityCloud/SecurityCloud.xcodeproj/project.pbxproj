@@ -46,6 +46,12 @@
 		18F9428D1ED5CC070016765D /* MyTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F9428C1ED5CC070016765D /* MyTagViewController.m */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
+		EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79373F1ED7B3C40038123D /* VerticalButton.m */; };
+		EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937431ED7BDA90038123D /* MTBBarcodeScanner.m */; };
+		EC7937471ED7BEE20038123D /* ScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937461ED7BEE20038123D /* ScanQRViewController.m */; };
+		EC79374C1ED7C4550038123D /* LBXScanNetAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937491ED7C4550038123D /* LBXScanNetAnimation.m */; };
+		EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79374B1ED7C4550038123D /* LBXScanView.m */; };
+		EC7937501ED7C5AC0038123D /* LBXScanPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79374F1ED7C5AC0038123D /* LBXScanPermissions.m */; };
 		EC795D811ED65D6E0061C5E1 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D801ED65D6E0061C5E1 /* UITextView+Placeholder.m */; };
 		EC795D8A1ED66F080061C5E1 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D891ED66F080061C5E1 /* CoreDataHelper.m */; };
 		EC795D8D1ED670400061C5E1 /* DraftBoxListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D8C1ED670400061C5E1 /* DraftBoxListViewController.m */; };
@@ -362,6 +368,18 @@
 		ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C921DD6FBB3A2386EA0374BF /* Pods-SecurityCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC79373E1ED7B3C40038123D /* VerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalButton.h; sourceTree = "<group>"; };
+		EC79373F1ED7B3C40038123D /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
+		EC7937421ED7BDA90038123D /* MTBBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBBarcodeScanner.h; sourceTree = "<group>"; };
+		EC7937431ED7BDA90038123D /* MTBBarcodeScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBBarcodeScanner.m; sourceTree = "<group>"; };
+		EC7937451ED7BEE20038123D /* ScanQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanQRViewController.h; sourceTree = "<group>"; };
+		EC7937461ED7BEE20038123D /* ScanQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQRViewController.m; sourceTree = "<group>"; };
+		EC7937481ED7C4550038123D /* LBXScanNetAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanNetAnimation.h; sourceTree = "<group>"; };
+		EC7937491ED7C4550038123D /* LBXScanNetAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXScanNetAnimation.m; sourceTree = "<group>"; };
+		EC79374A1ED7C4550038123D /* LBXScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanView.h; sourceTree = "<group>"; };
+		EC79374B1ED7C4550038123D /* LBXScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXScanView.m; sourceTree = "<group>"; };
+		EC79374E1ED7C5AC0038123D /* LBXScanPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBXScanPermissions.h; sourceTree = "<group>"; };
+		EC79374F1ED7C5AC0038123D /* LBXScanPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBXScanPermissions.m; sourceTree = "<group>"; };
 		EC795D7F1ED65D6E0061C5E1 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		EC795D801ED65D6E0061C5E1 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		EC795D881ED66F080061C5E1 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
@@ -789,6 +807,8 @@
 				EC795D8C1ED670400061C5E1 /* DraftBoxListViewController.m */,
 				EC795DAB1ED6C6C90061C5E1 /* PostedListViewController.h */,
 				EC795DAC1ED6C6C90061C5E1 /* PostedListViewController.m */,
+				EC7937451ED7BEE20038123D /* ScanQRViewController.h */,
+				EC7937461ED7BEE20038123D /* ScanQRViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -947,6 +967,8 @@
 		189E93291ED1590900DBD4FC /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				EC7937411ED7BDA90038123D /* Scanners */,
+				EC79373C1ED7B39D0038123D /* customView */,
 				189E934B1ED16CCB00DBD4FC /* category */,
 				189E93471ED166D900DBD4FC /* manager */,
 				189E932A1ED1590900DBD4FC /* encryption */,
@@ -1065,6 +1087,38 @@
 				31FBD1C2C6C8848928B6F965 /* libPods-SecurityCloudUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC79373C1ED7B39D0038123D /* customView */ = {
+			isa = PBXGroup;
+			children = (
+				EC79373D1ED7B39D0038123D /* Button */,
+			);
+			path = customView;
+			sourceTree = "<group>";
+		};
+		EC79373D1ED7B39D0038123D /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				EC79373E1ED7B3C40038123D /* VerticalButton.h */,
+				EC79373F1ED7B3C40038123D /* VerticalButton.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		EC7937411ED7BDA90038123D /* Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				EC79374E1ED7C5AC0038123D /* LBXScanPermissions.h */,
+				EC79374F1ED7C5AC0038123D /* LBXScanPermissions.m */,
+				EC7937481ED7C4550038123D /* LBXScanNetAnimation.h */,
+				EC7937491ED7C4550038123D /* LBXScanNetAnimation.m */,
+				EC79374A1ED7C4550038123D /* LBXScanView.h */,
+				EC79374B1ED7C4550038123D /* LBXScanView.m */,
+				EC7937421ED7BDA90038123D /* MTBBarcodeScanner.h */,
+				EC7937431ED7BDA90038123D /* MTBBarcodeScanner.m */,
+			);
+			path = Scanners;
 			sourceTree = "<group>";
 		};
 		EC795D7E1ED65D6E0061C5E1 /* UITextView */ = {
@@ -1829,6 +1883,7 @@
 				EC795DAD1ED6C6C90061C5E1 /* PostedListViewController.m in Sources */,
 				18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */,
 				ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */,
+				EC79374C1ED7C4550038123D /* LBXScanNetAnimation.m in Sources */,
 				EC795D911ED6705D0061C5E1 /* DraftBoxTableViewCell.m in Sources */,
 				189E933C1ED1590900DBD4FC /* BaseTabBarController.m in Sources */,
 				EC795DA91ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m in Sources */,
@@ -1845,11 +1900,14 @@
 				ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */,
 				189E93581ED1BA1A00DBD4FC /* RecordSoundView.m in Sources */,
 				189E93521ED16CEB00DBD4FC /* NSString+Utility.m in Sources */,
+				EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */,
 				18F1E14F1ED5B51400C16EE6 /* UserModel.m in Sources */,
+				EC7937471ED7BEE20038123D /* ScanQRViewController.m in Sources */,
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,
 				18F1E14B1ED5B19F00C16EE6 /* MeTableViewCell.m in Sources */,
 				18F1E1461ED5AC7E00C16EE6 /* MeHeadTableViewCell.m in Sources */,
 				189E93421ED1590900DBD4FC /* ThirdViewController.m in Sources */,
+				EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */,
 				189E93391ED1590900DBD4FC /* RegisterViewController.m in Sources */,
 				189E93441ED1590900DBD4FC /* GTMBase64.m in Sources */,
 				189E93381ED1590900DBD4FC /* RegisterFinishedViewController.m in Sources */,
@@ -1857,9 +1915,11 @@
 				189E93451ED1590900DBD4FC /* Md5Util.m in Sources */,
 				EC795D9E1ED681F00061C5E1 /* Info+CoreDataProperties.m in Sources */,
 				EC795D811ED65D6E0061C5E1 /* UITextView+Placeholder.m in Sources */,
+				EC7937501ED7C5AC0038123D /* LBXScanPermissions.m in Sources */,
 				189E93371ED1590900DBD4FC /* LoginViewController.m in Sources */,
 				EC795D9D1ED681F00061C5E1 /* Info+CoreDataClass.m in Sources */,
 				EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */,
+				EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

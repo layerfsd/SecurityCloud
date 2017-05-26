@@ -14,9 +14,13 @@
 #import "CoreDataHelper.h"
 #import "DraftBoxListViewController.h"
 #import "PostedListViewController.h"
+#import "VerticalButton.h"
+#import "ScanQRViewController.h"
 #define colum 5
 #define cellW kScreenWidth / colum
 #define cellH cellW * 100 / 80.0
+#define scanW 45
+#define scanH 35
 @interface FirstViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIButton *postButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -25,6 +29,8 @@
 
 
 @property (nonatomic,strong) NSMutableArray *models;
+
+
 @end
 
 @implementation FirstViewController
@@ -33,8 +39,21 @@
     [super viewDidLoad];
     [self initModels];
     [self initCollectionView];
-    
+    [self setNaviItem];
+   
+}
 
+-(void)setNaviItem {
+    CGRect frame = CGRectMake(0, 0, scanW, scanH);
+    VerticalButton *button = [[VerticalButton alloc] initWithFrame:frame];
+    [button addTarget:self action:@selector(scan:) forControlEvents:UIControlEventTouchUpInside];
+    [button setImageAndTitle:[UIImage imageNamed:@"hope_scan"] title:@"扫一扫"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+-(void)scan:(UIButton*)btn {
+    ScanQRViewController *vc = [[ScanQRViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)initModels {

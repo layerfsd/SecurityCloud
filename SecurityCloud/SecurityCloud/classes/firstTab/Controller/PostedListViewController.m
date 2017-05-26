@@ -61,7 +61,7 @@
 }
 
 -(void)loadData {
-    [self.infos removeAllObjects];
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"yonghuid"];
     [parameters setValue:@(_page) forKey:@"page"];
