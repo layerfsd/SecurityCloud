@@ -35,7 +35,7 @@
 @property (nonatomic,copy) NSString *filePath;
 
 @property (nonatomic,strong) AVAudioPlayer *player;
-@property (nonatomic,assign) BOOL posted;
+
 
 @end
 
@@ -129,7 +129,7 @@
 }
 
 - (IBAction)postToServer:(UIButton *)sender {
-    _posted = NO;
+    
     if (![self check]) {
         //请添加内容再上传
         [SVProgressHUD showErrorWithStatus:@"请添加内容"];

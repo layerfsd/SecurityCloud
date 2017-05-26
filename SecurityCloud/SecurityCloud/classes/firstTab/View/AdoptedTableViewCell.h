@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class InfoDetailCellModel;
 @interface AdoptedTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) InfoDetailCellModel *model;
 @end

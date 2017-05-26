@@ -7,8 +7,13 @@
 //
 
 #import "MyQRCodeViewController.h"
-
+#import "UserModel.h"
 @interface MyQRCodeViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageVIew;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *qRCodeImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *qRLitterImageView;
 
 @end
 
@@ -16,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"我的二维码";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +29,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

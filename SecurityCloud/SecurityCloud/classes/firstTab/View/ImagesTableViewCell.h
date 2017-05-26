@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class InfoDetailCellModel;
 @interface ImagesTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) InfoDetailCellModel *model;
 @end

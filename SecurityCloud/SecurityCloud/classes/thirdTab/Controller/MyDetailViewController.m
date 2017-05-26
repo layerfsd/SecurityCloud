@@ -7,8 +7,9 @@
 //
 
 #import "MyDetailViewController.h"
-
+#import "MyQRCodeViewController.h"
 @interface MyDetailViewController ()
+
 
 @end
 
@@ -24,14 +25,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        //头像
+        return;
+    }
+    
+    if (indexPath.row == 0){
+        //昵称
+    }else if (indexPath.row == 1){
+        //我的二维码
+       UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MyQRCodeViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MyQRCodeViewController"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 2){
+        //手机绑定
+    }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
-*/
 
 @end

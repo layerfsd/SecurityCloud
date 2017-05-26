@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+@class PostModel;
 @interface DetailInfoViewController : BaseViewController
-
+@property (nonatomic,strong) PostModel *model;
 @end

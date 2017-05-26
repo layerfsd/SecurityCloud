@@ -7,12 +7,19 @@
 //
 
 #import "ImageCollectionViewCell.h"
+@interface ImageCollectionViewCell()
+@property (weak, nonatomic) IBOutlet UIImageView *imageVIew;
 
+@end
 @implementation ImageCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+-(void)setImageUrl:(NSString *)imageUrl {
+    _imageUrl = imageUrl;
+    [_imageVIew sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:nil];
 }
 
 @end

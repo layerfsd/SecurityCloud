@@ -23,6 +23,9 @@
     // Initialization code
 }
 - (IBAction)qRCodeAction:(UIButton *)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(QRClicked)]) {
+        [_delegate QRClicked];
+    }
 }
 
 -(void)setModel:(UserModel *)model {

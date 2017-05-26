@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic,copy) NSString *imageUrl;
 @end

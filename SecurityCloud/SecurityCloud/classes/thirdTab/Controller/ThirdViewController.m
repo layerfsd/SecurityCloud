@@ -11,7 +11,8 @@
 #import "MeHeadTableViewCell.h"
 #import "MeTableViewCell.h"
 #import "UserModel.h"
-@interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "MyQRCodeViewController.h"
+@interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -33,13 +34,13 @@
 
 -(void)initDatas {
     NSArray *section0 = @[[MeCellData initWithTitle:@"我的标签" imageName:@""],
-                          [MeCellData initWithTitle:@"我的上报" imageName:@""]];
+                          [MeCellData initWithTitle:@"积分统计" imageName:@""]];
     
-    NSArray *section1 = @[[MeCellData initWithTitle:@"联系我们" imageName:@""],
-                          [MeCellData initWithTitle:@"系统设置" imageName:@""],
+    NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@""],
+                          [MeCellData initWithTitle:@"版本更新" imageName:@""],
                           [MeCellData initWithTitle:@"关于APP" imageName:@""],
                           [MeCellData initWithTitle:@"推荐给好友" imageName:@""],
-                          [MeCellData initWithTitle:@"意见反馈" imageName:@""]];
+                          [MeCellData initWithTitle:@"退出登录" imageName:@""]];
     [self.datas addObject:section0];
     [self.datas addObject:section1];
 }
@@ -84,6 +85,8 @@
             cell = [[NSBundle mainBundle] loadNibNamed:@"MeHeadTableViewCell" owner:nil options:nil].firstObject;
         }
         cell.model = self.userModel;
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     MeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MeTableViewCell"];
@@ -91,7 +94,41 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"MeTableViewCell" owner:nil options:nil].firstObject;
     }
     cell.model = self.datas[indexPath.section - 1][indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        //个人信息
+        [self performSegueWithIdentifier:@"ToDetailInfo" sender:self];
+    }else{
+        NSArray *sections = self.datas[indexPath.section - 1];
+        MeCellData *model = sections[indexPath.row];
+        if ([model.titleStr isEqualToString:@"我的标签"]) {
+            
+        }else if ([model.titleStr isEqualToString:@"我的标签"]){
+            
+        }else if ([model.titleStr isEqualToString:@"积分统计"]){
+            
+        }else if ([model.titleStr isEqualToString:@"积分排行"]){
+            
+        }else if ([model.titleStr isEqualToString:@"版本更新"]){
+            
+        }else if ([model.titleStr isEqualToString:@"关于APP"]){
+            
+        }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
+            
+        }else if ([model.titleStr isEqualToString:@"退出登录"]){
+            
+        }
+    }
+    
+}
+
+-(void)QRClicked {
+    //
+    [self performSegueWithIdentifier:@"ToQRCode" sender:self];
 }
 
 -(NSMutableArray *)datas {
