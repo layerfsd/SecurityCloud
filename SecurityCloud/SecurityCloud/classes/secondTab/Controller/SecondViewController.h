@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MsgModel;
 @interface SecondViewController : BaseViewController
-
+@property (nonatomic,strong) MsgModel *model;
 @end

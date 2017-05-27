@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdoptedTableViewCell" rowHeight="74" id="KGk-i7-Jjw" customClass="AdoptedTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="盐都公安局查看了您的上报，已处理。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwo-u4-XXf">
+                        <rect key="frame" x="10" y="10" width="300" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSM-Ra-6uK">
+                        <rect key="frame" x="0.0" y="38" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="0kj-Hj-pTn"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分：0.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-sR-Vuu">
+                        <rect key="frame" x="10" y="49" width="59" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-02-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n7-cE-2Xl">
+                        <rect key="frame" x="239" y="49" width="71" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oSM-Ra-6uK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3wF-TW-1kW"/>
+                    <constraint firstAttribute="trailing" secondItem="vwo-u4-XXf" secondAttribute="trailing" constant="10" id="4hx-f1-Mro"/>
+                    <constraint firstItem="tNg-sR-Vuu" firstAttribute="top" secondItem="oSM-Ra-6uK" secondAttribute="bottom" constant="10" id="6Ew-DC-3Ff"/>
+                    <constraint firstItem="vwo-u4-XXf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7qp-Sf-kW3"/>
+                    <constraint firstAttribute="bottom" secondItem="4n7-cE-2Xl" secondAttribute="bottom" constant="9" id="Cm0-dz-TRr"/>
+                    <constraint firstItem="4n7-cE-2Xl" firstAttribute="top" secondItem="oSM-Ra-6uK" secondAttribute="bottom" constant="10" id="DlJ-3R-95w"/>
+                    <constraint firstAttribute="trailing" secondItem="4n7-cE-2Xl" secondAttribute="trailing" constant="10" id="LdL-hz-MCE"/>
+                    <constraint firstItem="oSM-Ra-6uK" firstAttribute="top" secondItem="vwo-u4-XXf" secondAttribute="bottom" constant="10" id="LfB-TR-fdp"/>
+                    <constraint firstItem="tNg-sR-Vuu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="T9k-kL-Vgw"/>
+                    <constraint firstAttribute="trailing" secondItem="oSM-Ra-6uK" secondAttribute="trailing" id="YpK-sS-sMa"/>
+                    <constraint firstItem="vwo-u4-XXf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tQV-wp-bNN"/>
+                    <constraint firstAttribute="bottom" secondItem="tNg-sR-Vuu" secondAttribute="bottom" constant="9" id="yhA-ef-XpJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="scoreLabel" destination="tNg-sR-Vuu" id="QGG-fN-9Fc"/>
+                <outlet property="timeLabel" destination="4n7-cE-2Xl" id="u5w-Gk-PDu"/>
+                <outlet property="x_titleLabel" destination="vwo-u4-XXf" id="nGp-uh-Sfb"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="134"/>
+        </tableViewCell>
+    </objects>
+</document>

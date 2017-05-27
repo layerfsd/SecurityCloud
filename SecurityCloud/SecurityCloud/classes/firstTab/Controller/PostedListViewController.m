@@ -13,6 +13,7 @@
 #import "PostMainViewController.h"
 #import "PostModel.h"
 #import "PostedInfoTableViewCell.h"
+#import "DetailInfoViewController.h"
 #define cellNum 10
 @interface PostedListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
@@ -112,6 +113,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //详情
+    DetailInfoViewController *vc = [[DetailInfoViewController alloc] init];
+    vc.model = _infos[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(UITableView *)tableView {
     if (_tableView == nil) {

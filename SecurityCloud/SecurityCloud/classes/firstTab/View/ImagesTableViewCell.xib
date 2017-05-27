@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImagesTableViewCell" rowHeight="100" id="KGk-i7-Jjw" customClass="ImagesTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情报图片：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il2-kB-KeG">
+                        <rect key="frame" x="10" y="10" width="76.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zqT-Ej-vd2">
+                        <rect key="frame" x="96.5" y="10" width="213.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="pad-Uc-hC2"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HUJ-Xz-COj">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="AzF-nV-C0i"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="4mB-7u-8BA"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zqT-Ej-vd2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Gps-m9-4hL"/>
+                    <constraint firstAttribute="bottom" secondItem="zqT-Ej-vd2" secondAttribute="bottom" constant="10" id="Izv-zt-GTg"/>
+                    <constraint firstItem="il2-kB-KeG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Si9-09-aqN"/>
+                    <constraint firstItem="zqT-Ej-vd2" firstAttribute="leading" secondItem="il2-kB-KeG" secondAttribute="trailing" constant="10" id="dqG-Xf-o8X"/>
+                    <constraint firstAttribute="trailing" secondItem="zqT-Ej-vd2" secondAttribute="trailing" constant="10" id="iwK-RI-4bs"/>
+                    <constraint firstItem="il2-kB-KeG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="zJR-RV-05v"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="zqT-Ej-vd2" id="klW-z9-7Da"/>
+                <outlet property="collectionViewHeightConstraint" destination="pad-Uc-hC2" id="IJY-KA-1t6"/>
+                <outlet property="flowLayout" destination="HUJ-Xz-COj" id="peu-az-s01"/>
+                <outlet property="x_titleLabel" destination="il2-kB-KeG" id="HEa-A5-1O0"/>
+            </connections>
+            <point key="canvasLocation" x="62" y="185"/>
+        </tableViewCell>
+    </objects>
+</document>

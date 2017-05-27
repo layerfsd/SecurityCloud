@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @class UserModel;
+@protocol MeHeadTableViewCellDelegate <NSObject>
+
+-(void)QRClicked;
+
+@end
 @interface MeHeadTableViewCell : UITableViewCell
 @property (nonatomic,strong) UserModel *model;
+@property (nonatomic,weak)id <MeHeadTableViewCellDelegate> delegate;
 @end

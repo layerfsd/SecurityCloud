@@ -17,7 +17,7 @@
 #import "VerticalButton.h"
 #import "ScanQRViewController.h"
 #define colum 5
-#define cellW kScreenWidth / colum
+#define cellW (kScreenWidth-20) / colum
 #define cellH cellW * 100 / 80.0
 #define scanW 45
 #define scanH 35
@@ -57,15 +57,15 @@
 }
 
 -(void)initModels {
-    FirstTabCellModel *model0 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:nil];
+    FirstTabCellModel *model0 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:@"草稿箱"];
     
-    FirstTabCellModel *model1 = [[FirstTabCellModel alloc] initWithTitle:@"已上传" image:nil];
+    FirstTabCellModel *model1 = [[FirstTabCellModel alloc] initWithTitle:@"已上传" image:@"已上传"];
     
-    FirstTabCellModel *model2 = [[FirstTabCellModel alloc] initWithTitle:@"被采用" image:nil];
+    FirstTabCellModel *model2 = [[FirstTabCellModel alloc] initWithTitle:@"被采用" image:@"被采用"];
     
-    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"信息中心" image:nil];
+    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"信息中心" image:@"信息中心"];
     
-    FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"待处理" image:nil];
+    FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"待处理" image:@"待处理"];
     
    
     
