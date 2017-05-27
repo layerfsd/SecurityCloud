@@ -47,6 +47,7 @@
         [parameters  setValue:UserID forKey:@"id"];
         [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
         } failure:^(NSError *error) {
             
         }];

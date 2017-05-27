@@ -30,7 +30,7 @@
 
 -(void)setModel:(UserModel *)model {
     _model = model;
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:nil];
     _nameLabel.text = _model.name;
     _scoreLabel.text = @"积分：11.02分";
 }

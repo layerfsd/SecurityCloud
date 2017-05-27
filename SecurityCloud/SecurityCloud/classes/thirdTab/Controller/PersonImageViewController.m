@@ -109,7 +109,7 @@
     [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
         [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
     } failure:^(NSError *error) {
         
     }];

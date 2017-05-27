@@ -86,6 +86,8 @@
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
 		EC3A74921ED97D3900201A1E /* PersonImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A74901ED97D3900201A1E /* PersonImageViewController.m */; };
 		EC3A74931ED97D3900201A1E /* PersonImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */; };
+		EC3A74971ED983BF00201A1E /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A74951ED983BF00201A1E /* TextFieldViewController.m */; };
+		EC3A74981ED983BF00201A1E /* TextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3A74961ED983BF00201A1E /* TextFieldViewController.xib */; };
 		EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79373F1ED7B3C40038123D /* VerticalButton.m */; };
 		EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937431ED7BDA90038123D /* MTBBarcodeScanner.m */; };
 		EC7937471ED7BEE20038123D /* ScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937461ED7BEE20038123D /* ScanQRViewController.m */; };
@@ -474,6 +476,9 @@
 		EC3A748F1ED97D3900201A1E /* PersonImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageViewController.h; sourceTree = "<group>"; };
 		EC3A74901ED97D3900201A1E /* PersonImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageViewController.m; sourceTree = "<group>"; };
 		EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonImageViewController.xib; sourceTree = "<group>"; };
+		EC3A74941ED983BF00201A1E /* TextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
+		EC3A74951ED983BF00201A1E /* TextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
+		EC3A74961ED983BF00201A1E /* TextFieldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldViewController.xib; sourceTree = "<group>"; };
 		EC79373E1ED7B3C40038123D /* VerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalButton.h; sourceTree = "<group>"; };
 		EC79373F1ED7B3C40038123D /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
 		EC7937421ED7BDA90038123D /* MTBBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBBarcodeScanner.h; sourceTree = "<group>"; };
@@ -1109,6 +1114,9 @@
 				EC3A748F1ED97D3900201A1E /* PersonImageViewController.h */,
 				EC3A74901ED97D3900201A1E /* PersonImageViewController.m */,
 				EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */,
+				EC3A74941ED983BF00201A1E /* TextFieldViewController.h */,
+				EC3A74951ED983BF00201A1E /* TextFieldViewController.m */,
+				EC3A74961ED983BF00201A1E /* TextFieldViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1864,6 +1872,7 @@
 				EC949DAA1ED43784005FDD04 /* navi_icon_island_6@3x.png in Resources */,
 				EC949D511ED43784005FDD04 /* National_Satellite.png in Resources */,
 				18F1E14C1ED5B19F00C16EE6 /* MeTableViewCell.xib in Resources */,
+				EC3A74981ED983BF00201A1E /* TextFieldViewController.xib in Resources */,
 				EC949DDE1ED43784005FDD04 /* navi_info_speed_110@2x.png in Resources */,
 				EC949DC61ED43784005FDD04 /* navi_icon_left_front@2x.png in Resources */,
 				180290661ED928F300868BE3 /* TopNoticeTableViewCell.xib in Resources */,
@@ -2125,6 +2134,7 @@
 				180290601ED922A300868BE3 /* NoticeTableViewCell.m in Sources */,
 				ECAC590B1ED2A9A300628E85 /* FirstTabCellModel.m in Sources */,
 				ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */,
+				EC3A74971ED983BF00201A1E /* TextFieldViewController.m in Sources */,
 				189E93581ED1BA1A00DBD4FC /* RecordSoundView.m in Sources */,
 				189E93521ED16CEB00DBD4FC /* NSString+Utility.m in Sources */,
 				EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */,

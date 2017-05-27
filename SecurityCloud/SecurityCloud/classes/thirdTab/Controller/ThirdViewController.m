@@ -33,6 +33,11 @@
         [self loadUserInfo];
     }];
     [self loadUserInfo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:FirstViewControllerReload object:nil];
+}
+
+-(void)reloadData {
+    [self loadUserInfo];
 }
 
 -(void)initDatas {

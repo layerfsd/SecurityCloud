@@ -16,6 +16,7 @@
 #import "LableOnlyTableViewCell.h"
 #import "BindTelViewController.h"
 #import "PersonImageViewController.h"
+#import "TextFieldViewController.h"
 @interface MyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -135,6 +136,10 @@
     
     if (indexPath.row == 0){
         //昵称
+        TextFieldViewController *vc = [TextFieldViewController new];
+        vc.nameStr = _model.name;
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }else if (indexPath.row == 1){
         //我的二维码
        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
