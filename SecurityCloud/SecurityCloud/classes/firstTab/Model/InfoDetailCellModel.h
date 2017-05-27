@@ -24,3 +24,21 @@ typedef NS_ENUM(NSInteger,CustomCellType){
 
 -(instancetype)initWithTitle:(NSString*)title showValue:(id)showValue cellType:(CustomCellType)type;
 @end
+
+
+typedef NS_ENUM(NSInteger,CustomPersonCellType){
+    CustomPersonCellTypeLabelImage = 0,
+    CustomPersonCellTypeLabelLabel = 1,
+    CustomPersonCellTypeLabelLitterImage = 2,
+    CustomPersonCellTypeLabelOnly = 3,
+};
+
+@interface PersonDetailCellModel : NSObject
+@property (nonatomic,copy) NSString *titleStr;
+@property (nonatomic,strong) id showValue;
+@property (nonatomic,assign) CustomPersonCellType cellType;
+
+
+
+-(instancetype)initWithTitle:(NSString*)title showValue:(id)showValue cellType:(CustomPersonCellType)type;
+@end

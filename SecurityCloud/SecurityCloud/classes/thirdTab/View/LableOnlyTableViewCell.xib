@@ -15,22 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="37"/>
+                <rect key="frame" x="0.0" y="0.0" width="287" height="38"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机绑定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4l-Ye-LaB">
-                        <rect key="frame" x="10" y="10" width="61.5" height="18"/>
+                        <rect key="frame" x="10" y="10" width="267" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="B4l-Ye-LaB" secondAttribute="trailing" constant="10" id="KvL-Rk-Fg5"/>
                     <constraint firstItem="B4l-Ye-LaB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="LW4-oQ-hyU"/>
                     <constraint firstAttribute="bottom" secondItem="B4l-Ye-LaB" secondAttribute="bottom" constant="9" id="Uaf-ki-qtZ"/>
                     <constraint firstItem="B4l-Ye-LaB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xOL-1R-bq5"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="x_titleLabel" destination="B4l-Ye-LaB" id="dBF-No-COT"/>
+            </connections>
             <point key="canvasLocation" x="62" y="124.5"/>
         </tableViewCell>
     </objects>

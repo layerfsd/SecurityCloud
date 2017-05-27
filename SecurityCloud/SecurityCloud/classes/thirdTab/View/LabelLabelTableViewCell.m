@@ -7,7 +7,12 @@
 //
 
 #import "LabelLabelTableViewCell.h"
+#import "InfoDetailCellModel.h"
+@interface LabelLabelTableViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *x_titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+@end
 @implementation LabelLabelTableViewCell
 
 - (void)awakeFromNib {
@@ -19,6 +24,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setModel:(PersonDetailCellModel *)model{
+    _model = model;
+    _x_titleLabel.text = _model.titleStr;
+    _contentLabel.text = _model.showValue;
 }
 
 @end

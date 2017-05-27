@@ -7,6 +7,12 @@
 //
 
 #import "LabelLitterImageTableViewCell.h"
+#import "InfoDetailCellModel.h"
+@interface LabelLitterImageTableViewCell()
+@property (weak, nonatomic) IBOutlet UILabel *x_titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *litterImage;
+
+@end
 
 @implementation LabelLitterImageTableViewCell
 
@@ -19,6 +25,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setModel:(PersonDetailCellModel *)model{
+    _model = model;
+    _x_titleLabel.text = _model.titleStr;
 }
 
 @end

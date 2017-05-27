@@ -18,3 +18,14 @@
     return self;
 }
 @end
+
+@implementation PersonDetailCellModel
+-(instancetype)initWithTitle:(NSString *)title showValue:(id)showValue cellType:(CustomPersonCellType)type{
+    if (self = [super init]) {
+        self.titleStr = title;
+        self.showValue = showValue;
+        self.cellType = type;
+    }
+    return self;
+}
+@end

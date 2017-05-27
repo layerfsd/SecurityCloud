@@ -45,13 +45,13 @@
                             <constraint firstAttribute="width" constant="60" id="RPr-Wu-0cs"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAp-RI-a44">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAp-RI-a44">
                         <rect key="frame" x="247" y="30" width="30" height="30"/>
-                        <color key="backgroundColor" red="0.062745098039215685" green="0.41568627450980394" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="DYT-5Y-MA6"/>
                             <constraint firstAttribute="height" constant="30" id="PAZ-17-f1y"/>
                         </constraints>
+                        <state key="normal" image="二维码"/>
                         <connections>
                             <action selector="qRCodeAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zPH-O3-QMk"/>
                         </connections>
@@ -64,10 +64,10 @@
                     <constraint firstItem="Mla-9J-2OS" firstAttribute="top" secondItem="aYB-0b-XgA" secondAttribute="bottom" constant="5" id="HMs-00-nJa"/>
                     <constraint firstItem="ul5-Ep-fnu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ozw-09-dzK"/>
                     <constraint firstAttribute="trailing" secondItem="dAp-RI-a44" secondAttribute="trailing" constant="10" id="Rew-YU-pPS"/>
+                    <constraint firstAttribute="bottom" secondItem="ul5-Ep-fnu" secondAttribute="bottom" constant="9" id="ZWn-gc-Gc2"/>
                     <constraint firstItem="dAp-RI-a44" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ast-AW-cm9"/>
                     <constraint firstItem="ul5-Ep-fnu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="eXg-d2-2Cp"/>
                     <constraint firstItem="Mla-9J-2OS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fz6-ER-mYa"/>
-                    <constraint firstAttribute="bottom" secondItem="ul5-Ep-fnu" secondAttribute="bottom" constant="10" id="pXL-Bd-G06"/>
                     <constraint firstItem="IJq-G0-mO1" firstAttribute="leading" secondItem="ul5-Ep-fnu" secondAttribute="trailing" constant="10" id="uWC-5N-EX1"/>
                 </constraints>
             </tableViewCellContentView>
@@ -80,4 +80,7 @@
             <point key="canvasLocation" x="178" y="19"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="二维码" width="24" height="24"/>
+    </resources>
 </document>

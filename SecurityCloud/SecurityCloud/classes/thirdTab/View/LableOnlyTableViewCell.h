@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class PersonDetailCellModel;
 @interface LableOnlyTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) PersonDetailCellModel *model;
 @end

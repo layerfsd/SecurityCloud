@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class NoticeModel;
 @interface TopNoticeTableViewCell : UITableViewCell
-
+@property (nonatomic,strong) NoticeModel *model;
 @end

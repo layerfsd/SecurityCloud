@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="69"/>
+                <rect key="frame" x="0.0" y="0.0" width="287" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEA-8A-cIb">
-                        <rect key="frame" x="10" y="26" width="33" height="19.5"/>
+                        <rect key="frame" x="10" y="25" width="33" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,6 +40,10 @@
                     <constraint firstItem="CEA-8A-cIb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qsf-A1-6yy"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imageVIew" destination="v7S-Hx-689" id="VEe-bd-KsU"/>
+                <outlet property="x_titleLabel" destination="CEA-8A-cIb" id="5B8-bt-Gi5"/>
+            </connections>
             <point key="canvasLocation" x="62" y="141.5"/>
         </tableViewCell>
     </objects>

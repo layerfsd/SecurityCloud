@@ -12,6 +12,7 @@
 #import "MeTableViewCell.h"
 #import "UserModel.h"
 #import "MyQRCodeViewController.h"
+#import "MyDetailViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,7 +29,9 @@
     [super viewDidLoad];
     [self initDatas];
     _tableView.estimatedRowHeight = 80;
-    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadUserInfo];
+    }];
     [self loadUserInfo];
 }
 
@@ -51,8 +54,9 @@
     [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         self.userModel = [UserModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.tableView reloadData];
+         [self.tableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+         [self.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -101,7 +105,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         //个人信息
-        [self performSegueWithIdentifier:@"ToDetailInfo" sender:self];
+        MyDetailViewController *vc = [[MyDetailViewController alloc] init];
+        vc.model = self.userModel;
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         NSArray *sections = self.datas[indexPath.section - 1];
         MeCellData *model = sections[indexPath.row];
