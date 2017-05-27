@@ -15,6 +15,7 @@
 #import "LabelLitterImageTableViewCell.h"
 #import "LableOnlyTableViewCell.h"
 #import "BindTelViewController.h"
+#import "PersonImageViewController.h"
 @interface MyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -126,6 +127,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         //头像
+        PersonImageViewController *vc = [PersonImageViewController new];
+        vc.imageUrl = self.model.img;
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     

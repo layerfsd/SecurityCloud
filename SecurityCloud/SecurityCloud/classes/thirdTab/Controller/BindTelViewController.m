@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (![NSString isEmpty:[UserManager sharedManager].tel]) {
+        _noticeLabel.text = [NSString stringWithFormat:@"当前手机号：%@",[UserManager sharedManager].tel];
+    }else{
+        _noticeLabel.text = @"游客用户可以绑定手机号，用手机号登录";
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -34,11 +39,12 @@
     if (![self check]) {
         return;
     }
-    if ([UserManager sharedManager].tel != nil || [NSString isEmpty:[UserManager sharedManager].tel]) {
+    if ([UserManager sharedManager].tel != nil || ![NSString isEmpty:[UserManager sharedManager].tel]) {
         //直接修改 无需设置密码
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:_telTextField.text forKey:@"tel"];
         [parameters setValue:_codeTextField.text forKey:@"yanzheng"];
+        [parameters  setValue:UserID forKey:@"id"];
         [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         } failure:^(NSError *error) {
@@ -63,7 +69,7 @@
         return NO;
     }
     
-    if (![NSString isEmpty:_codeTextField.text]) {
+    if ([NSString isEmpty:_codeTextField.text]) {
         [SVProgressHUD showInfoWithStatus:@"请填写验证码"];
         return NO;
     }

@@ -41,7 +41,9 @@ MJCodingImplementation
     //4:完成归档
     [archiver finishEncoding];
     //5:写入文件当中
+    [[UserManager sharedManager] initShare:self];
     BOOL result = [data writeToFile:path atomically:YES];
+    
     if (result) {
         NSLog(@"归档成功:%@",path);
     }else
@@ -135,6 +137,21 @@ MJCodingImplementation
     return (NSString*)[userDefault stringForKey:@"location"];
 }
 
+
++ (BOOL)deleteFile
+{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    
+    
+    path = [path stringByAppendingPathComponent:@"singeUser.txt"];
+    // 获取要删除的路径
+   
+    // 创建文件管理对象
+    NSFileManager *manager = [NSFileManager defaultManager];
+    // 删除
+    BOOL isDelete = [manager removeItemAtPath:path error:nil];
+    return isDelete;
+}
 @end
 
 

@@ -54,6 +54,24 @@
     _noticeLabel.hidden = YES;
     return YES;
 }
+- (IBAction)confirm:(UIButton *)sender {
+    if (![self checkText]) {
+        return;
+    }
+//    ToFinishRegister
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:_tel forKey:@"tel"];
+    [parameters setValue:_code forKey:@"yanzheng"];
+    [parameters setValue:[Md5Util encryptMD5:_passwordTextField.text] forKey:@"password"];
+    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+        //注册完成 登录
+        [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+        [UserManager setTelNum:_tel];
+        [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 
 #pragma mark - Navigation
@@ -63,30 +81,7 @@
     
 }
 
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if (![self checkText]) {
-        return NO;
-    }else{
-        NSDictionary *parameters = @{@"tel":_tel,@"password":[Md5Util encryptMD5:_passwordTextField.text]};
-        [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
-            //注册失败的用户
-            if ([responseObject[@"status"] isEqualToString:@"fail"]) {
-                _noticeLabel.hidden = NO;
-                _noticeLabel.text = @"注册失败";
-            }else if ([responseObject[@"status"] isEqualToString:@"ok"]){
-                ////注册成功的用户
-                [UserManager setTelNum:_tel];
-                [self performSegueWithIdentifier:@"gotoFinish" sender:self];
-            }else{
-                
-            }
-            
-        } failure:^(NSError *error) {
-            
-        }];
-    }
-    return NO;
-}
+
 
 
 @end

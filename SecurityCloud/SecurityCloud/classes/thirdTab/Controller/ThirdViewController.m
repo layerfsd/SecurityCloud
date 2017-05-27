@@ -126,7 +126,17 @@
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
             
         }else if ([model.titleStr isEqualToString:@"退出登录"]){
-            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                //确认退出
+                if([UserManager deleteFile]){
+                    [[UserManager sharedManager] goToLogin];
+                }
+            }];
+            [alert addAction:cancel];
+            [alert addAction:sure];
+            [self presentViewController:alert animated:YES completion:nil];
         }
     }
     

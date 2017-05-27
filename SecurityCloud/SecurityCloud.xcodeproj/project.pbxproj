@@ -84,6 +84,8 @@
 		18F9428D1ED5CC070016765D /* MyTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F9428C1ED5CC070016765D /* MyTagViewController.m */; };
 		3DB34BD0143B12BF2EAB0FED /* libPods-SecurityCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */; };
 		B6F9ECEDBF3FD22F4620BA84 /* libPods-SecurityCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */; };
+		EC3A74921ED97D3900201A1E /* PersonImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3A74901ED97D3900201A1E /* PersonImageViewController.m */; };
+		EC3A74931ED97D3900201A1E /* PersonImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */; };
 		EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC79373F1ED7B3C40038123D /* VerticalButton.m */; };
 		EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937431ED7BDA90038123D /* MTBBarcodeScanner.m */; };
 		EC7937471ED7BEE20038123D /* ScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7937461ED7BEE20038123D /* ScanQRViewController.m */; };
@@ -469,6 +471,9 @@
 		ADE3C252FC369407627B2C6E /* libPods-SecurityCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C921DD6FBB3A2386EA0374BF /* Pods-SecurityCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityCloudTests/Pods-SecurityCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDE6D1696BA39EE8E9995300 /* libPods-SecurityCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SecurityCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC3A748F1ED97D3900201A1E /* PersonImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonImageViewController.h; sourceTree = "<group>"; };
+		EC3A74901ED97D3900201A1E /* PersonImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonImageViewController.m; sourceTree = "<group>"; };
+		EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonImageViewController.xib; sourceTree = "<group>"; };
 		EC79373E1ED7B3C40038123D /* VerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalButton.h; sourceTree = "<group>"; };
 		EC79373F1ED7B3C40038123D /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
 		EC7937421ED7BDA90038123D /* MTBBarcodeScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBBarcodeScanner.h; sourceTree = "<group>"; };
@@ -1101,6 +1106,9 @@
 				180290741ED9663400868BE3 /* VisitorConfirmPasswardViewController.h */,
 				180290751ED9663400868BE3 /* VisitorConfirmPasswardViewController.m */,
 				180290761ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib */,
+				EC3A748F1ED97D3900201A1E /* PersonImageViewController.h */,
+				EC3A74901ED97D3900201A1E /* PersonImageViewController.m */,
+				EC3A74911ED97D3900201A1E /* PersonImageViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1267,9 +1275,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC3A74891ED9719100201A1E /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		EC79373C1ED7B39D0038123D /* customView */ = {
 			isa = PBXGroup;
 			children = (
+				EC3A74891ED9719100201A1E /* AlertView */,
 				EC79373D1ED7B39D0038123D /* Button */,
 			);
 			path = customView;
@@ -1656,7 +1672,7 @@
 				TargetAttributes = {
 					189E92C51ED158E300DBD4FC = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Y7X986PLN8;
+						DevelopmentTeam = 5F55UWPDJH;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1790,6 +1806,7 @@
 				EC949D841ED43784005FDD04 /* none@2x.png in Resources */,
 				180290611ED922A300868BE3 /* NoticeTableViewCell.xib in Resources */,
 				EC949DFB1ED43784005FDD04 /* RouteNavigationViewController.xib in Resources */,
+				EC3A74931ED97D3900201A1E /* PersonImageViewController.xib in Resources */,
 				EC949D5A1ED43784005FDD04 /* Province_Satellite.png in Resources */,
 				EC949DF71ED43784005FDD04 /* sv_soso@2x.png in Resources */,
 				EC795D921ED6705D0061C5E1 /* DraftBoxTableViewCell.xib in Resources */,
@@ -2116,6 +2133,7 @@
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,
 				18F1E14B1ED5B19F00C16EE6 /* MeTableViewCell.m in Sources */,
 				18F1E1461ED5AC7E00C16EE6 /* MeHeadTableViewCell.m in Sources */,
+				EC3A74921ED97D3900201A1E /* PersonImageViewController.m in Sources */,
 				189E93421ED1590900DBD4FC /* ThirdViewController.m in Sources */,
 				EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */,
 				1802904E1ED916C100868BE3 /* TAAbstractDotView.m in Sources */,
@@ -2290,7 +2308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Y7X986PLN8;
+				DEVELOPMENT_TEAM = 5F55UWPDJH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2363,7 +2381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = Y7X986PLN8;
+				DEVELOPMENT_TEAM = 5F55UWPDJH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bby-az-Vgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bby-az-Vgc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -167,12 +167,16 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRE-sT-2YF">
                                 <rect key="frame" x="251" y="144" width="109" height="40"/>
-                                <color key="backgroundColor" red="0.085517757319999999" green="0.19883325609999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YgN-E5-5We"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="    获取验证码    "/>
+                                <state key="normal" title="    获取验证码    ">
+                                    <color key="titleColor" red="0.0" green="0.4793452024" blue="0.99908632040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getCode:" destination="vzp-eX-adP" eventType="touchUpInside" id="Sbd-Uy-uLE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该账号已注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYO-2S-rAJ">
                                 <rect key="frame" x="15" y="194" width="345" height="18"/>
@@ -190,7 +194,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="A6t-1b-ML2" kind="push" identifier="gotoSetPassword" id="aiy-3Y-ev9"/>
+                                    <action selector="next:" destination="vzp-eX-adP" eventType="touchUpInside" id="1Md-Yq-979"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -218,6 +222,7 @@
                         <outlet property="noticeLabel" destination="FYO-2S-rAJ" id="k6Z-we-APN"/>
                         <outlet property="phoneTextField" destination="VSO-Us-buG" id="4Eq-Mn-Vht"/>
                         <outlet property="verificationCodeTextField" destination="TaA-GQ-e1d" id="oHs-3v-MWL"/>
+                        <segue destination="A6t-1b-ML2" kind="push" identifier="ToComfirmPassword" id="325-sO-iI3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeb-Fl-3H7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,7 +269,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vih-wl-Kw0" kind="push" identifier="gotoFinish" id="dRG-6E-lUe"/>
+                                    <action selector="confirm:" destination="A6t-1b-ML2" eventType="touchUpInside" id="sFZ-Ua-uBV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="两次密码不一样" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG9-Xo-ZAs">
@@ -295,6 +300,7 @@
                         <outlet property="noticeLabel" destination="tG9-Xo-ZAs" id="L5J-00-SID"/>
                         <outlet property="passwordTextField" destination="hSv-JE-5fO" id="Y4g-ej-0qq"/>
                         <outlet property="surePasswordTextField" destination="eLU-Q0-Sqx" id="cdv-xa-54f"/>
+                        <segue destination="Vih-wl-Kw0" kind="push" identifier="ToFinishRegister" id="saw-XC-7hn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJA-uk-60e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,12 +332,29 @@
                                     <action selector="gotoLogin:" destination="Vih-wl-Kw0" eventType="touchUpInside" id="O4S-Ei-lhG"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="完成" translatesAutoresizingMaskIntoConstraints="NO" id="v7J-0e-ogb">
+                                <rect key="frame" x="127" y="104" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="bOa-We-OoJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="prE-o6-xaS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜你完成注册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmK-fh-BHL">
+                                <rect key="frame" x="126.5" y="244" width="121.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.04322795569896698" green="0.73260611295700073" blue="0.028723325580358505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="v7J-0e-ogb" firstAttribute="centerX" secondItem="JCz-5n-Ven" secondAttribute="centerX" id="1IS-ao-n1c"/>
                             <constraint firstItem="YJa-co-h8R" firstAttribute="leading" secondItem="JCz-5n-Ven" secondAttribute="leading" constant="15" id="4yC-xw-uz3"/>
                             <constraint firstItem="YJa-co-h8R" firstAttribute="centerY" secondItem="JCz-5n-Ven" secondAttribute="centerY" id="92T-Cp-1wG"/>
+                            <constraint firstItem="LmK-fh-BHL" firstAttribute="centerX" secondItem="JCz-5n-Ven" secondAttribute="centerX" id="FIv-cN-sWw"/>
+                            <constraint firstItem="v7J-0e-ogb" firstAttribute="top" secondItem="ogu-fp-Iqn" secondAttribute="bottom" constant="40" id="KpO-dx-a0H"/>
                             <constraint firstAttribute="trailing" secondItem="YJa-co-h8R" secondAttribute="trailing" constant="15" id="Tda-ua-yue"/>
+                            <constraint firstItem="LmK-fh-BHL" firstAttribute="top" secondItem="v7J-0e-ogb" secondAttribute="bottom" constant="20" id="reO-B5-0Hp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="完成" id="Ksu-GI-Yhc"/>
@@ -341,4 +364,7 @@
             <point key="canvasLocation" x="2434" y="153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="完成" width="120" height="120"/>
+    </resources>
 </document>

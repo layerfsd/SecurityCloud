@@ -18,5 +18,5 @@
 @property (nonatomic,copy) NSString *shangxian;
 @property (nonatomic,copy) NSString *tel;
 @property (nonatomic,copy) NSString *time;
-
+@property (nonatomic,copy) NSString *img;
 @end

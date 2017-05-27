@@ -43,15 +43,13 @@
 
 - (IBAction)operationAction:(UIButton *)sender {
     //开启录音组件
-//    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
-//        self.filePath = filePath;
-//        
-//       
-//    }];
-//    [self.view addSubview:recordSoundView];
-    NSArray *infos = [Info MR_findAll];
-    Info *inf = infos.firstObject;
-    NSLog(@"%@",inf.images);
+    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
+        self.filePath = filePath;
+        
+       
+    }];
+    [self.view addSubview:recordSoundView];
+   
 }
 
 

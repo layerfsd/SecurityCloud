@@ -18,7 +18,12 @@
     [super viewDidLoad];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
+    self.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationBar.translucent = YES;
+    self.navigationBar.tintColor = [UIColor blackColor];
+  
+    //设置字体颜色
+    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,nil]];
 }
 
 - (void)didReceiveMemoryWarning {
