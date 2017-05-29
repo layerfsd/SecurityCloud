@@ -16,8 +16,10 @@
 #import "PostedListViewController.h"
 #import "VerticalButton.h"
 #import "ScanQRViewController.h"
-#define colum 5
-#define cellW (kScreenWidth-20) / colum
+#import "MsgListViewController.h"
+#import "AdminHanderListViewController.h"
+#import "AdoptedListViewController.h"
+#define cellW (kScreenWidth-20) / _column
 #define cellH cellW * 100 / 80.0
 #define scanW 45
 #define scanH 35
@@ -30,7 +32,7 @@
 
 @property (nonatomic,strong) NSMutableArray *models;
 
-
+@property (nonatomic,assign) NSInteger column;
 @end
 
 @implementation FirstViewController
@@ -39,8 +41,8 @@
     [super viewDidLoad];
     [self initModels];
     [self initCollectionView];
-    [self setNaviItem];
-   
+//    [self setNaviItem];
+    [self updateNotice];
 }
 
 -(void)setNaviItem {
@@ -57,6 +59,12 @@
 }
 
 -(void)initModels {
+    if ([UserManager sharedManager].admin == nil) {
+        //群众
+        _column = 4;
+    }else{
+        _column = 5;
+    }
     FirstTabCellModel *model0 = [[FirstTabCellModel alloc] initWithTitle:@"草稿箱" image:@"草稿箱"];
     
     FirstTabCellModel *model1 = [[FirstTabCellModel alloc] initWithTitle:@"已上传" image:@"已上传"];
@@ -67,12 +75,19 @@
     
     FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"待处理" image:@"待处理"];
     
-   
+    if ([UserManager sharedManager].admin == nil) {
+        //群众
+        _column = 4;
+         [self.models addObjectsFromArray:@[model0,model1,model2,model3]];
+    }else{
+        _column = 5;
+         [self.models addObjectsFromArray:@[model0,model1,model2,model3,model4]];
+    }
     
-    [self.models addObjectsFromArray:@[model0,model1,model2,model3,model4]];
+   
 }
 -(void)initCollectionView {
-    NSInteger row = ((self.models.count - 1) / colum) + 1;
+    NSInteger row = ((self.models.count - 1) / _column) + 1;
     _flowLayout.itemSize = CGSizeMake(cellW, cellH);
     _collectionViewHeightConstraint.constant = row * cellH;
     
@@ -81,6 +96,7 @@
 
 - (IBAction)pressed:(UIButton *)sender {
     PostMainViewController *vc = [[PostMainViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
@@ -107,9 +123,27 @@
         
     }
     if (indexPath.item == 1) {
-        //草稿箱
+        //已上传箱
         PostedListViewController *postedListViewController = [[PostedListViewController alloc] init];
         [self.navigationController pushViewController:postedListViewController animated:YES];
+        
+    }
+    if (indexPath.item == 2) {
+        //被采用
+        AdoptedListViewController *vc = [[AdoptedListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    if (indexPath.item == 3) {
+        //信息中心
+        MsgListViewController *vc = [[MsgListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    if (indexPath.item == 4) {
+        //待处理
+        AdminHanderListViewController *vc = [[AdminHanderListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }
 }
@@ -118,6 +152,36 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+
+#pragma mark update 
+-(void)updateNotice {
+    [HttpTool post:@"/appbanben.html" parameters:nil success:^(id responseObject) {
+        NSString *appVersion = @"";
+        NSArray *versions = responseObject[@"data"];
+        for (NSDictionary *temp in versions) {
+            if ([temp[@"apppingtai"] isEqual:@"ios"]) {
+                appVersion = temp[@"appverson"];
+            }
+        }
+        NSString* app_version = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+        if ([app_version compare:appVersion] == NSOrderedAscending) {
+            //更新
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"有新版本可以更新" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sure = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                //确认更新
+                
+            }];
+            [alert addAction:cancel];
+            [alert addAction:sure];
+            [self presentViewController:alert animated:YES completion:nil];
+ 
+        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(NSMutableArray *)models {

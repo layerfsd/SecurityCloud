@@ -16,6 +16,12 @@ MJCodingImplementation
     return @{@"ID":@"id"};
 }
 
++(NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"luyinchakan" : @"FileModel",
+             };
+}
+
 @end
 
 @implementation FileModel

@@ -59,6 +59,33 @@
         
 }
 
++ (void)postWithoutOK:(NSString *)URLString
+  parameters:(id)parameters
+     success:(void (^)(id responseObject))success
+     failure:(void (^)(NSError *error))failure
+{
+    [SVProgressHUD show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
+    [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [SVProgressHUD dismiss];
+        
+        success(responseObject);
+       
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
+        failure(error);
+    }];
+    
+    
+}
+
+
 + (void)post:(NSString *)URLString
   parameters:(id)parameters
        image:(UIImage*)image

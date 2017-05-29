@@ -9,5 +9,15 @@
 #import "UserModel.h"
 
 @implementation UserModel
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"userID":@"id"};
+}
+
++(NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"biaoqian" : @"UserLabel",
+             };
+}
 
 @end

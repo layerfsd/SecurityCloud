@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '479BB79DC5EA68ED349F762FD7B1E7EC'
+               BlueprintIdentifier = 'A74DDFAC3186FDCDD922B3E35DE59F6F'
                BlueprintName = 'Pods-SecurityCloud'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-SecurityCloud.a'>

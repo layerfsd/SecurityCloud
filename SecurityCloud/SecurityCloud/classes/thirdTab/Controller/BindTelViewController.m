@@ -46,8 +46,9 @@
         [parameters setValue:_codeTextField.text forKey:@"yanzheng"];
         [parameters  setValue:UserID forKey:@"id"];
         [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
-            [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
+            [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         } failure:^(NSError *error) {
             
         }];

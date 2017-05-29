@@ -22,18 +22,8 @@
 
 @implementation DraftBoxTableViewCell
 - (IBAction)recordBegin:(UIButton *)sender {
-    if (_player) {
-        sender.selected = !sender.selected;
-        //播放 暂停
-        if (!sender.selected) {
-            //播放中 暂停
-            [_player stop];
-            
-        }else{
-            //开始播放
-            [_player prepareToPlay];
-            [_player play];
-        }
+    if (_delegate && [_delegate respondsToSelector:@selector(deleteCell:)]) {
+        [_delegate deleteCell:self.tag];
     }
 }
 
@@ -43,7 +33,7 @@
 }
 -(void)setModel:(Info *)model {
     _model = model;
-    
+    NSLog(@"%@",model.voicePath);
     
     if (![NSString isEmpty:_model.images]) {
         NSArray<NSString*> *imageNames = [_model.images componentsSeparatedByString:@","];
@@ -52,7 +42,7 @@
 
         _iconImageVIew.image = image;
     }else{
-        _iconImageVIew.image = [UIImage imageNamed:@""];
+        _iconImageVIew.image = [UIImage imageNamed:@"placeholderImage"];
     }
     
     if (![NSString isEmpty:_model.content]) {
@@ -61,14 +51,14 @@
         _contentLabel.text = @"这个家伙很懒，什么都没留下";
     }
     
-    if (_model.voicePath) {
-        NSError *playerError ;
-        _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:_model.voicePath] error:&playerError];
-        _player.delegate = self;
-        _player.volume = 1;
-    }else{
-        _player = nil;
-    }
+//    if (_model.voicePath) {
+//        NSError *playerError ;
+//        _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:_model.voicePath] error:&playerError];
+//        _player.delegate = self;
+//        _player.volume = 1;
+//    }else{
+//        _player = nil;
+//    }
     _timeLabel.text = [NSDate timeAgoSinceDate:_model.creatTime];
 }
 

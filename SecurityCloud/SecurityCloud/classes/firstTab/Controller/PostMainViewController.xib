@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -78,20 +78,38 @@
                                 </view>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8n-MS-XMM">
                                     <rect key="frame" x="20" y="540" width="157.5" height="40"/>
+                                    <color key="backgroundColor" red="0.83137254901960789" green="0.47843137254901963" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="GU5-Kb-iQz"/>
                                     </constraints>
-                                    <state key="normal" title="暂存"/>
+                                    <state key="normal" title="暂存">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="postToServer:" destination="-1" eventType="touchUpInside" id="1mS-JP-biY"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxb-IX-ybS">
                                     <rect key="frame" x="197.5" y="540" width="157.5" height="40"/>
+                                    <color key="backgroundColor" red="0.17647058823529413" green="0.50196078431372548" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="KYV-Ns-dV9"/>
                                     </constraints>
-                                    <state key="normal" title="提交"/>
+                                    <state key="normal" title="提交">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="postToServer:" destination="-1" eventType="touchUpInside" id="n3C-0S-niP"/>
                                     </connections>
@@ -99,24 +117,27 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeE-o9-16H">
                                     <rect key="frame" x="10" y="197" width="355" height="80"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGZ-zs-SqF">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGZ-zs-SqF">
                                             <rect key="frame" x="305" y="20" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="2Qy-9v-0bX"/>
                                                 <constraint firstAttribute="width" constant="40" id="94m-cc-dIW"/>
                                             </constraints>
-                                            <state key="normal" title="录音"/>
+                                            <state key="normal" image="goRecord"/>
+                                            <state key="selected" image="deleteRecord"/>
                                             <connections>
                                                 <action selector="operationAction:" destination="-1" eventType="touchUpInside" id="bpX-qt-Txy"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yin-Sw-rDq">
-                                            <rect key="frame" x="10" y="15" width="50" height="50"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yin-Sw-rDq">
+                                            <rect key="frame" x="10" y="15.5" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="88Q-wI-Bza"/>
                                                 <constraint firstAttribute="height" constant="50" id="bc4-2e-aqA"/>
                                             </constraints>
-                                            <state key="normal" title="播放"/>
+                                            <state key="normal" image="play_enable"/>
+                                            <state key="disabled" image="play_disable"/>
+                                            <state key="selected" image="playing"/>
                                             <connections>
                                                 <action selector="showAction:" destination="-1" eventType="touchUpInside" id="Hii-DJ-uTR"/>
                                             </connections>
@@ -142,7 +163,11 @@
                                 <constraint firstAttribute="height" constant="600" id="bBJ-As-5Zx"/>
                                 <constraint firstItem="qmS-gs-wkj" firstAttribute="leading" secondItem="Q1f-wV-HhI" secondAttribute="leading" constant="10" id="bPW-Do-z47"/>
                                 <constraint firstItem="qmS-gs-wkj" firstAttribute="top" secondItem="Q1f-wV-HhI" secondAttribute="top" constant="10" id="evo-yE-W0C"/>
-                                <constraint firstItem="Oxb-IX-ybS" firstAttribute="centerY" secondItem="i8n-MS-XMM" secondAttribute="centerY" id="fxp-Zb-PoF"/>
+                                <constraint firstItem="Oxb-IX-ybS" firstAttribute="centerY" secondItem="i8n-MS-XMM" secondAttribute="centerY" id="fxp-Zb-PoF">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
                                 <constraint firstAttribute="trailing" secondItem="VeE-o9-16H" secondAttribute="trailing" constant="10" id="rul-Uv-RBH"/>
                                 <constraint firstItem="Oxb-IX-ybS" firstAttribute="width" secondItem="i8n-MS-XMM" secondAttribute="width" id="tpO-ma-CtD"/>
                                 <constraint firstAttribute="bottom" secondItem="i8n-MS-XMM" secondAttribute="bottom" constant="20" id="uan-VL-vbu"/>
@@ -170,4 +195,11 @@
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="deleteRecord" width="40" height="40"/>
+        <image name="goRecord" width="40" height="40"/>
+        <image name="play_disable" width="24" height="24"/>
+        <image name="play_enable" width="40" height="40"/>
+        <image name="playing" width="40" height="40"/>
+    </resources>
 </document>

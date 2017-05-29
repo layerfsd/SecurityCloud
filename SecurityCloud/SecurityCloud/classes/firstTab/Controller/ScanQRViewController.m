@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view.
 }
 
+
+
 - (void)drawScanView
 {
     if (!_qRScanView)
@@ -66,25 +68,10 @@
     UIView *videoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
     videoView.backgroundColor = [UIColor clearColor];
     [self.view insertSubview:videoView atIndex:0];
-    __weak __typeof(self) weakSelf = self;
+   
 
-
-    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
-        if (success) {
-            
-            NSError *error = nil;
-            [weakSelf.scanner startScanningWithResultBlock:^(NSArray *codes) {
-                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
-             
-                [SVProgressHUD showInfoWithStatus:code.stringValue];
-                [weakSelf.scanner stopScanning];
-                [weakSelf.qRScanView startScanAnimation];
-            } error:&error];
-            
-        } else {
-            // The user denied access to the camera
-        }
-    }];
+    [self start];
+   
 
     [_qRScanView stopDeviceReadying];
     [_qRScanView startScanAnimation];
@@ -93,7 +80,46 @@
     self.view.backgroundColor = [UIColor clearColor];
 }
 
+-(void)start{
+     __weak __typeof(self) weakSelf = self;
+    [MTBBarcodeScanner requestCameraPermissionWithSuccess:^(BOOL success) {
+        if (success) {
+            
+            NSError *error = nil;
+            [weakSelf.scanner startScanningWithResultBlock:^(NSArray *codes) {
+                AVMetadataMachineReadableCodeObject *code = [codes firstObject];
+                // 扫描完
+                [weakSelf bindSuperMan:code.stringValue];
+                [weakSelf.scanner stopScanning];
+                [weakSelf.qRScanView stopScanAnimation];
+            } error:&error];
+            
+        } else {
+            // The user denied access to the camera
+        }
+    }];
+}
 
+-(void)bindSuperMan:(NSString*)superManID {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:UserID forKey:@"yonghuid"];
+    [parameters setValue:superManID forKey:@"shangxianid"];
+    [HttpTool postWithoutOK:@"/yonghushangxianbangding.html" parameters:parameters success:^(id responseObject) {
+        [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
+        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+             [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [self startScan];
+            [self.qRScanView startScanAnimation];
+        }
+        
+    
+       
+    } failure:^(NSError *error) {
+        [self startScan];
+        [self.qRScanView startScanAnimation];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

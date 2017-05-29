@@ -13,6 +13,7 @@
 #import "UserModel.h"
 #import "MyQRCodeViewController.h"
 #import "MyDetailViewController.h"
+#import "MyTagViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -59,7 +60,7 @@
     [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         self.userModel = [UserModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.tableView reloadData];
-         [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_header endRefreshing];
     } failure:^(NSError *error) {
          [self.tableView.mj_header endRefreshing];
     }];
@@ -117,7 +118,8 @@
         NSArray *sections = self.datas[indexPath.section - 1];
         MeCellData *model = sections[indexPath.row];
         if ([model.titleStr isEqualToString:@"我的标签"]) {
-            
+            MyTagViewController *vc = [MyTagViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"我的标签"]){
             
         }else if ([model.titleStr isEqualToString:@"积分统计"]){
@@ -150,6 +152,13 @@
 -(void)QRClicked {
     //
     [self performSegueWithIdentifier:@"ToQRCode" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"ToQRCode"]) {
+        MyQRCodeViewController *vc = segue.destinationViewController;
+        vc.model = _userModel;
+    }
 }
 
 -(NSMutableArray *)datas {

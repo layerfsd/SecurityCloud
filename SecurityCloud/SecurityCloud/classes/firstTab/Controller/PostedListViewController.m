@@ -14,7 +14,7 @@
 #import "PostModel.h"
 #import "PostedInfoTableViewCell.h"
 #import "DetailInfoViewController.h"
-#define cellNum 10
+
 @interface PostedListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 

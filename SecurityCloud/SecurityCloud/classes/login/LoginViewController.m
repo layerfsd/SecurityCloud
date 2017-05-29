@@ -53,7 +53,7 @@
     if (![self checkText]) {
         return;
     }
-    NSDictionary *parameters = @{@"tel":_userNameLabel.text,@"password":[Md5Util encryptMD5:_passwordLabel.text]};
+    NSDictionary *parameters = @{@"tel":_userNameLabel.text,@"password":/*[Md5Util encryptMD5:*/_passwordLabel.text};
     [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"fail"]) {
             _noticeLabel.hidden = NO;

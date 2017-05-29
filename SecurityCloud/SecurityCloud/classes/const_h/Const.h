@@ -22,4 +22,13 @@
 #define DraftBoxListViewControllerNotificationString @"DraftBoxListViewControllerNotificationString"
 #define PostedListViewControllerNotificationString @"PostedListViewControllerNotificationString"
 #define FirstViewControllerReload @"FirstViewControllerReload"
+#define MyDetailViewControllerReload @"MyDetailViewControllerReload"
+#define AdminHanderListViewControllerReload @"AdminHanderListViewControllerReload"
+
+//webView
+#define webUrl @"http://cntp31.lysoo.com/guanli/index.php/admin/zxgl/zixunweburl/id/"
+#define advertiseUrl @""
+
+//const
+#define cellNum 10
 #endif /* Const_h */

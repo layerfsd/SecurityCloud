@@ -10,7 +10,7 @@
 #import "InfoDetailCellModel.h"
 @interface LabelLitterImageTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *x_titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *litterImage;
+
 
 @end
 

@@ -7,11 +7,14 @@
 //
 
 #import "RegisterViewController.h"
-#import "SetPasswordViewController.h"
+
+#import "Md5Util.h"
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *getVerificationCodeButton;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *surePasswordTextField;
 
 @property (weak, nonatomic) IBOutlet UILabel *noticeLabel;
 
@@ -28,14 +31,16 @@
 }
 
 -(BOOL)checkTel {
+    _noticeLabel.hidden = NO;
     if ([NSString isEmpty:_phoneTextField.text]) {
-        [SVProgressHUD showInfoWithStatus:@"请填写电话号"];
+        _noticeLabel.text = @"请填写电话号";
         return NO;
     }
     if (![NSString isValidPhoneNumber:_phoneTextField.text]) {
-        [SVProgressHUD showInfoWithStatus:@"请填写正确的电话号码"];
+        _noticeLabel.text = @"请填写正确的电话号码";
         return NO;
     }
+    _noticeLabel.hidden = YES;
     return YES;
     
 }
@@ -44,9 +49,12 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:_phoneTextField.text forKey:@"tel"];
     [parameters setValue:_verificationCodeTextField.text forKey:@"yanzheng"];
-    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+    [parameters setValue:[Md5Util encryptMD5:_passwordTextField.text] forKey:@"password"];
+    [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
-        [self performSegueWithIdentifier:@"ToComfirmPassword" sender:self];
+        [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+        [UserManager setTelNum:_phoneTextField.text];
+        [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];
     } failure:^(NSError *error) {
         
     }];
@@ -96,19 +104,42 @@
     // Dispose of any resources that can be recreated.
 }
 -(BOOL)check {
+    _noticeLabel.hidden = NO;
     if ([NSString isEmpty:_phoneTextField.text]) {
-        [SVProgressHUD showInfoWithStatus:@"请填写电话号"];
+        _noticeLabel.text = @"请填写电话号";
         return NO;
     }
     if (![NSString isValidPhoneNumber:_phoneTextField.text]) {
-        [SVProgressHUD showInfoWithStatus:@"请填写正确的电话号码"];
+        _noticeLabel.text = @"请填写正确的电话号码";
         return NO;
     }
     
     if ([NSString isEmpty:_verificationCodeTextField.text]) {
-        [SVProgressHUD showInfoWithStatus:@"请填写验证码"];
+        _noticeLabel.text = @"请填写验证码";
         return NO;
     }
+    
+    if ([NSString isEmpty:_passwordTextField.text]) {
+        _noticeLabel.text = @"请输入密码";
+        return NO;
+    }
+    if (![NSString isValidPassword:_passwordTextField.text]) {
+        _noticeLabel.text = @"请填写6到16位的密码";
+        return NO;
+    }
+    if ([NSString isEmpty:_surePasswordTextField.text]) {
+        _noticeLabel.text = @"请填写确认密码";
+        return NO;
+    }
+    if (![NSString isValidPassword:_surePasswordTextField.text]) {
+        _noticeLabel.text = @"请填写6到16位的确认密码";
+        return NO;
+    }
+    if (![_passwordTextField.text isEqualToString:_surePasswordTextField.text]) {
+        _noticeLabel.text = @"两次密码不一致请重新填写";
+        return NO;
+    }
+    _noticeLabel.hidden = YES;
     
     return YES;
 }
@@ -117,14 +148,7 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ToComfirmPassword"]) {
-        SetPasswordViewController *vc = (SetPasswordViewController*)[segue destinationViewController];
-        vc.tel = _phoneTextField.text;
-        vc.code = _verificationCodeTextField.text;
-    }
-    
-}
+
 
 
 

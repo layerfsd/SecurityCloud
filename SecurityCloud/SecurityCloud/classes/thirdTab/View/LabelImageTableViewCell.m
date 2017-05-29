@@ -30,7 +30,7 @@
 -(void)setModel:(PersonDetailCellModel *)model{
     _model = model;
     _x_titleLabel.text = _model.titleStr;
-    [_imageVIew sd_setImageWithURL:[NSURL URLWithString:_model.showValue] placeholderImage:nil];
+    [_imageVIew sd_setImageWithURL:[NSURL URLWithString:_model.showValue] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
 }
 
 @end

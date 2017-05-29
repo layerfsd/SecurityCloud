@@ -20,6 +20,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     // Initialization code
 }
 - (IBAction)qRCodeAction:(UIButton *)sender {
@@ -30,7 +31,7 @@
 
 -(void)setModel:(UserModel *)model {
     _model = model;
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:nil];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     _nameLabel.text = _model.name;
     _scoreLabel.text = @"积分：11.02分";
 }

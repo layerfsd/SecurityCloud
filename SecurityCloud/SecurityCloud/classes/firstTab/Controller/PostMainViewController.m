@@ -17,7 +17,7 @@
 #import "CoreDataHelper.h"
 #define colum 4
 #define cellWidth (kScreenWidth - 20)/colum
-@interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate>
+@interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate,ESPictureBrowserDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -41,14 +41,44 @@
 
 @implementation PostMainViewController
 
+-(void)deleteFile:(NSString*)fileUrl {
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+  
+    BOOL blHave = [[NSFileManager defaultManager] fileExistsAtPath:fileUrl];
+    if (!blHave) {
+       
+        return ;
+    }else {
+      
+        BOOL blDele= [fileManager removeItemAtPath:fileUrl error:nil];
+        if (blDele) {
+            NSLog(@"dele success");
+        }else {
+            NSLog(@"dele fail");
+        }
+        
+    }
+}
+
 - (IBAction)operationAction:(UIButton *)sender {
     //开启录音组件
-    RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
-        self.filePath = filePath;
-        
-       
-    }];
-    [self.view addSubview:recordSoundView];
+    
+    if (sender.selected) {
+        //删除
+//        [self deleteFile:self.filePath];
+        self.filePath = nil;
+        self.showButton.enabled = NO;
+        self.recordButton.selected = NO;
+    }else{
+        //添加
+        RecordSoundView *recordSoundView = [[RecordSoundView alloc] initWithFrame:self.view.bounds RecordBlock:^(NSString *filePath) {
+            self.filePath = filePath;
+            _showButton.enabled = YES;
+            _recordButton.selected = YES;
+        }];
+        [self.view addSubview:recordSoundView];
+    }
+   
    
 }
 
@@ -58,12 +88,12 @@
 -(void)playing {
     [_player prepareToPlay];
     [_player play];
-    [_showButton setTitle:@"播放中" forState:UIControlStateNormal];
+    _showButton.selected = YES;
 }
 
 -(void)stop{
     [_player stop];
-    [_showButton setTitle:@"播放" forState:UIControlStateNormal];
+    _showButton.selected = NO;
 }
 
 - (IBAction)showAction:(UIButton *)sender {
@@ -73,7 +103,11 @@
            
             [self stop];
         }else{
-            
+            BOOL fileexit = [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
+            if (!fileexit) {
+                [SVProgressHUD showErrorWithStatus:@"文件丢失"];
+                return;
+            }
             NSError *playerError ;
             _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.filePath] error:&playerError];
             _player.delegate = self;
@@ -111,10 +145,12 @@
             ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:model.imageName].firstObject;
             [imageModel MR_deleteEntity];
         }
-        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        
         
         Info *thisInfo = [CoreDataHelper findInfoByTime:_info.creatTime];
         [thisInfo MR_deleteEntity];
+        
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
         [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
     }
 }
@@ -185,10 +221,9 @@
             //修改数据 并保存
             for (PostImageModel *model in self.images) {
                 NSData *imageData = UIImagePNGRepresentation(model.image);
-                ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:model.imageName].firstObject;
+                ImageModel *imageModel = [ImageModel MR_createEntityInContext:localContext];
                 imageModel.imageData = imageData;
                 imageModel.imageName = model.imageName;
-                [localContext MR_saveToPersistentStoreAndWait];
             }
             
             Info *thisInfo = [CoreDataHelper findInfoByTime:_info.creatTime];
@@ -198,8 +233,9 @@
             thisInfo.userID = UserID;
             thisInfo.creatTime = [NSDate date];
             [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
-                [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
+                [SVProgressHUD showSuccessWithStatus:@"修改成功"];
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         }else{
@@ -224,8 +260,9 @@
             
             // 保存修改到当前上下文中.
             [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
-                [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+               
                 [[NSNotificationCenter defaultCenter] postNotificationName:DraftBoxListViewControllerNotificationString object:nil];
+                 [SVProgressHUD showSuccessWithStatus:@"保存成功"];
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         }
@@ -265,9 +302,14 @@
         }
 
     }
-       if (_info.voicePath) {
+    if (_info.voicePath) {
         //初始化语音
         self.filePath = _info.voicePath;
+        _showButton.enabled = YES;
+        _recordButton.selected = YES;
+    }else{
+        _showButton.enabled = NO;
+        _recordButton.selected = NO;
     }
     
     if (![NSString isEmpty:_info.content]) {
@@ -304,6 +346,8 @@
     if (_info != nil) {
         //初始化数据
         [self initData];
+    }else{
+        _showButton.enabled = NO;
     }
     _textView.placeholder = @"请输入举报内容";
 }
@@ -369,8 +413,47 @@
         [alertC addAction:photos];
         
         [self.navigationController presentViewController:alertC animated:YES completion:nil];
+    }else{
+        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+        ESPictureBrowser *browser = [[ESPictureBrowser alloc] init];
+        browser.delegate = self;
+        [browser showFromView:cell picturesCount:[self.images count] currentPictureIndex:indexPath.item - 1];
     }
 }
+- (UIView *)pictureView:(ESPictureBrowser *)pictureBrowser viewForIndex:(NSInteger)index{
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index + 1 inSection:0]];
+    return cell;
+}
+/**
+ 获取对应索引的图片大小
+ 
+ @param pictureBrowser 图片浏览器
+ @param index          索引
+ 
+ @return 图片大小
+ */
+- (CGSize)pictureView:(ESPictureBrowser *)pictureBrowser imageSizeForIndex:(NSInteger)index {
+    return CGSizeMake(cellWidth, cellWidth);
+}
+
+/**
+ 获取对应索引默认图片，可以是占位图片，可以是缩略图
+ 
+ @param pictureBrowser 图片浏览器
+ @param index          索引
+ 
+ @return 图片
+ */
+- (UIImage *)pictureView:(ESPictureBrowser *)pictureBrowser defaultImageForIndex:(NSInteger)index {
+    PostImageModel *model = self.images[index];
+    return model.image;
+}
+
+- (NSString *)pictureView:(ESPictureBrowser *)pictureBrowser highQualityUrlStringForIndex:(NSInteger)index {
+    return @"";
+
+}
+
 
 #pragma mark imagepick
 //拍照

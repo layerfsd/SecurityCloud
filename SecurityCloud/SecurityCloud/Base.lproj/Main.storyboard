@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--探索-->
+        <!--资讯-->
         <scene sceneID="34S-H2-L1W">
             <objects>
                 <viewController id="LA9-sw-LYn" customClass="SecondViewController" sceneMemberID="viewController">
@@ -24,8 +24,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="探索" id="QvN-dj-Kvc"/>
-                    <navigationItem key="navigationItem" title="探索" id="e90-zv-wUl"/>
+                    <tabBarItem key="tabBarItem" title="资讯" image="资讯" id="QvN-dj-Kvc"/>
+                    <navigationItem key="navigationItem" title="资讯" id="e90-zv-wUl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8R-yi-jnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,7 +60,7 @@
                             <constraint firstItem="d8y-d7-2pu" firstAttribute="top" secondItem="MVi-40-j3V" secondAttribute="top" id="wtL-sZ-Ahz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我" id="dAJ-Te-3mM"/>
+                    <tabBarItem key="tabBarItem" title="我" image="我的" id="dAJ-Te-3mM"/>
                     <navigationItem key="navigationItem" title="我" id="IcO-QS-IuP"/>
                     <connections>
                         <outlet property="tableView" destination="d8y-d7-2pu" id="6xg-df-Vja"/>
@@ -89,12 +89,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9T-6C-N57">
                                         <rect key="frame" x="40" y="60" width="240" height="301"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-CS-zS6">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-CS-zS6">
                                                 <rect key="frame" x="15" y="15" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HpF-CZ-4or"/>
                                                     <constraint firstAttribute="height" constant="50" id="jYv-xq-EaM"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二米团子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrP-ru-2FO">
                                                 <rect key="frame" x="73" y="18" width="61.5" height="18"/>
@@ -121,17 +127,9 @@
                                                     <constraint firstAttribute="width" secondItem="L29-XR-aAM" secondAttribute="height" multiplier="1:1" id="Tio-So-tS0"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RqE-J8-jY4">
-                                                <rect key="frame" x="105" y="176.5" width="30" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Qd1-xi-g8J"/>
-                                                    <constraint firstAttribute="width" constant="30" id="WPx-vY-OWd"/>
-                                                </constraints>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="RqE-J8-jY4" firstAttribute="centerX" secondItem="L29-XR-aAM" secondAttribute="centerX" id="2SY-PA-332"/>
                                             <constraint firstItem="L29-XR-aAM" firstAttribute="leading" secondItem="r9T-6C-N57" secondAttribute="leading" constant="30" id="3wk-cC-xPH"/>
                                             <constraint firstItem="DrP-ru-2FO" firstAttribute="leading" secondItem="QLe-CS-zS6" secondAttribute="trailing" constant="8" id="6ba-Vj-Gey"/>
                                             <constraint firstItem="B4r-40-kme" firstAttribute="leading" secondItem="QLe-CS-zS6" secondAttribute="trailing" constant="8" id="6sm-4A-rRm"/>
@@ -143,7 +141,6 @@
                                             <constraint firstAttribute="trailing" secondItem="WcG-QP-a9f" secondAttribute="trailing" id="S9x-nF-pZ0"/>
                                             <constraint firstItem="QLe-CS-zS6" firstAttribute="leading" secondItem="r9T-6C-N57" secondAttribute="leading" constant="15" id="WCF-Ry-I2C"/>
                                             <constraint firstItem="L29-XR-aAM" firstAttribute="top" secondItem="WcG-QP-a9f" secondAttribute="bottom" constant="20" id="WTu-Rt-Ybp"/>
-                                            <constraint firstItem="RqE-J8-jY4" firstAttribute="centerY" secondItem="L29-XR-aAM" secondAttribute="centerY" id="i02-6M-rw7"/>
                                             <constraint firstItem="WcG-QP-a9f" firstAttribute="top" secondItem="QLe-CS-zS6" secondAttribute="bottom" constant="15" id="lZd-as-7bR"/>
                                             <constraint firstItem="DrP-ru-2FO" firstAttribute="top" secondItem="r9T-6C-N57" secondAttribute="top" constant="18" id="tYM-dT-h2r"/>
                                             <constraint firstItem="QLe-CS-zS6" firstAttribute="top" secondItem="r9T-6C-N57" secondAttribute="top" constant="15" id="ztS-TY-w3C"/>
@@ -171,7 +168,6 @@
                         <outlet property="iconImageVIew" destination="QLe-CS-zS6" id="jjs-bc-elY"/>
                         <outlet property="nameLabel" destination="DrP-ru-2FO" id="oci-ma-A2y"/>
                         <outlet property="qRCodeImageView" destination="L29-XR-aAM" id="KT5-MH-P94"/>
-                        <outlet property="qRLitterImageView" destination="i02-6M-rw7" id="b2Z-T6-ZIx"/>
                         <outlet property="tagsLabel" destination="B4r-40-kme" id="PqM-6T-gtY"/>
                     </connections>
                 </viewController>
@@ -241,7 +237,7 @@
                             <constraint firstItem="qxe-1B-1DY" firstAttribute="centerX" secondItem="w3x-cQ-2U2" secondAttribute="centerX" id="qzV-4y-NzX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="首页" id="dmp-XR-J2A"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="首页" id="dmp-XR-J2A"/>
                     <navigationItem key="navigationItem" title="首页" id="lt2-di-IsC"/>
                     <connections>
                         <outlet property="collectionView" destination="xuN-Gh-cXi" id="Mm1-KR-TWp"/>
@@ -327,6 +323,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="我的" width="30" height="30"/>
         <image name="我要上报" width="165" height="165"/>
+        <image name="资讯" width="30" height="30"/>
+        <image name="首页" width="30" height="30"/>
     </resources>
 </document>

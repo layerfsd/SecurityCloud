@@ -19,7 +19,7 @@
 }
 -(void)setImageUrl:(NSString *)imageUrl {
     _imageUrl = imageUrl;
-    [_imageVIew sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:nil];
+    [_imageVIew sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
 }
 
 @end

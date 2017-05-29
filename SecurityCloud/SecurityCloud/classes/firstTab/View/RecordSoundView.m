@@ -13,7 +13,7 @@
 @interface RecordSoundView(){
     NSTimer *_timer; //定时器
     NSInteger count;  //倒计时
-    NSString *filePath;
+  
     NSString *noticeStr;
     //区别秒
     NSInteger allCount;
@@ -32,7 +32,7 @@
 
 @property (nonatomic, strong) AVAudioRecorder *recorder;//录音器
 @property (nonatomic, strong) NSURL *recordFileUrl; //文件地址
-
+@property (nonatomic,copy) NSString *filePath;
 
 @end
 @implementation RecordSoundView
@@ -116,10 +116,10 @@
     
     NSString *fileName = [NSString stringWithFormat:@"/%@.wav",[self stringFromDate:[NSDate date]]];
     
-    filePath = [path stringByAppendingString:fileName];
+    _filePath = [path stringByAppendingString:fileName];
     
     //2.获取文件路径
-    self.recordFileUrl = [NSURL fileURLWithPath:filePath];
+    self.recordFileUrl = [NSURL fileURLWithPath:_filePath];
     
     //设置参数
     NSDictionary *recordSetting = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -175,11 +175,11 @@
     
     
     NSFileManager *manager = [NSFileManager defaultManager];
-    if ([manager fileExistsAtPath:filePath]){
+    if ([manager fileExistsAtPath:_filePath]){
         
-        _noticeLabel.text = [NSString stringWithFormat:@"录了 %ld 秒,文件大小为 %.2fKb",(long)count,[[manager attributesOfItemAtPath:filePath error:nil] fileSize]/1024.0];
+        _noticeLabel.text = [NSString stringWithFormat:@"录了 %ld 秒,文件大小为 %.2fKb",(long)count,[[manager attributesOfItemAtPath:_filePath error:nil] fileSize]/1024.0];
         if (self.block) {
-             self.block(filePath);
+             self.block(_filePath);
         }
         
         [self removeFromSuperview];
@@ -207,9 +207,9 @@
         [self.recorder stop];
     }
     NSFileManager *manager = [NSFileManager defaultManager];
-    if ([manager fileExistsAtPath:filePath]){
+    if ([manager fileExistsAtPath:_filePath]){
         
-        [manager removeItemAtPath:filePath error:nil];
+        [manager removeItemAtPath:_filePath error:nil];
         
     }else{
         

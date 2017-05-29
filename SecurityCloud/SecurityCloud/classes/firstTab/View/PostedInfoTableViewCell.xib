@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="339" height="99"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="339" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="339" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BK9-cf-2ja">
@@ -24,6 +24,12 @@
                             <constraint firstAttribute="height" constant="60" id="GMb-Zu-1AG"/>
                             <constraint firstAttribute="width" constant="60" id="UQv-yn-yp9"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聚众赌博" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxc-pK-jFh">
                         <rect key="frame" x="80" y="10" width="57.5" height="17"/>
@@ -49,21 +55,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ejS-KA-kOU">
-                        <rect key="frame" x="294" y="0.0" width="45" height="45"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFU-gg-hVD">
+                        <rect key="frame" x="299" y="0.0" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="45" id="C92-o3-0od"/>
-                            <constraint firstAttribute="height" constant="45" id="vgY-6A-IIC"/>
+                            <constraint firstAttribute="height" constant="40" id="3rS-Ik-y9Y"/>
+                            <constraint firstAttribute="width" constant="40" id="yea-k9-WTu"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="未处理"/>
+                        <state key="selected" image="已处理"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="wFU-gg-hVD" secondAttribute="trailing" id="17e-0m-hB1"/>
                     <constraint firstAttribute="trailing" secondItem="A1t-aB-zyQ" secondAttribute="trailing" constant="10" id="1nW-9g-ZA2"/>
                     <constraint firstItem="BK9-cf-2ja" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="1vB-ly-esy"/>
-                    <constraint firstAttribute="trailing" secondItem="ejS-KA-kOU" secondAttribute="trailing" id="4yt-bR-d8B"/>
                     <constraint firstAttribute="trailing" secondItem="VYa-7i-4ym" secondAttribute="trailing" constant="15" id="Iuz-k7-VUi"/>
                     <constraint firstItem="Gvb-b0-jth" firstAttribute="leading" secondItem="VYa-7i-4ym" secondAttribute="leading" id="K0C-Yn-ml6"/>
-                    <constraint firstItem="ejS-KA-kOU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KoV-Dz-yfX"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="A1t-aB-zyQ" secondAttribute="bottom" constant="9" id="LrF-bI-GSf"/>
                     <constraint firstItem="Oxc-pK-jFh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="O3Z-t5-Jxb"/>
                     <constraint firstItem="A1t-aB-zyQ" firstAttribute="bottom" secondItem="Gvb-b0-jth" secondAttribute="bottom" id="atW-fk-b8J"/>
@@ -72,6 +79,7 @@
                     <constraint firstItem="VYa-7i-4ym" firstAttribute="top" secondItem="Oxc-pK-jFh" secondAttribute="bottom" constant="5" id="q3a-X5-kJr"/>
                     <constraint firstItem="VYa-7i-4ym" firstAttribute="leading" secondItem="BK9-cf-2ja" secondAttribute="trailing" constant="10" id="sIN-G8-d8i"/>
                     <constraint firstItem="A1t-aB-zyQ" firstAttribute="top" secondItem="VYa-7i-4ym" secondAttribute="bottom" constant="5" id="vG8-ml-ZqK"/>
+                    <constraint firstItem="wFU-gg-hVD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="veP-zx-Ncs"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="BK9-cf-2ja" secondAttribute="bottom" constant="10" id="veZ-BA-h56"/>
                     <constraint firstItem="A1t-aB-zyQ" firstAttribute="top" secondItem="Gvb-b0-jth" secondAttribute="top" id="ym9-Pp-pSX"/>
                 </constraints>
@@ -79,12 +87,16 @@
             <connections>
                 <outlet property="contentLabel" destination="VYa-7i-4ym" id="7SY-GK-JAk"/>
                 <outlet property="iconImageView" destination="BK9-cf-2ja" id="YWr-py-x8T"/>
-                <outlet property="operateImageView" destination="ejS-KA-kOU" id="ljV-Zp-Smn"/>
                 <outlet property="scoreLabel" destination="A1t-aB-zyQ" id="vM9-A0-Cd4"/>
+                <outlet property="statusButton" destination="wFU-gg-hVD" id="Wj5-Bo-yG9"/>
                 <outlet property="timeLabel" destination="Gvb-b0-jth" id="cip-EF-wO0"/>
                 <outlet property="titleStrLabel" destination="Oxc-pK-jFh" id="22n-Pc-kg4"/>
             </connections>
             <point key="canvasLocation" x="41.5" y="95.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="已处理" width="40" height="40"/>
+        <image name="未处理" width="40" height="40"/>
+    </resources>
 </document>

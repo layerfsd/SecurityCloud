@@ -30,6 +30,12 @@
                             <constraint firstAttribute="width" constant="40" id="5uL-RC-3ZX"/>
                             <constraint firstAttribute="height" constant="40" id="ytN-fS-3tL"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-UT-Waa">
                         <rect key="frame" x="113" y="43" width="60" height="16"/>

@@ -11,7 +11,9 @@
 #import "Info+CoreDataClass.h"
 #import "DraftBoxTableViewCell.h"
 #import "PostMainViewController.h"
-@interface DraftBoxListViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "PostModel.h"
+#import "ImageModel+CoreDataClass.h"
+@interface DraftBoxListViewController ()<UITableViewDelegate,UITableViewDataSource,DeleteCellDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 
 @property (nonatomic,strong) NSMutableArray<Info*> *infos;
@@ -55,6 +57,8 @@
     if (cell == nil) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"DraftBoxTableViewCell" owner:nil options:nil].firstObject;
     }
+    cell.tag = indexPath.row;
+    cell.delegate = self;
     cell.model = _infos[indexPath.row];
     return cell;
 }
@@ -62,8 +66,41 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PostMainViewController *vc = [[PostMainViewController alloc] init];
     vc.info = self.infos[indexPath.row];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
+-(void)cancelInfo:(Info*)info {
+    if (![NSString isEmpty:info.images]) {
+        NSMutableArray *images = [NSMutableArray array];
+        NSArray<NSString*> *imageNames = [info.images componentsSeparatedByString:@","];
+        for (NSString *imageName in imageNames) {
+            ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:imageName].firstObject;
+            UIImage *image = [UIImage imageWithData:imageModel.imageData];
+            PostImageModel *model = [[PostImageModel alloc] initWithImage:image imageName:imageName];
+            [images addObject:model];
+            for (PostImageModel *model in images) {
+                ImageModel *imageModel = [ImageModel MR_findByAttribute:@"imageName" withValue:model.imageName].firstObject;
+                [imageModel MR_deleteEntity];
+            }
+        }
+        
+    }
+        
+        
+    Info *thisInfo = [CoreDataHelper findInfoByTime:info.creatTime];
+    [thisInfo MR_deleteEntity];
+        
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        
+    
+}
+
+-(void)deleteCell:(NSInteger)index {
+    [self cancelInfo:_infos[index]];
+    [_infos removeObjectAtIndex:index];
+    [self.tableView reloadData];
+}
+
 -(UITableView *)tableView {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];

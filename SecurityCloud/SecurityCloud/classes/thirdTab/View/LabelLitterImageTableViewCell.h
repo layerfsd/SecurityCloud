@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 @class PersonDetailCellModel;
 @interface LabelLitterImageTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *litterImage;
 @property (nonatomic,strong) PersonDetailCellModel *model;
 @end

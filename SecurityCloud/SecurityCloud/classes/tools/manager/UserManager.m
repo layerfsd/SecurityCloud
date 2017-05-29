@@ -26,6 +26,13 @@ MJCodingImplementation
     
     return @{@"userID":@"id"};
 }
+
++(NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"biaoqian" : @"UserLabel",
+             };
+}
+
 //归档
 -(void)archiver {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
@@ -80,6 +87,11 @@ MJCodingImplementation
     [UserManager sharedManager].tel = user.tel;
     [UserManager sharedManager].time = user.time;
     [UserManager sharedManager].biaoqian = user.biaoqian;
+    [UserManager sharedManager].admin = user.admin;
+    [UserManager sharedManager].shangxian = user.shangxian;
+    [UserManager sharedManager].imgurl = user.imgurl;
+
+
 }
 
 //主页
@@ -157,4 +169,8 @@ MJCodingImplementation
 
 @implementation UserLabel
 MJCodingImplementation
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"labelID":@"id"};
+}
 @end

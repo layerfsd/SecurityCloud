@@ -8,8 +8,9 @@
 
 #import "TopNoticeTableViewCell.h"
 #import "MsgModel.h"
-#import "LableOnlyTableViewCell.h"
+#import "NoticeInsideTableViewCell.h"
 #import "InfoDetailCellModel.h"
+#import "NoticeTableViewCell.h"
 @interface TopNoticeTableViewCell()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *subLabel;
@@ -31,7 +32,7 @@
 -(void)setModel:(NoticeModel *)model {
     _model = model;
     
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.tubiao] placeholderImage:nil];
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.tubiao] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     _subLabel.text = _model.biaoti;
     [self.tableIView reloadData];
 }
@@ -45,17 +46,26 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50 / 3;
+    return 69.0 / 2;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MsgLitterModel *model = _model.zixunliebiao[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContentNotice"];
+    NoticeInsideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoticeInsideTableViewCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ContentNotice"];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"NoticeInsideTableViewCell" owner:nil options:nil].firstObject;
     }
-    cell.textLabel.text = model.biaoti;
+    cell.x_titleLabel.text = model.biaoti;
+ 
+    cell.textLabel.font = [UIFont systemFontOfSize:12];
     return cell;
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MsgLitterModel *model = _model.zixunliebiao[indexPath.row];
+    if (_delegate && [_delegate respondsToSelector:@selector(msgCliked:)]) {
+        [_delegate msgCliked:model.msgLitterID];
+    }
 }
 @end

@@ -19,7 +19,7 @@
     [super viewDidLoad];
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(changeImage)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(changeImage)];
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:nil];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)changeImage {
@@ -94,7 +94,7 @@
 -(void)postImages:(UIImage*)image imageName:(NSString*)imageName {
     [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
         NSString *imageID = responseObject[@"data"][@"id"];
-        [self.imageView sd_setImageWithURL:[NSURL URLWithString:responseObject[@"data"][@"url"]] placeholderImage:nil];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:responseObject[@"data"][@"url"]] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
         [self changeInfo:imageID];
     } failure:^(NSError *error) {
         
@@ -108,8 +108,10 @@
    
     [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
-        [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MyDetailViewControllerReload object:nil];
+        [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+        
     } failure:^(NSError *error) {
         
     }];

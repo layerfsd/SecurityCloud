@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy) NSString *biaoti;
 @property (nonatomic, copy) NSString *time;
-@property (nonatomic, copy) NSString *luyinchakan;
+@property (nonatomic, strong) NSArray<FileModel*> *luyinchakan;
 @property (nonatomic, copy) NSString *numrow;
 @property (nonatomic, strong) UserManager *yonghu;
 @property (nonatomic, copy) NSString *fenlei;

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情报图片：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="il2-kB-KeG">
@@ -24,7 +24,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zqT-Ej-vd2">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zqT-Ej-vd2">
                         <rect key="frame" x="96.5" y="10" width="213.5" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -44,8 +44,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="zqT-Ej-vd2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Gps-m9-4hL"/>
-                    <constraint firstAttribute="bottom" secondItem="zqT-Ej-vd2" secondAttribute="bottom" constant="10" id="Izv-zt-GTg"/>
                     <constraint firstItem="il2-kB-KeG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Si9-09-aqN"/>
+                    <constraint firstAttribute="bottom" secondItem="zqT-Ej-vd2" secondAttribute="bottom" constant="9" id="ZMR-xw-mln"/>
                     <constraint firstItem="zqT-Ej-vd2" firstAttribute="leading" secondItem="il2-kB-KeG" secondAttribute="trailing" constant="10" id="dqG-Xf-o8X"/>
                     <constraint firstAttribute="trailing" secondItem="zqT-Ej-vd2" secondAttribute="trailing" constant="10" id="iwK-RI-4bs"/>
                     <constraint firstItem="il2-kB-KeG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="zJR-RV-05v"/>

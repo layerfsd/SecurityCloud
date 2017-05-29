@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class Info;
+@protocol DeleteCellDelegate <NSObject>
+
+-(void)deleteCell:(NSInteger)index;
+
+@end
 @interface DraftBoxTableViewCell : UITableViewCell
 @property (nonatomic,strong) Info *model;
+@property (nonatomic,weak) id<DeleteCellDelegate> delegate;
 @end

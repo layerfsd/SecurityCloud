@@ -23,20 +23,38 @@
         [SVProgressHUD showErrorWithStatus:@"尚未录音"];
         return;
     }
-    if (self.player) {
-        sender.selected = !sender.selected;
+    
+    sender.selected = !sender.selected;
         //播放 暂停
-        if (!sender.selected) {
+    if (!sender.selected) {
             //播放中 暂停
-            [_player stop];
+        [_player stop];
             
-        }else{
+    }else{
             //开始播放
-            [_player prepareToPlay];
-            [_player play];
-        }
+        [self play];
     }
 
+
+}
+
+-(void)play {
+    NSString *urlStr = self.model.showValue;
+    NSURL *url = [[NSURL alloc]initWithString:urlStr];
+    NSData * audioData = [NSData dataWithContentsOfURL:url];
+    
+    //将数据保存到本地指定位置
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.wav", docDirPath , @"temp"];
+    [audioData writeToFile:filePath atomically:YES];
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    
+    NSError *playerError ;
+    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&playerError];
+    _player.delegate = self;
+    _player.volume = 1;
+    [_player prepareToPlay];
+    [_player play];
 }
 
 - (void)awakeFromNib {
@@ -53,25 +71,18 @@
 -(void)setModel:(InfoDetailCellModel *)model {
     _model = model;
     _x_titleLabel.text = _model.titleStr;
-    if ([_model.showValue isEqualToString:@"null"]) {
+    if ([_model.showValue isEqualToString:@"null"]||_model.showValue == nil) {
         _btn.enabled = NO;
     }else{
         _btn.enabled = YES;
     }
 }
 
--(AVAudioPlayer *)player {
-    if (_player == nil) {
-        NSError *playerError ;
-        _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.model.showValue] error:&playerError];
-        _player.delegate = self;
-        _player.volume = 1;
-    }
-    return _player;
-}
+
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     //播放结束
+    _btn.selected = NO;
 }
 
 @end

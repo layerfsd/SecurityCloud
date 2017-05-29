@@ -15,7 +15,8 @@ target 'SecurityCloud' do
   pod 'ESPictureBrowser'
   pod 'TZImagePickerController'
   pod 'DateTools'
-  
+  pod 'JPush'
+  pod 'ActionSheetPicker-3.0'
 
   # Pods for SecurityCloud
 

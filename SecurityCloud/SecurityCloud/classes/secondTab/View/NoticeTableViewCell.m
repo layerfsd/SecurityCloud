@@ -8,7 +8,7 @@
 
 #import "NoticeTableViewCell.h"
 #import "MsgModel.h"
-#import "LabelLabelTableViewCell.h"
+#import "NoticeInsideTableViewCell.h"
 #import "InfoDetailCellModel.h"
 @interface NoticeTableViewCell()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *x_titleLabel;
@@ -32,7 +32,7 @@
 -(void)setModel:(NoticeModel *)model {
     _model = model;
     _x_titleLabel.text = _model.biaoti;
-    [_iconImageVIew sd_setImageWithURL:[NSURL URLWithString:_model.tubiao] placeholderImage:nil];
+    [_iconImageVIew sd_setImageWithURL:[NSURL URLWithString:_model.tubiao] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     [self.tableView reloadData];
     
 }
@@ -46,12 +46,12 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MsgLitterModel *model = _model.zixunliebiao[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContentNotice"];
+    NoticeInsideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoticeInsideTableViewCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ContentNotice"];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"NoticeInsideTableViewCell" owner:nil options:nil].firstObject;
     }
-    cell.textLabel.text = model.biaoti;
-    cell.detailTextLabel.text = model.time;
+    cell.x_titleLabel.text = model.biaoti;
+    cell.textLabel.font = [UIFont systemFontOfSize:12];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -59,9 +59,17 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //详情页
+    MsgLitterModel *model = _model.zixunliebiao[indexPath.row];
+    if (_delegate && [_delegate respondsToSelector:@selector(msgCliked:)]) {
+        [_delegate msgCliked:model.msgLitterID];
+    }
 }
 
 - (IBAction)moreClicked:(UIButton *)sender {
+    if (_actionDelegate && [_actionDelegate respondsToSelector:@selector(moreMsgClicked:)]) {
+        [_actionDelegate moreMsgClicked:_model.noticeID];
+    }
+    
 }
 
 @end

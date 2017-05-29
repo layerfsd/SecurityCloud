@@ -156,7 +156,7 @@
         CGFloat progress = (CGFloat)receivedSize / expectedSize ;
         self.progressView.progress = progress;
     } transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
-        if (error != nil) {
+        if (error != nil && ![_urlString isEqualToString:@""]) {
             [self.progressView showError];
         }else {
             if (stage == YYWebImageStageFinished) {

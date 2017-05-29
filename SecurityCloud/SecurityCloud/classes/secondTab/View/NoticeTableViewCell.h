@@ -7,7 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+
+
+
 @class NoticeModel;
+@protocol MsgClikedDelegate <NSObject>
+
+-(void)msgCliked:(NSString*)msgID;
+
+@end
+
+@protocol MoreMsgClickedDelegate <NSObject>
+
+-(void)moreMsgClicked:(NSString*)msgID;
+
+@end
+
 @interface NoticeTableViewCell : UITableViewCell
 @property (nonatomic,strong) NoticeModel *model;
+
+@property (nonatomic,weak) id<MsgClikedDelegate> delegate;
+
+@property (nonatomic,weak) id<MoreMsgClickedDelegate> actionDelegate;
 @end

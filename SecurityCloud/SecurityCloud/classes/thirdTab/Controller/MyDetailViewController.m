@@ -17,6 +17,7 @@
 #import "BindTelViewController.h"
 #import "PersonImageViewController.h"
 #import "TextFieldViewController.h"
+#import "ScanQRViewController.h"
 @interface MyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -33,16 +34,52 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadUserInfo];
+    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:MyDetailViewControllerReload object:nil];
     // Do any additional setup after loading the view.
 }
+
+-(void)loadUserInfo {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:UserID forKey:@"id"];
+    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+        self.model = [UserModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self initData];
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    } failure:^(NSError *error) {
+        [self.tableView.mj_header endRefreshing];
+    }];
+}
+
+
+-(void)reloadData{
+    [self loadUserInfo];
+}
 -(void)initData {
-    PersonDetailCellModel *model0 = [[PersonDetailCellModel alloc] initWithTitle:@"头像" showValue:_model.name cellType:CustomPersonCellTypeLabelImage];
+    [self.models removeAllObjects];
+    PersonDetailCellModel *model0 = [[PersonDetailCellModel alloc] initWithTitle:@"头像" showValue:_model.imgurl cellType:CustomPersonCellTypeLabelImage];
     PersonDetailCellModel *model1 = [[PersonDetailCellModel alloc] initWithTitle:@"昵称" showValue:_model.name cellType:CustomPersonCellTypeLabelLabel];
     PersonDetailCellModel *model2 = [[PersonDetailCellModel alloc] initWithTitle:@"我的二维码:" showValue:_model.name cellType:CustomPersonCellTypeLabelLitterImage];
+    
     PersonDetailCellModel *model3 = [[PersonDetailCellModel alloc] initWithTitle:@"手机绑定" showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
+    
+    
+    
+    
    
     [self.models addObject:@[model0]];
-    [self.models addObject:@[model1,model2,model3]];
+    if (_model.admin == nil) {
+        //群众 无上线
+        NSString *str = _model.shangxian == nil ? @"上线: 暂无上线":[NSString stringWithFormat:@"上线:%@",_model.shangxian.name];
+        PersonDetailCellModel *model4 = [[PersonDetailCellModel alloc] initWithTitle:str showValue:_model.admin.userID cellType:CustomPersonCellTypeLabelLitterImage];
+        [self.models addObject:@[model1,model2,model3,model4]];
+    }else{
+        [self.models addObject:@[model1,model2,model3]];
+    }
+    
     
     
 }
@@ -97,6 +134,12 @@
             if (cell == nil) {
                 cell = [[NSBundle mainBundle] loadNibNamed:@"LabelLitterImageTableViewCell" owner:nil options:nil].firstObject;
             }
+            if (indexPath.row == 3) {
+                // 扫一扫
+                cell.litterImage.image = [UIImage imageNamed:@"扫一扫"];
+            }else{
+                cell.litterImage.image = [UIImage imageNamed:@"二维码"];
+            }
             cell.model = model;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -129,7 +172,7 @@
     if (indexPath.section == 0) {
         //头像
         PersonImageViewController *vc = [PersonImageViewController new];
-        vc.imageUrl = self.model.img;
+        vc.imageUrl = self.model.imgurl;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
@@ -144,10 +187,15 @@
         //我的二维码
        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         MyQRCodeViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MyQRCodeViewController"];
+        vc.model = self.model;
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 2){
         //手机绑定
         BindTelViewController *vc = [[BindTelViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+         //扫一扫
+        ScanQRViewController *vc = [[ScanQRViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 

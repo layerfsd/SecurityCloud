@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="106" id="KGk-i7-Jjw" customClass="NoticeTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="106" id="KGk-i7-Jjw" customClass="NoticeTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7f-kt-YE9">
@@ -39,7 +39,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1CY-vW-J0I">
-                        <rect key="frame" x="265" y="8" width="45" height="19"/>
+                        <rect key="frame" x="271" y="8" width="39" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="更多 &gt;"/>
                         <connections>
                             <action selector="moreClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="is3-wV-ZDc"/>
@@ -58,6 +59,12 @@
                             <constraint firstAttribute="width" constant="50" id="YNz-MQ-Keq"/>
                             <constraint firstAttribute="height" constant="50" id="iKF-Gk-Mip"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMh-Es-eBV">
                         <rect key="frame" x="81" y="46" width="229" height="50"/>
@@ -69,6 +76,7 @@
                     </tableView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xa7-qP-6Wd" secondAttribute="bottom" constant="9" id="0I0-yW-1MH"/>
                     <constraint firstItem="kMh-Es-eBV" firstAttribute="leading" secondItem="FUW-vY-39C" secondAttribute="trailing" constant="10" id="1UF-na-Bgg"/>
                     <constraint firstAttribute="trailing" secondItem="1CY-vW-J0I" secondAttribute="trailing" constant="10" id="337-32-F0I"/>
                     <constraint firstItem="5yq-3P-Owh" firstAttribute="bottom" secondItem="KJ2-Z6-T2q" secondAttribute="bottom" id="8sP-ch-5YY"/>
@@ -89,7 +97,6 @@
                     <constraint firstItem="FUW-vY-39C" firstAttribute="top" secondItem="N7f-kt-YE9" secondAttribute="bottom" constant="10" id="lsE-8K-YJ3"/>
                     <constraint firstItem="N7f-kt-YE9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="p6a-qN-oQV"/>
                     <constraint firstItem="1CY-vW-J0I" firstAttribute="bottom" secondItem="KJ2-Z6-T2q" secondAttribute="bottom" id="pqG-Lb-PQQ"/>
-                    <constraint firstAttribute="bottom" secondItem="xa7-qP-6Wd" secondAttribute="bottom" constant="10" id="tTO-o8-AHZ"/>
                     <constraint firstItem="xa7-qP-6Wd" firstAttribute="top" secondItem="N7f-kt-YE9" secondAttribute="bottom" constant="10" id="zMq-ne-t8X"/>
                 </constraints>
             </tableViewCellContentView>

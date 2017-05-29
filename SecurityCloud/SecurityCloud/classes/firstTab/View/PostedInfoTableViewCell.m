@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleStrLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *operateImageView;
+@property (weak, nonatomic) IBOutlet UIButton *statusButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
@@ -31,7 +32,7 @@
         FileModel *imgModel = _model.imgchakan.firstObject;
         [_iconImageView sd_setImageWithURL:[NSURL URLWithString:imgModel.url]];
     }else{
-         [_iconImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:nil];
+         [_iconImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     }
     
     if (![NSString isEmpty:_model.biaoti]) {
@@ -53,6 +54,11 @@
     }
     
     _timeLabel.text = [NSDate timeAgoSinceDate:[NSString dateForNSString:_model.time]];
+    
+    NSInteger status = [_model.zhuangtai integerValue];
+    
+    _statusButton.selected = status <= 4 ? NO:YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
