@@ -30,4 +30,5 @@
 #import "MJRefresh.h"
 #import "ESPictureBrowser.h"
 #import "ActionSheetPicker.h"
+#import <UMSocialCore/UMSocialCore.h>
 #endif /* PrefixHeader_pch */

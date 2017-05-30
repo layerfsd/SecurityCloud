@@ -17,7 +17,15 @@ target 'SecurityCloud' do
   pod 'DateTools'
   pod 'JPush'
   pod 'ActionSheetPicker-3.0'
+  pod ‘UMengUShare/UI’
+  
+  
+  # 集成微信(完整版14.4M)
+  pod ‘UMengUShare/Social/WeChat'
 
+  
+  # 集成QQ(完整版7.6M)
+  pod ‘UMengUShare/Social/QQ'
   # Pods for SecurityCloud
 
   target 'SecurityCloudTests' do

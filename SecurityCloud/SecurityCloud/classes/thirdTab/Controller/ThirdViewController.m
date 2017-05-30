@@ -42,14 +42,14 @@
 }
 
 -(void)initDatas {
-    NSArray *section0 = @[[MeCellData initWithTitle:@"我的标签" imageName:@""],
-                          [MeCellData initWithTitle:@"积分统计" imageName:@""]];
+    NSArray *section0 = @[[MeCellData initWithTitle:@"我的标签" imageName:@"我的标签"],
+                          [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"]];
     
-    NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@""],
-                          [MeCellData initWithTitle:@"版本更新" imageName:@""],
-                          [MeCellData initWithTitle:@"关于APP" imageName:@""],
-                          [MeCellData initWithTitle:@"推荐给好友" imageName:@""],
-                          [MeCellData initWithTitle:@"退出登录" imageName:@""]];
+    NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@"积分排行"],
+                          [MeCellData initWithTitle:@"版本更新" imageName:@"版本更新"],
+                          [MeCellData initWithTitle:@"关于APP" imageName:@"关于APP"],
+                          [MeCellData initWithTitle:@"推荐给好友" imageName:@"推荐给好友"],
+                          [MeCellData initWithTitle:@"退出登录" imageName:@"退出"]];
     [self.datas addObject:section0];
     [self.datas addObject:section1];
 }

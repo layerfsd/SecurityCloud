@@ -109,7 +109,7 @@
                         </textField>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK8-6a-nxp">
                             <rect key="frame" x="147.5" y="253.5" width="112.5" height="35"/>
-                            <color key="backgroundColor" red="0.11764705882352941" green="0.7463559144295302" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.27450980392156865" green="0.59215686274509804" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="4tC-8j-5eH"/>
                             </constraints>
@@ -128,6 +128,7 @@
                         </button>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x78-ya-d1M">
                             <rect key="frame" x="211" y="91.5" width="51" height="31"/>
+                            <color key="onTintColor" red="0.27450980390000002" green="0.59215686270000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

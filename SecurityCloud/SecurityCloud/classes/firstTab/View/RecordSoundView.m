@@ -76,10 +76,10 @@
         CGPoint location = [ges locationInView:_contentView];
         if ([self.recorder isRecording] && location.y < CGRectGetMinY(_recordButton.frame)) {
             //需要改变按钮颜色
-            _recordButton.backgroundColor = [UIColor redColor];
+            _recordButton.selected = YES;
             noticeStr = @"松开取消";
         }else{
-            _recordButton.backgroundColor = [UIColor whiteColor];
+            _recordButton.selected = NO;
             noticeStr = @"上滑取消";
         }
     }else{
@@ -316,7 +316,7 @@
         
         _bgLayer.frame = CGRectOffset(_recordButton.frame,0,0);
         
-        _bgLayer.fillColor = [[UIColor grayColor] CGColor];
+        _bgLayer.fillColor = [[UIColor colorWithRed:217.0/255 green:225.0/255 blue:230.0/255 alpha:1] CGColor];
         
     }
     return _bgLayer;

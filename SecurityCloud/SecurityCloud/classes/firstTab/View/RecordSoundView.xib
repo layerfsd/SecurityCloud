@@ -26,16 +26,16 @@
                     <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bik-GD-rxa">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="按住录音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cb8-cg-Ctk">
-                                    <rect key="frame" x="156.5" y="6" width="61.5" height="18"/>
+                                    <rect key="frame" x="156.5" y="11" width="61.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OGt-GP-Kkr">
-                                    <rect key="frame" x="0.0" y="29" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="39" width="375" height="1"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="gIi-eW-VKp"/>
                                     </constraints>
@@ -43,7 +43,7 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="5CL-eF-sRL"/>
+                                <constraint firstAttribute="height" constant="40" id="5CL-eF-sRL"/>
                                 <constraint firstItem="Cb8-cg-Ctk" firstAttribute="centerX" secondItem="Bik-GD-rxa" secondAttribute="centerX" id="8It-DK-S6I"/>
                                 <constraint firstAttribute="trailing" secondItem="OGt-GP-Kkr" secondAttribute="trailing" id="A3V-5a-Fgx"/>
                                 <constraint firstItem="OGt-GP-Kkr" firstAttribute="leading" secondItem="Bik-GD-rxa" secondAttribute="leading" id="DDQ-GH-4e3"/>
@@ -52,7 +52,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XC3-03-Jup">
-                            <rect key="frame" x="0.0" y="30" width="375" height="170"/>
+                            <rect key="frame" x="0.0" y="40" width="375" height="160"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKS-cf-bKZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -62,12 +62,13 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47Y-q5-aLd">
-                                    <rect key="frame" x="152" y="50.5" width="70" height="70"/>
+                                    <rect key="frame" x="152" y="45.5" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="70" id="08d-hC-bv4"/>
                                         <constraint firstAttribute="width" constant="70" id="NQD-SV-HpI"/>
                                     </constraints>
-                                    <state key="normal" image="record"/>
+                                    <state key="normal" image="录音"/>
+                                    <state key="selected" image="deleteRecordShow"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,6 +116,7 @@
         </view>
     </objects>
     <resources>
-        <image name="record" width="24" height="24"/>
+        <image name="deleteRecordShow" width="70" height="70"/>
+        <image name="录音" width="70" height="70"/>
     </resources>
 </document>
