@@ -138,6 +138,7 @@
 		EC795DAD1ED6C6C90061C5E1 /* PostedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DAC1ED6C6C90061C5E1 /* PostedListViewController.m */; };
 		EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DAF1ED6D4160061C5E1 /* PostedInfoTableViewCell.m */; };
 		EC795DB21ED6D4160061C5E1 /* PostedInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC795DB01ED6D4160061C5E1 /* PostedInfoTableViewCell.xib */; };
+		EC82F0791EDE73F9001C77C1 /* OutSiderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC82F0781EDE73F9001C77C1 /* OutSiderButton.m */; };
 		EC949D4E1ED43784005FDD04 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9D1ED43784005FDD04 /* city.json */; };
 		EC949D4F1ED43784005FDD04 /* mapconfig.dat in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9E1ED43784005FDD04 /* mapconfig.dat */; };
 		EC949D501ED43784005FDD04 /* National.png in Resources */ = {isa = PBXBuildFile; fileRef = EC949C9F1ED43784005FDD04 /* National.png */; };
@@ -599,6 +600,8 @@
 		EC795DAE1ED6D4160061C5E1 /* PostedInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostedInfoTableViewCell.h; sourceTree = "<group>"; };
 		EC795DAF1ED6D4160061C5E1 /* PostedInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostedInfoTableViewCell.m; sourceTree = "<group>"; };
 		EC795DB01ED6D4160061C5E1 /* PostedInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostedInfoTableViewCell.xib; sourceTree = "<group>"; };
+		EC82F0771EDE73F9001C77C1 /* OutSiderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutSiderButton.h; sourceTree = "<group>"; };
+		EC82F0781EDE73F9001C77C1 /* OutSiderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutSiderButton.m; sourceTree = "<group>"; };
 		EC949C781ED43784005FDD04 /* QAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAnnotation.h; sourceTree = "<group>"; };
 		EC949C791ED43784005FDD04 /* QAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAnnotationView.h; sourceTree = "<group>"; };
 		EC949C7A1ED43784005FDD04 /* QAppKeyCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAppKeyCheck.h; sourceTree = "<group>"; };
@@ -1118,6 +1121,8 @@
 				1853DDA51EDD4EA600A151AB /* MsgListTableViewCell.h */,
 				1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */,
 				1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */,
+				EC82F0771EDE73F9001C77C1 /* OutSiderButton.h */,
+				EC82F0781EDE73F9001C77C1 /* OutSiderButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2356,6 +2361,7 @@
 				18EBDD2C1EDC0521006B0248 /* DHGuidePageHUD.m in Sources */,
 				18EBDD2B1EDC0521006B0248 /* DHGifImageOperation.m in Sources */,
 				189E93371ED1590900DBD4FC /* LoginViewController.m in Sources */,
+				EC82F0791EDE73F9001C77C1 /* OutSiderButton.m in Sources */,
 				18EBDCFB1ED99ED0006B0248 /* NoticeInsideTableViewCell.m in Sources */,
 				EC795D9D1ED681F00061C5E1 /* Info+CoreDataClass.m in Sources */,
 				EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */,

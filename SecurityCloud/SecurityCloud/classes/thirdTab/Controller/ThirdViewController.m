@@ -134,7 +134,7 @@
         }else if ([model.titleStr isEqualToString:@"版本更新"]){
             
         }else if ([model.titleStr isEqualToString:@"关于APP"]){
-            [SVProgressHUD showInfoWithStatus:@"安防云是一款适合所有人使用，并且可以与民警合作的应用"];
+            [SVProgressHUD showInfoWithStatus:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用"];
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
             [self recommand];
         }else if ([model.titleStr isEqualToString:@"退出登录"]){
@@ -162,7 +162,7 @@
         
         //创建网页内容对象
         NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"推荐您使用安防云" descr:@"安防云是一款适合所有人使用，并且可以与民警合作的应用" thumImage:thumbURL];
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"推荐您使用龙防云" descr:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用" thumImage:thumbURL];
         //设置网页地址
         shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@",@"http://cntp31.lysoo.com/guanli/index.php/Admin/yaoqing/zhuceyaoqing/yaoqingid/",UserID];
         
