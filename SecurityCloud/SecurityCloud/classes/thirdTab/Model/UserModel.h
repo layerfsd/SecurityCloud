@@ -20,5 +20,6 @@
 @property (nonatomic,copy) NSString *time;
 @property (nonatomic,copy) NSString *img;
 @property (nonatomic,copy) NSString *imgurl;
+@property (nonatomic,copy) NSString *tj;
 
 @end

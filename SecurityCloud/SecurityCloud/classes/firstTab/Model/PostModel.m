@@ -19,6 +19,7 @@ MJCodingImplementation
 +(NSDictionary *)mj_objectClassInArray {
     return @{
              @"luyinchakan" : @"FileModel",
+             @"banliliucheng" : @"FlowModel",
              };
 }
 
@@ -43,5 +44,14 @@ MJCodingImplementation
         self.imageName = imageName;
     }
     return self;
+}
+@end
+
+@implementation FlowModel
+MJCodingImplementation
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    
+    return @{@"flowID":@"id"};
 }
 @end

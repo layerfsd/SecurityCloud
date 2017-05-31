@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/AdminHanderListViewController.m"
-            timestampString = "517761672.095542"
+            filePath = "SecurityCloud/classes/tools/manager/UserManager.m"
+            timestampString = "517811616.35526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-reloadData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/AdminHanderListViewController.m"
-            timestampString = "517761682.327752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-reloadData:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-archiver"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -23,6 +23,15 @@
 		180290731ED9555D00868BE3 /* BindTelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180290711ED9555D00868BE3 /* BindTelViewController.xib */; };
 		180290771ED9663400868BE3 /* VisitorConfirmPasswardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180290751ED9663400868BE3 /* VisitorConfirmPasswardViewController.m */; };
 		180290781ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180290761ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib */; };
+		1853DDA81EDD4EA600A151AB /* MsgListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */; };
+		1853DDA91EDD4EA600A151AB /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */; };
+		1853DDB01EDD528A00A151AB /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDAE1EDD528A00A151AB /* MsgDetailViewController.m */; };
+		1853DDB11EDD528A00A151AB /* MsgDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDAF1EDD528A00A151AB /* MsgDetailViewController.xib */; };
+		1853DDB41EDD553400A151AB /* MsgCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDB31EDD553400A151AB /* MsgCenterModel.m */; };
+		1853DDB71EDD896600A151AB /* ScoreCountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDB61EDD896600A151AB /* ScoreCountListViewController.m */; };
+		1853DDBA1EDD985000A151AB /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDB91EDD985000A151AB /* RankingViewController.m */; };
+		1853DDBE1EDD995800A151AB /* RankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDBC1EDD995800A151AB /* RankingTableViewCell.m */; };
+		1853DDBF1EDD995800A151AB /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDBD1EDD995800A151AB /* RankingTableViewCell.xib */; };
 		187C25761ED84B88001D9925 /* DetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C25751ED84B88001D9925 /* DetailInfoViewController.m */; };
 		187C257F1ED84E85001D9925 /* LabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C257D1ED84E85001D9925 /* LabelTableViewCell.m */; };
 		187C25801ED84E85001D9925 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187C257E1ED84E85001D9925 /* LabelTableViewCell.xib */; };
@@ -383,6 +392,21 @@
 		180290741ED9663400868BE3 /* VisitorConfirmPasswardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorConfirmPasswardViewController.h; sourceTree = "<group>"; };
 		180290751ED9663400868BE3 /* VisitorConfirmPasswardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorConfirmPasswardViewController.m; sourceTree = "<group>"; };
 		180290761ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorConfirmPasswardViewController.xib; sourceTree = "<group>"; };
+		1853DDA51EDD4EA600A151AB /* MsgListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListTableViewCell.h; sourceTree = "<group>"; };
+		1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListTableViewCell.m; sourceTree = "<group>"; };
+		1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
+		1853DDAD1EDD528A00A151AB /* MsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailViewController.h; sourceTree = "<group>"; };
+		1853DDAE1EDD528A00A151AB /* MsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDetailViewController.m; sourceTree = "<group>"; };
+		1853DDAF1EDD528A00A151AB /* MsgDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgDetailViewController.xib; sourceTree = "<group>"; };
+		1853DDB21EDD553400A151AB /* MsgCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgCenterModel.h; sourceTree = "<group>"; };
+		1853DDB31EDD553400A151AB /* MsgCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgCenterModel.m; sourceTree = "<group>"; };
+		1853DDB51EDD896600A151AB /* ScoreCountListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCountListViewController.h; sourceTree = "<group>"; };
+		1853DDB61EDD896600A151AB /* ScoreCountListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCountListViewController.m; sourceTree = "<group>"; };
+		1853DDB81EDD985000A151AB /* RankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingViewController.h; sourceTree = "<group>"; };
+		1853DDB91EDD985000A151AB /* RankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingViewController.m; sourceTree = "<group>"; };
+		1853DDBB1EDD995800A151AB /* RankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingTableViewCell.h; sourceTree = "<group>"; };
+		1853DDBC1EDD995800A151AB /* RankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingTableViewCell.m; sourceTree = "<group>"; };
+		1853DDBD1EDD995800A151AB /* RankingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
 		187C25741ED84B88001D9925 /* DetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfoViewController.h; sourceTree = "<group>"; };
 		187C25751ED84B88001D9925 /* DetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfoViewController.m; sourceTree = "<group>"; };
 		187C257C1ED84E85001D9925 /* LabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelTableViewCell.h; sourceTree = "<group>"; };
@@ -1048,6 +1072,9 @@
 				18EBDD331EDC3D12006B0248 /* AdoptedListViewController.m */,
 				18EBDD351EDC3D20006B0248 /* MsgListViewController.h */,
 				18EBDD361EDC3D20006B0248 /* MsgListViewController.m */,
+				1853DDAD1EDD528A00A151AB /* MsgDetailViewController.h */,
+				1853DDAE1EDD528A00A151AB /* MsgDetailViewController.m */,
+				1853DDAF1EDD528A00A151AB /* MsgDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1088,6 +1115,9 @@
 				18EBDD381EDC551C006B0248 /* HanderMsgView.h */,
 				18EBDD391EDC551C006B0248 /* HanderMsgView.m */,
 				18EBDD3B1EDC5624006B0248 /* HanderMsgView.xib */,
+				1853DDA51EDD4EA600A151AB /* MsgListTableViewCell.h */,
+				1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */,
+				1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1195,6 +1225,10 @@
 				EC3A74941ED983BF00201A1E /* TextFieldViewController.h */,
 				EC3A74951ED983BF00201A1E /* TextFieldViewController.m */,
 				EC3A74961ED983BF00201A1E /* TextFieldViewController.xib */,
+				1853DDB51EDD896600A151AB /* ScoreCountListViewController.h */,
+				1853DDB61EDD896600A151AB /* ScoreCountListViewController.m */,
+				1853DDB81EDD985000A151AB /* RankingViewController.h */,
+				1853DDB91EDD985000A151AB /* RankingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1237,6 +1271,9 @@
 				18EBDD201EDB2674006B0248 /* TagHeaderCollectionReusableView.h */,
 				18EBDD211EDB2674006B0248 /* TagHeaderCollectionReusableView.m */,
 				18EBDD221EDB2674006B0248 /* TagHeaderCollectionReusableView.xib */,
+				1853DDBB1EDD995800A151AB /* RankingTableViewCell.h */,
+				1853DDBC1EDD995800A151AB /* RankingTableViewCell.m */,
+				1853DDBD1EDD995800A151AB /* RankingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1725,6 +1762,8 @@
 				ECAC59101ED2B6B500628E85 /* PostModel.m */,
 				187C25811ED84F4D001D9925 /* InfoDetailCellModel.h */,
 				187C25821ED84F4D001D9925 /* InfoDetailCellModel.m */,
+				1853DDB21EDD553400A151AB /* MsgCenterModel.h */,
+				1853DDB31EDD553400A151AB /* MsgCenterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1873,6 +1912,7 @@
 				EC949D7D1ED43784005FDD04 /* LocationHaloSmall.png in Resources */,
 				EC949DEF1ED43784005FDD04 /* navi_info_speed_90@2x.png in Resources */,
 				EC949DB51ED43784005FDD04 /* navi_icon_keep_on_right@2x.png in Resources */,
+				1853DDB11EDD528A00A151AB /* MsgDetailViewController.xib in Resources */,
 				187C25C01ED88131001D9925 /* LableOnlyTableViewCell.xib in Resources */,
 				EC949D531ED43784005FDD04 /* NationalHighway_Satellite.png in Resources */,
 				EC949DF11ED43784005FDD04 /* navi_info_toll@2x.png in Resources */,
@@ -1939,6 +1979,7 @@
 				EC949D8C1ED43784005FDD04 /* navi_icon_back@3x.png in Resources */,
 				EC949DAE1ED43784005FDD04 /* navi_icon_island_8@3x.png in Resources */,
 				EC949DB41ED43784005FDD04 /* navi_icon_keep_on_left@3x.png in Resources */,
+				1853DDA91EDD4EA600A151AB /* MsgListTableViewCell.xib in Resources */,
 				EC949D861ED43784005FDD04 /* pin_red@2x.png in Resources */,
 				EC949DA31ED43784005FDD04 /* navi_icon_island_3@2x.png in Resources */,
 				EC949D7B1ED43784005FDD04 /* LocationHalo.png in Resources */,
@@ -1996,6 +2037,7 @@
 				187C25B61ED88027001D9925 /* LabelLabelTableViewCell.xib in Resources */,
 				EC949DAB1ED43784005FDD04 /* navi_icon_island_7@2x.png in Resources */,
 				18EBDCFC1ED99ED0006B0248 /* NoticeInsideTableViewCell.xib in Resources */,
+				1853DDBF1EDD995800A151AB /* RankingTableViewCell.xib in Resources */,
 				EC949D591ED43784005FDD04 /* Province.png in Resources */,
 				EC949DA51ED43784005FDD04 /* navi_icon_island_4@2x.png in Resources */,
 				EC949D501ED43784005FDD04 /* National.png in Resources */,
@@ -2229,10 +2271,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECAC59241ED2C12A00628E85 /* CirclePostMessageCollectionViewCell.m in Sources */,
+				1853DDB01EDD528A00A151AB /* MsgDetailViewController.m in Sources */,
 				180290541ED916C100868BE3 /* UIView+SDExtension.m in Sources */,
 				180290501ED916C100868BE3 /* TADotView.m in Sources */,
 				189E934A1ED166F900DBD4FC /* UserManager.m in Sources */,
 				189E93401ED1590900DBD4FC /* main.m in Sources */,
+				1853DDB71EDD896600A151AB /* ScoreCountListViewController.m in Sources */,
 				187C25761ED84B88001D9925 /* DetailInfoViewController.m in Sources */,
 				ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */,
 				18EBDD0D1EDADDEC006B0248 /* RxWebViewController.m in Sources */,
@@ -2246,11 +2290,13 @@
 				18EBDD341EDC3D12006B0248 /* AdoptedListViewController.m in Sources */,
 				EC795DAD1ED6C6C90061C5E1 /* PostedListViewController.m in Sources */,
 				187C25BF1ED88131001D9925 /* LableOnlyTableViewCell.m in Sources */,
+				1853DDBE1EDD995800A151AB /* RankingTableViewCell.m in Sources */,
 				18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */,
 				187C25BA1ED880AC001D9925 /* LabelLitterImageTableViewCell.m in Sources */,
 				187C25831ED84F4D001D9925 /* InfoDetailCellModel.m in Sources */,
 				ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */,
 				EC79374C1ED7C4550038123D /* LBXScanNetAnimation.m in Sources */,
+				1853DDBA1EDD985000A151AB /* RankingViewController.m in Sources */,
 				1802904F1ED916C100868BE3 /* TAAnimatedDotView.m in Sources */,
 				EC795D911ED6705D0061C5E1 /* DraftBoxTableViewCell.m in Sources */,
 				189E933C1ED1590900DBD4FC /* BaseTabBarController.m in Sources */,
@@ -2259,6 +2305,7 @@
 				EC795D8A1ED66F080061C5E1 /* CoreDataHelper.m in Sources */,
 				189E933D1ED1590900DBD4FC /* BaseViewController.m in Sources */,
 				189E93351ED1590900DBD4FC /* FirstViewController.m in Sources */,
+				1853DDA81EDD4EA600A151AB /* MsgListTableViewCell.m in Sources */,
 				187C25961ED86334001D9925 /* AdoptedTableViewCell.m in Sources */,
 				180290511ED916C100868BE3 /* TAPageControl.m in Sources */,
 				189E933B1ED1590900DBD4FC /* BaseNavigationController.m in Sources */,
@@ -2314,6 +2361,7 @@
 				EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */,
 				180290771ED9663400868BE3 /* VisitorConfirmPasswardViewController.m in Sources */,
 				EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */,
+				1853DDB41EDD553400A151AB /* MsgCenterModel.m in Sources */,
 				187C25911ED854DC001D9925 /* ImageCollectionViewCell.m in Sources */,
 				180290651ED928F300868BE3 /* TopNoticeTableViewCell.m in Sources */,
 				180290721ED9555D00868BE3 /* BindTelViewController.m in Sources */,
@@ -2470,6 +2518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SecurityCloud/SecurityCloud.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = BMABF63882;
 				ENABLE_BITCODE = NO;
@@ -2479,6 +2528,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SecurityCloud/classes/other/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SecurityCloud/classes/other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2545,6 +2595,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SecurityCloud/SecurityCloud.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = BMABF63882;
 				ENABLE_BITCODE = NO;
@@ -2554,6 +2605,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SecurityCloud/classes/other/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/SecurityCloud/classes/other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

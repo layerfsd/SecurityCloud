@@ -16,6 +16,8 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
+
+#import "MsgListViewController.h"
 @interface AppDelegate ()<QAppKeyCheckDelegate,TencentLBSLocationManagerDelegate,JPUSHRegisterDelegate>
 @property (strong, nonatomic) TencentLBSLocationManager *locationManager;
 @end
@@ -29,15 +31,7 @@
     [self.keyCheck start:@"BIIBZ-EOBAS-6CFOT-624LR-G7N3K-Q3BHD" withDelegate:self];
    
     
-    UserManager *user = [UserManager unArchiver];
-    
-    if (user) {
-        
-        //有帐户 直接登录
-        [user goToMain];
-    }else{
-        [[UserManager new] goToLogin];
-    }
+   
     [self.window makeKeyAndVisible];
     
     [self appVersion];
@@ -45,10 +39,10 @@
     [self configLocationManager];
     
     [self APNs];
+    
     [JPUSHService setupWithOption:launchOptions appKey:@"af55afec821a3f02ad0013c3"
                           channel:@""
-                 apsForProduction:NO
-            advertisingIdentifier:@""];
+                 apsForProduction:NO];
     
     /* 打开调试日志 */
     [[UMSocialManager defaultManager] openLog:YES];
@@ -60,6 +54,20 @@
     
     [self configUSharePlatforms];
     
+    
+    UserManager *user = [UserManager unArchiver];
+    
+    if (user) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [JPUSHService setTags:nil alias:UserID fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                NSLog(@"%d-------------%@,-------------%@",iResCode,iTags,iAlias);
+            }];
+        });
+        //有帐户 直接登录
+        [user goToMain];
+    }else{
+        [[UserManager new] goToLogin];
+    }
     return YES;
 }
 
@@ -123,9 +131,9 @@
         //第一次进入 或者 升级后第一次进入
         [[NSUserDefaults standardUserDefaults] setObject:app_version forKey:@"save_version"];
         [[NSUserDefaults standardUserDefaults]synchronize]; //确保数据操作同步执行
-        NSArray *imageArray = @[@"完成",@"完成",@"完成",@"完成",@"完成"];
-        DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:self.window.frame imageNameArray:imageArray buttonIsHidden:NO];
-        [self.window addSubview:guidePage];
+//        NSArray *imageArray = @[@"完成",@"完成",@"完成",@"完成",@"完成"];
+//        DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:self.window.frame imageNameArray:imageArray buttonIsHidden:NO];
+//        [self.window addSubview:guidePage];
     }
 }
 
@@ -144,6 +152,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [application setApplicationIconBadgeNumber:0];   //清除角标
+    [application cancelAllLocalNotifications];
 }
 
 
@@ -202,9 +212,21 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
+    [self goToMsgVc:userInfo];
 }
 
-
+-(void)goToMsgVc:(NSDictionary*)msgDic{
+    NSUserDefaults *pushJudge = [NSUserDefaults standardUserDefaults];
+    [pushJudge setObject:@"push"forKey:@"push"];
+    [pushJudge synchronize];
+    NSString * targetStr = [msgDic objectForKey:@"target"];
+    if ([targetStr isEqualToString:@"notice"]) {
+        MsgListViewController * VC = [[MsgListViewController alloc]init];
+        UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:VC];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
+        [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+        
+    }
+}
 
 // 这是QAppKeyCheckDelegate提供的key验证回调，用于检查传入的key值是否合法
 -(void)notifyAppKeyCheckResult:(QErrorCode)errCode

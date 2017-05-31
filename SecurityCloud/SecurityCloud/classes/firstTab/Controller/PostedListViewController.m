@@ -113,8 +113,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //详情
+    PostModel *model = _infos[indexPath.row];
     DetailInfoViewController *vc = [[DetailInfoViewController alloc] init];
-    vc.model = _infos[indexPath.row];
+    vc.qingbaoid = model.ID;
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(UITableView *)tableView {

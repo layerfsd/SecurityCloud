@@ -17,6 +17,8 @@
 @interface DetailInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray<NSArray<InfoDetailCellModel*>*> *models;
+
+@property (nonatomic,strong) PostModel *model;
 @end
 
 @implementation DetailInfoViewController
@@ -24,13 +26,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"情报详情";
-    [self initData];
+    
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    [self statusHander];
-    [self setNaviItem];
+   
+    
+    [self loadDataFromServer];
+}
+
+-(void)loadDataFromServer {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+   
+    [parameters setValue:_qingbaoid forKey:@"id"];
+    [HttpTool post:@"/qingbaochakan.html" parameters:parameters success:^(id responseObject) {
+       
+        self.model = [PostModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self statusHander];
+        [self setNaviItem];
+        [self initData];
+        [self.tableView reloadData];
+        
+     
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)statusHander {
@@ -52,7 +74,7 @@
 
 -(void)setNaviItem {
     NSInteger status = [self.model.zhuangtai integerValue];
-    if (status <= 4) {
+    if (status <= 4 && [UserManager sharedManager].admin != nil) {
          self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"处理" style:UIBarButtonItemStylePlain target:self action:@selector(hander)];
     }
    
@@ -83,26 +105,34 @@
     [self.view addSubview:handView];
 }
 
+
+
 -(void)initData {
-    InfoDetailCellModel *model0 = [[InfoDetailCellModel alloc] initWithTitle:@"情报级别:" showValue:_model.jibie cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model1 = [[InfoDetailCellModel alloc] initWithTitle:@"情报类别:" showValue:_model.leibie cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model2 = [[InfoDetailCellModel alloc] initWithTitle:@"关键字:" showValue:_model.guanjianzi cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model3 = [[InfoDetailCellModel alloc] initWithTitle:@"发布时间:" showValue:_model.time cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model4 = [[InfoDetailCellModel alloc] initWithTitle:@"情报内容:" showValue:_model.neirong cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model5 = [[InfoDetailCellModel alloc] initWithTitle:@"情报录音:" showValue:_model.luyinchakan.firstObject.url cellType:CustomCellTypeButton];
+    InfoDetailCellModel *model0 = [[InfoDetailCellModel alloc] initWithTitle:@"情报级别:" showValue:self.model.jibie cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model1 = [[InfoDetailCellModel alloc] initWithTitle:@"情报类别:" showValue:self.model.leibie cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model2 = [[InfoDetailCellModel alloc] initWithTitle:@"关键字:" showValue:self.model.guanjianzi cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model3 = [[InfoDetailCellModel alloc] initWithTitle:@"发布时间:" showValue:self.model.time cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model4 = [[InfoDetailCellModel alloc] initWithTitle:@"情报内容:" showValue:self.model.neirong cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model5 = [[InfoDetailCellModel alloc] initWithTitle:@"情报录音:" showValue:self.model.luyinchakan.firstObject.url cellType:CustomCellTypeButton];
     NSMutableArray *imgurls = [NSMutableArray array];
-    for (FileModel *model in _model.imgchakan) {
+    for (FileModel *model in self.model.imgchakan) {
         [imgurls addObject:model.url];
     }
     InfoDetailCellModel *model6 = [[InfoDetailCellModel alloc] initWithTitle:@"情报图片:" showValue:imgurls cellType:CustomCellTypeImages];
     [self.models addObject:@[model0,model1,model2,model3,model4,model5,model6]];
     
-    NSInteger status = [self.model.zhuangtai integerValue];
-    if (status >= 5) {
+//    NSInteger status = [self.model.zhuangtai integerValue];
+    if (self.model.banliliucheng.count > 0) {
         //已处理的
-        InfoDetailCellModel *model7 = [[InfoDetailCellModel alloc] initWithTitle:@"盐都公安局查看了您的上报，已处理。" showValue:@"积分：1" cellType:CustomCellTypeAdopted];
-        model7.moreValue = @"2017-6-2";
-        [self.models addObject:@[model7]];
+        NSMutableArray *flows = [NSMutableArray array];
+        for (FlowModel *flowModel in self.model.banliliucheng) {
+            NSString *flowTitleStr = [NSString stringWithFormat:@"%@ 查看了情报，目前状态：%@",flowModel.name,flowModel.qingbaozhuangtai];
+            InfoDetailCellModel *item = [[InfoDetailCellModel alloc] initWithTitle:flowTitleStr showValue: [NSString stringWithFormat:@"积分：%@分",flowModel.jifen] cellType:CustomCellTypeAdopted];
+            item.moreValue = flowModel.time;
+            [flows addObject:item];
+        }
+       
+        [self.models addObject:flows];
     }
     
 }

@@ -108,6 +108,10 @@
                 [SVProgressHUD showErrorWithStatus:@"文件丢失"];
                 return;
             }
+            AVAudioSession *session =[AVAudioSession sharedInstance];
+            NSError *sessionError;
+            [session setCategory:AVAudioSessionCategoryPlayback error:&sessionError];
+
             NSError *playerError ;
             _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.filePath] error:&playerError];
             _player.delegate = self;

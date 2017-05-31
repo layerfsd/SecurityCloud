@@ -25,9 +25,11 @@
 #define MyDetailViewControllerReload @"MyDetailViewControllerReload"
 #define AdminHanderListViewControllerReload @"AdminHanderListViewControllerReload"
 
+#define MsgListViewControllerReload @"MsgListViewControllerReload"
+
 //webView
 #define webUrl @"http://cntp31.lysoo.com/guanli/index.php/admin/zxgl/zixunweburl/id/"
-#define advertiseUrl @""
+#define advertiseUrl @"http://cntp31.lysoo.com/guanli/index.php/Admin/yaoqing/zhuceyaoqing/yaoqingid/"
 
 //const
 #define cellNum 10

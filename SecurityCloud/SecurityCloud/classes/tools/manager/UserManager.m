@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import "LoginNavigationController.h"
+#import "JPUSHService.h"
 @implementation UserManager
 
 
@@ -52,6 +53,11 @@ MJCodingImplementation
     BOOL result = [data writeToFile:path atomically:YES];
     
     if (result) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [JPUSHService setTags:nil alias:UserID fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                NSLog(@"%d-------------%@,-------------%@",iResCode,iTags,iAlias);
+            }];
+        });
         NSLog(@"归档成功:%@",path);
     }else
     {
@@ -76,7 +82,7 @@ MJCodingImplementation
     
     //解档完需要初始化单例
     [[UserManager sharedManager] initShare:user];
-    
+    [JPUSHService setAlias:UserID callbackSelector:nil object:self];
     return user;
 }
 

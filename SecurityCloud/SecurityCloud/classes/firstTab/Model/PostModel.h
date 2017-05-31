@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class FileModel;
+@class FlowModel;
 @interface PostModel : NSObject
 
 @property (nonatomic, copy) NSString *biaoti;
@@ -36,6 +37,8 @@
 @property (nonatomic, copy) NSString *neirongchakan;
 @property (nonatomic, copy) NSString *guanjianzichakan;
 
+@property (nonatomic, strong) NSArray<FlowModel*> *banliliucheng;
+
 
 @end
 
@@ -54,5 +57,20 @@
 @property (nonatomic, copy) NSString *imageName;
 
 
+
 -(instancetype)initWithImage:(UIImage*)image imageName:(NSString*)imageName;
+@end
+
+@interface FlowModel : NSObject
+@property (nonatomic, copy) NSString *numrow;
+@property (nonatomic, copy) NSString *qingbaozhuangtai;
+@property (nonatomic, copy) NSString *time;
+@property (nonatomic, copy) NSString *flowID;
+@property (nonatomic, copy) NSString *neirong;
+@property (nonatomic, copy) NSString *jifen;
+@property (nonatomic, copy) NSString *zhuangtai;
+@property (nonatomic, copy) NSString *tel;
+@property (nonatomic, copy) NSString *name;
+
+
 @end

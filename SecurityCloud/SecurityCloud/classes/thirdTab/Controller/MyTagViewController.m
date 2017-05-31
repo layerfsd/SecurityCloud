@@ -56,8 +56,12 @@
     [self loadAllTags];
 }
 -(void)loadAllTags{
-    //所有标签
-    NSDictionary *parameters = @{@"page":@"0",@"fenyeshu":@"100"};
+    //所有标签 yonghuid
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:@(0) forKey:@"page"];
+    [parameters setValue:@(100) forKey:@"fenyeshu"];
+    [parameters setValue:UserID forKey:@"yonghuid"];
+  
     [HttpTool post:@"/biaoqiancha.html" parameters:parameters success:^(id responseObject) {
         NSArray *count = responseObject[@"count"];
         NSMutableArray *labels = [UserLabel mj_objectArrayWithKeyValuesArray:count];

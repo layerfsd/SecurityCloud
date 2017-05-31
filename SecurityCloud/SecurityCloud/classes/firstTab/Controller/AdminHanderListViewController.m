@@ -60,6 +60,7 @@
     [parameters setValue:[UserManager sharedManager].admin.userID forKey:@"adminid"];
     [parameters setValue:@(_page) forKey:@"page"];
     [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
+    [parameters setValue:@"3,4" forKey:@"zhuangtai"];
     [HttpTool post:@"/qingbaoshouliliebiao.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.models removeAllObjects];
@@ -106,8 +107,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //详情
+    PostModel *model = _models[indexPath.row];
     DetailInfoViewController *vc = [[DetailInfoViewController alloc] init];
-    vc.model = _models[indexPath.row];
+    vc.qingbaoid = model.ID;
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(UITableView *)tableView {

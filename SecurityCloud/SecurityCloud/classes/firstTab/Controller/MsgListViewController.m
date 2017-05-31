@@ -8,16 +8,17 @@
 
 #import "MsgListViewController.h"
 #import "PostModel.h"
-#import "PostedInfoTableViewCell.h"
+#import "MsgListTableViewCell.h"
 #import "DetailInfoViewController.h"
-
+#import "MsgCenterModel.h"
+#import "MsgDetailViewController.h"
 #define scanW 45
 #define scanH 35
 
 @interface MsgListViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) UITableView *tableView;
 
-@property (nonatomic,strong) NSMutableArray<PostModel*> *models;
+@property (nonatomic,strong) NSMutableArray<MsgCenterModel*> *models;
 
 @property (nonatomic,assign) NSInteger page;
 @end
@@ -38,7 +39,26 @@
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self loadMore];
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:PostedListViewControllerNotificationString object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:MsgListViewControllerReload object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillAppear:YES];
+    NSUserDefaults*pushJudge = [NSUserDefaults standardUserDefaults];
+    if([[pushJudge objectForKey:@"push"]isEqualToString:@"push"]) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(rebackToRootViewAction)];
+        
+       
+    }else{
+        self.navigationItem.leftBarButtonItem=nil;
+    }
+}
+- (void)rebackToRootViewAction {
+    NSUserDefaults * pushJudge = [NSUserDefaults standardUserDefaults];
+    [pushJudge setObject:@""forKey:@"push"];
+    [pushJudge synchronize];//记得立即同步
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)reloadData:(NSNotification*)noti {
@@ -64,11 +84,11 @@
     [parameters setValue:UserID forKey:@"yonghuid"];
     [parameters setValue:@(_page) forKey:@"page"];
     [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
-    [HttpTool post:@"/qingbaoliebiao.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/xinxizhongxin.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.models removeAllObjects];
         }
-        NSMutableArray<PostModel*> *list =  [PostModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSMutableArray<MsgCenterModel*> *list =  [MsgCenterModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         
         [self.models addObjectsFromArray:list];
         
@@ -100,19 +120,30 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostedInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostedInfoTableViewCell"];
+    MsgListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MsgListTableViewCell"];
     if (cell == nil) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"PostedInfoTableViewCell" owner:nil options:nil].firstObject;
+        cell = [[NSBundle mainBundle] loadNibNamed:@"MsgListTableViewCell" owner:nil options:nil].firstObject;
     }
     cell.model = _models[indexPath.row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MsgCenterModel *model = self.models[indexPath.row];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:model.msgID forKey:@"id"];
+    [parameters setValue:UserID forKey:@"yonghuid"];
+    [HttpTool post:@"/xinxizhongxinxiangqing.html" parameters:parameters success:^(id responseObject) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MsgListViewControllerReload object:nil];
+        MsgCenterModel *modelDetail = [MsgCenterModel mj_objectWithKeyValues:responseObject[@"data"][0]];
+        MsgDetailViewController *vc = [MsgDetailViewController new];
+        vc.contentStr = modelDetail.neirong;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
     
-    DetailInfoViewController *vc = [[DetailInfoViewController alloc] init];
-    vc.model = _models[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 -(UITableView *)tableView {
     if (_tableView == nil) {
@@ -125,7 +156,7 @@
     return _tableView;
 }
 
--(NSMutableArray<PostModel *> *)models {
+-(NSMutableArray<MsgCenterModel *> *)models {
     if (_models == nil) {
         _models = [NSMutableArray array];
     }

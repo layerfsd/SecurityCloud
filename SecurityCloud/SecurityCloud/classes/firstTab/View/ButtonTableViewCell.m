@@ -49,6 +49,9 @@
     [audioData writeToFile:filePath atomically:YES];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     
+    AVAudioSession *session =[AVAudioSession sharedInstance];
+    NSError *sessionError;
+    [session setCategory:AVAudioSessionCategoryPlayback error:&sessionError];
     NSError *playerError ;
     _player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:&playerError];
     _player.delegate = self;

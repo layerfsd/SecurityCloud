@@ -14,6 +14,9 @@
 #import "MyQRCodeViewController.h"
 #import "MyDetailViewController.h"
 #import "MyTagViewController.h"
+#import "ScoreCountListViewController.h"
+#import <UShareUI/UShareUI.h>
+#import "RankingViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,7 +49,7 @@
                           [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"]];
     
     NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@"积分排行"],
-                          [MeCellData initWithTitle:@"版本更新" imageName:@"版本更新"],
+                          /*[MeCellData initWithTitle:@"版本更新" imageName:@"版本更新"],*/
                           [MeCellData initWithTitle:@"关于APP" imageName:@"关于APP"],
                           [MeCellData initWithTitle:@"推荐给好友" imageName:@"推荐给好友"],
                           [MeCellData initWithTitle:@"退出登录" imageName:@"退出"]];
@@ -123,15 +126,17 @@
         }else if ([model.titleStr isEqualToString:@"我的标签"]){
             
         }else if ([model.titleStr isEqualToString:@"积分统计"]){
-            
+            ScoreCountListViewController *vc = [ScoreCountListViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"积分排行"]){
-            
+            RankingViewController *vc = [RankingViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"版本更新"]){
             
         }else if ([model.titleStr isEqualToString:@"关于APP"]){
-            
+            [SVProgressHUD showInfoWithStatus:@"安防云是一款适合所有人使用，并且可以与民警合作的应用"];
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
-            
+            [self recommand];
         }else if ([model.titleStr isEqualToString:@"退出登录"]){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -147,6 +152,43 @@
         }
     }
     
+}
+
+-(void)recommand {
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
+    
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"推荐您使用安防云" descr:@"安防云是一款适合所有人使用，并且可以与民警合作的应用" thumImage:thumbURL];
+        //设置网页地址
+        shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@",@"http://cntp31.lysoo.com/guanli/index.php/Admin/yaoqing/zhuceyaoqing/yaoqingid/",UserID];
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            if (error) {
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            }else{
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    UMSocialLogInfo(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                }else{
+                    UMSocialLogInfo(@"response data is %@",data);
+                }
+            }
+            [SVProgressHUD showErrorWithStatus:error.localizedFailureReason];
+        }];
+    }];
+
 }
 
 -(void)QRClicked {
