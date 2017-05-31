@@ -15,7 +15,7 @@
     [super drawRect:rect];
     UIColor *color = [UIColor colorWithRed:61.0/255 green:206.0/255 blue:243.0/255 alpha:1];
 
-    NSInteger pulsingCount = 5;
+    NSInteger pulsingCount = 3;
     double animationDuration = 8;
     CALayer * animationLayer = [CALayer layer];
     for (int i = 0; i < pulsingCount; i++) {

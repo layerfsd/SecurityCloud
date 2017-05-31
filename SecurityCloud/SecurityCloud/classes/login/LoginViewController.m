@@ -62,6 +62,7 @@
             //登录成功
             UserManager *um = [UserManager mj_objectWithKeyValues:responseObject[@"data"]];
             [um archiver];
+            [UserManager setTelNum:_userNameLabel.text];
             [um goToMain];
         }else{
             

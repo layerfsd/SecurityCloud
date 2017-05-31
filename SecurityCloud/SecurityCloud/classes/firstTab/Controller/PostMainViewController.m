@@ -62,7 +62,7 @@
 
 - (IBAction)operationAction:(UIButton *)sender {
     //开启录音组件
-    
+    [self.view endEditing:YES];
     if (sender.selected) {
         //删除
 //        [self deleteFile:self.filePath];
@@ -97,7 +97,7 @@
 }
 
 - (IBAction)showAction:(UIButton *)sender {
-  
+    [self.view endEditing:YES];
     if (self.filePath) {
         if ([self.player isPlaying]) {
            
@@ -334,13 +334,13 @@
     }];
     _topVIew.layer.cornerRadius = 5;
     _topVIew.layer.masksToBounds = YES;
-    _topVIew.layer.borderWidth = 0.6;
-    _topVIew.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//    _topVIew.layer.borderWidth = 0.6;
+//    _topVIew.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     _recordView.layer.cornerRadius = 5;
     _recordView.layer.masksToBounds = YES;
-    _recordView.layer.borderWidth = 0.6;
-    _recordView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//    _recordView.layer.borderWidth = 0.6;
+//    _recordView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     _flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth);
     _collectionView.backgroundColor = [UIColor whiteColor];
@@ -378,6 +378,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
     if (indexPath.item == 0) {
         //添加图片
         

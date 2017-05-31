@@ -181,23 +181,34 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 #pragma mark- JPUSHRegisterDelegate
 
-// iOS 10 Support
+// iOS 10 Support 在前台
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"有新消息，立即查看？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+          [self goToMsgVc:userInfo];
+    }];
+    [alert addAction:cancel];
+    [alert addAction:sure];
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    
+  
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
-// iOS 10 Support
+// iOS 10 Support 在后台
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
+    [self goToMsgVc:userInfo];
     completionHandler();  // 系统要求执行这个方法
 }
 
@@ -205,6 +216,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
+    [self goToMsgVc:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -219,13 +231,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSUserDefaults *pushJudge = [NSUserDefaults standardUserDefaults];
     [pushJudge setObject:@"push"forKey:@"push"];
     [pushJudge synchronize];
-    NSString * targetStr = [msgDic objectForKey:@"target"];
-    if ([targetStr isEqualToString:@"notice"]) {
+//    NSString * targetStr = [msgDic objectForKey:@"target"];
+//    if ([targetStr isEqualToString:@"notice"]) {
         MsgListViewController * VC = [[MsgListViewController alloc]init];
         UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:VC];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
         [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
         
-    }
+//    }
 }
 
 // 这是QAppKeyCheckDelegate提供的key验证回调，用于检查传入的key值是否合法

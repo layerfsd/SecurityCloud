@@ -71,7 +71,7 @@
     
     FirstTabCellModel *model2 = [[FirstTabCellModel alloc] initWithTitle:@"被采用" image:@"被采用"];
     
-    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"信息中心" image:@"信息中心"];
+    FirstTabCellModel *model3 = [[FirstTabCellModel alloc] initWithTitle:@"消息中心" image:@"信息中心"];
     
     FirstTabCellModel *model4 = [[FirstTabCellModel alloc] initWithTitle:@"待处理" image:@"待处理"];
     

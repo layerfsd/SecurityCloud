@@ -18,6 +18,7 @@
 #import "PersonImageViewController.h"
 #import "TextFieldViewController.h"
 #import "ScanQRViewController.h"
+#import "ChangePasswordViewController.h"
 @interface MyDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -66,7 +67,7 @@
     
     PersonDetailCellModel *model3 = [[PersonDetailCellModel alloc] initWithTitle:@"手机绑定" showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
     
-    
+    PersonDetailCellModel *model4 = [[PersonDetailCellModel alloc] initWithTitle:@"修改密码" showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
     
     
    
@@ -74,10 +75,10 @@
     if (_model.admin == nil) {
         //群众 无上线
         NSString *str = _model.shangxian == nil ? @"上线: 暂无上线":[NSString stringWithFormat:@"上线:%@",_model.shangxian.name];
-        PersonDetailCellModel *model4 = [[PersonDetailCellModel alloc] initWithTitle:str showValue:_model.admin.userID cellType:CustomPersonCellTypeLabelLitterImage];
-        [self.models addObject:@[model1,model2,model3,model4]];
+        PersonDetailCellModel *model5 = [[PersonDetailCellModel alloc] initWithTitle:str showValue:_model.admin.userID cellType:CustomPersonCellTypeLabelLitterImage];
+        [self.models addObject:@[model1,model2,model3,model4,model5]];
     }else{
-        [self.models addObject:@[model1,model2,model3]];
+        [self.models addObject:@[model1,model2,model3,model4]];
     }
     
     
@@ -193,8 +194,15 @@
         //手机绑定
         BindTelViewController *vc = [[BindTelViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 3){
+        if ([UserManager sharedManager].password == nil || [NSString isEmpty:[UserManager sharedManager].password]) {
+            [SVProgressHUD showInfoWithStatus:@"游客无密码，无法修改"];
+            return;
+        }
+        ChangePasswordViewController *vc = [ChangePasswordViewController  new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
-         //扫一扫
+        //扫一扫
         ScanQRViewController *vc = [[ScanQRViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }

@@ -10,7 +10,8 @@
 #import "Info+CoreDataClass.h"
 @implementation CoreDataHelper
 +(NSArray *)getInfos {
-    NSArray *sortedInfos = [Info MR_findAllSortedBy:@"creatTime" ascending:YES];
+    
+    NSArray *sortedInfos = [Info MR_findByAttribute:@"userID" withValue:UserID andOrderBy:@"creatTime" ascending:YES];
     return sortedInfos;
 }
 

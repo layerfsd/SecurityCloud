@@ -17,6 +17,7 @@
 #import "ScoreCountListViewController.h"
 #import <UShareUI/UShareUI.h>
 #import "RankingViewController.h"
+#import "MsgListViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,7 +47,8 @@
 
 -(void)initDatas {
     NSArray *section0 = @[[MeCellData initWithTitle:@"我的标签" imageName:@"我的标签"],
-                          [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"]];
+                          [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"],
+                          [MeCellData initWithTitle:@"消息中心" imageName:@"消息中心"]];
     
     NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@"积分排行"],
                           /*[MeCellData initWithTitle:@"版本更新" imageName:@"版本更新"],*/
@@ -131,8 +133,9 @@
         }else if ([model.titleStr isEqualToString:@"积分排行"]){
             RankingViewController *vc = [RankingViewController new];
             [self.navigationController pushViewController:vc animated:YES];
-        }else if ([model.titleStr isEqualToString:@"版本更新"]){
-            
+        }else if ([model.titleStr isEqualToString:@"消息中心"]){
+            MsgListViewController *vc = [MsgListViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"关于APP"]){
             [SVProgressHUD showInfoWithStatus:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用"];
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
