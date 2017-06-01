@@ -473,8 +473,9 @@
         PostImageModel *model = [[PostImageModel alloc] initWithImage:avatar imageName:dateStr];
         
         [self.images addObject:model];
+        [self collectionViewLayout];
     }];
-    [self collectionViewLayout];
+    
 }
 
 -(void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {

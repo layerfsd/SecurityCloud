@@ -52,6 +52,7 @@
     [parameters setValue:[Md5Util encryptMD5:_passwordTextField.text] forKey:@"password"];
     [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
+        [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
         [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         [UserManager setTelNum:_phoneTextField.text];
         [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];

@@ -64,8 +64,8 @@
     PersonDetailCellModel *model0 = [[PersonDetailCellModel alloc] initWithTitle:@"头像" showValue:_model.imgurl cellType:CustomPersonCellTypeLabelImage];
     PersonDetailCellModel *model1 = [[PersonDetailCellModel alloc] initWithTitle:@"昵称" showValue:_model.name cellType:CustomPersonCellTypeLabelLabel];
     PersonDetailCellModel *model2 = [[PersonDetailCellModel alloc] initWithTitle:@"我的二维码:" showValue:_model.name cellType:CustomPersonCellTypeLabelLitterImage];
-    
-    PersonDetailCellModel *model3 = [[PersonDetailCellModel alloc] initWithTitle:@"手机绑定" showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
+    NSString *changeTel = [UserManager sharedManager].password == nil || [NSString isEmpty:[UserManager sharedManager].password] ? @"绑定手机":@"更换手机";
+    PersonDetailCellModel *model3 = [[PersonDetailCellModel alloc] initWithTitle:changeTel showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
     
     PersonDetailCellModel *model4 = [[PersonDetailCellModel alloc] initWithTitle:@"修改密码" showValue:_model.tel cellType:CustomPersonCellTypeLabelOnly];
     

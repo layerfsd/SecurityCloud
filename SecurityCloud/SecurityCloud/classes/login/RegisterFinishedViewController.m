@@ -20,8 +20,28 @@
 }
 - (IBAction)gotoLogin:(UIButton *)sender {
     //去登录
-    UserManager *um = [UserManager new];
-    [um goToLogin];
+    NSDictionary *parameters = @{@"tel":[UserManager getTelNum],@"password":[UserManager sharedManager].password};
+    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"status"] isEqualToString:@"fail"]) {
+        
+        }else if ([responseObject[@"status"] isEqualToString:@"ok"]){
+            //登录成功
+            UserManager *um = [UserManager mj_objectWithKeyValues:responseObject[@"data"]];
+            [um archiver];
+           
+            [um goToMain];
+        }else{
+            
+        }
+        
+        //登录成功
+    } failure:^(NSError *error) {
+        //登录失败
+        NSLog(@"error");
+    }];
+
+    
+   
 }
 
 - (void)didReceiveMemoryWarning {
