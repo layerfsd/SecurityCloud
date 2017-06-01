@@ -32,6 +32,8 @@
 		1853DDBA1EDD985000A151AB /* RankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDB91EDD985000A151AB /* RankingViewController.m */; };
 		1853DDBE1EDD995800A151AB /* RankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDBC1EDD995800A151AB /* RankingTableViewCell.m */; };
 		1853DDBF1EDD995800A151AB /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDBD1EDD995800A151AB /* RankingTableViewCell.xib */; };
+		1853EEDB1EE01A8C0086391D /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853EED91EE01A8C0086391D /* AboutAppViewController.m */; };
+		1853EEDC1EE01A8C0086391D /* AboutAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853EEDA1EE01A8C0086391D /* AboutAppViewController.xib */; };
 		187C25761ED84B88001D9925 /* DetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C25751ED84B88001D9925 /* DetailInfoViewController.m */; };
 		187C257F1ED84E85001D9925 /* LabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C257D1ED84E85001D9925 /* LabelTableViewCell.m */; };
 		187C25801ED84E85001D9925 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187C257E1ED84E85001D9925 /* LabelTableViewCell.xib */; };
@@ -410,6 +412,9 @@
 		1853DDBB1EDD995800A151AB /* RankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingTableViewCell.h; sourceTree = "<group>"; };
 		1853DDBC1EDD995800A151AB /* RankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingTableViewCell.m; sourceTree = "<group>"; };
 		1853DDBD1EDD995800A151AB /* RankingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
+		1853EED81EE01A8C0086391D /* AboutAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutAppViewController.h; sourceTree = "<group>"; };
+		1853EED91EE01A8C0086391D /* AboutAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutAppViewController.m; sourceTree = "<group>"; };
+		1853EEDA1EE01A8C0086391D /* AboutAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutAppViewController.xib; sourceTree = "<group>"; };
 		187C25741ED84B88001D9925 /* DetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfoViewController.h; sourceTree = "<group>"; };
 		187C25751ED84B88001D9925 /* DetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfoViewController.m; sourceTree = "<group>"; };
 		187C257C1ED84E85001D9925 /* LabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelTableViewCell.h; sourceTree = "<group>"; };
@@ -1242,6 +1247,9 @@
 				EC82F07A1EDEB947001C77C1 /* ChangePasswordViewController.h */,
 				EC82F07B1EDEB947001C77C1 /* ChangePasswordViewController.m */,
 				EC82F07C1EDEB947001C77C1 /* ChangePasswordViewController.xib */,
+				1853EED81EE01A8C0086391D /* AboutAppViewController.h */,
+				1853EED91EE01A8C0086391D /* AboutAppViewController.m */,
+				1853EEDA1EE01A8C0086391D /* AboutAppViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1976,6 +1984,7 @@
 				EC949DD01ED43784005FDD04 /* navi_icon_right_1_front@2x.png in Resources */,
 				EC949D671ED43784005FDD04 /* bubble_right_press@2x.png in Resources */,
 				EC949DB11ED43784005FDD04 /* navi_icon_island_in@2x.png in Resources */,
+				1853EEDC1EE01A8C0086391D /* AboutAppViewController.xib in Resources */,
 				187C258D1ED85346001D9925 /* ImagesTableViewCell.xib in Resources */,
 				187C25B11ED87F7F001D9925 /* LabelImageTableViewCell.xib in Resources */,
 				EC949DC51ED43784005FDD04 /* navi_icon_left_back@3x.png in Resources */,
@@ -2346,6 +2355,7 @@
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,
 				18F1E14B1ED5B19F00C16EE6 /* MeTableViewCell.m in Sources */,
 				18F1E1461ED5AC7E00C16EE6 /* MeHeadTableViewCell.m in Sources */,
+				1853EEDB1EE01A8C0086391D /* AboutAppViewController.m in Sources */,
 				EC3A74921ED97D3900201A1E /* PersonImageViewController.m in Sources */,
 				189E93421ED1590900DBD4FC /* ThirdViewController.m in Sources */,
 				EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */,

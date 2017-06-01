@@ -18,6 +18,7 @@
 #import <UShareUI/UShareUI.h>
 #import "RankingViewController.h"
 #import "MsgListViewController.h"
+#import "AboutAppViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -137,7 +138,9 @@
             MsgListViewController *vc = [MsgListViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"关于APP"]){
-            [SVProgressHUD showInfoWithStatus:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用"];
+//            [SVProgressHUD showInfoWithStatus:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用"];
+            AboutAppViewController *vc = [AboutAppViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
             [self recommand];
         }else if ([model.titleStr isEqualToString:@"退出登录"]){

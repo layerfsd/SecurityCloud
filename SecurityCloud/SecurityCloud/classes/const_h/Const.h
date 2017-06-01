@@ -9,7 +9,8 @@
 #ifndef Const_h
 #define Const_h
 //api 前部
-#define RootPath @"http://cntp31.lysoo.com/guanli/index.php/admin/api"
+//#define RootPath @"http://cntp31.lysoo.com/guanli/index.php/admin/api"
+#define RootPath @"http://112.99.194.54:2166/guanli/index.php/admin/api"
 #define UserID [UserManager sharedManager].userID
 
 #define navColor [UIColor colorWithRed:16.0/255 green:106.0/255 blue:219.0/255 alpha:1]
