@@ -79,15 +79,34 @@
     [parameters setValue:_phoneTextField.text forKey:@"tel"];
     [parameters setValue:_verificationCodeTextField.text forKey:@"yanzheng"];
     [parameters setValue:[Md5Util encryptMD5:_passwordTextField.text] forKey:@"password"];
-    [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
-        //注册完成 登录
-        [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
-        [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
-        [UserManager setTelNum:_phoneTextField.text];
-        [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];
-    } failure:^(NSError *error) {
-        
-    }];
+    
+    if (_isFound) {
+        [HttpTool post:@"/qingbaoyuanzhaohui.html" parameters:parameters success:^(id responseObject) {
+            //注册完成 登录
+            [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
+            [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+            [UserManager setTelNum:_phoneTextField.text];
+            [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];
+        } failure:^(NSError *error) {
+            
+        }];
+    }else{
+        [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
+            //注册完成 登录
+            [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
+            [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
+            [UserManager setTelNum:_phoneTextField.text];
+            [self performSegueWithIdentifier:@"ToFinishRegister" sender:self];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    
+    
+    
+//
+    
+    
 }
 
 - (IBAction)getCode:(UIButton *)sender {

@@ -32,7 +32,7 @@
         
         CAAnimationGroup * animationGroup = [CAAnimationGroup animation];
         animationGroup.removedOnCompletion = NO;
-        animationGroup.fillMode = kCAFillModeBackwards;
+        animationGroup.fillMode = kCAFillModeRemoved;
         animationGroup.beginTime = CACurrentMediaTime() + (double)i * animationDuration / (double)pulsingCount;
         animationGroup.duration = animationDuration;
         animationGroup.repeatCount = HUGE;

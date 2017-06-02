@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "RegisterViewController.h"
 #import "Md5Util.h"
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
@@ -25,6 +25,13 @@
     if ([UserManager getTelNum]) {
         _userNameLabel.text = [UserManager getTelNum];
     }
+}
+- (IBAction)findPwd:(UIButton *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    RegisterViewController *vc = [sb instantiateViewControllerWithIdentifier:@"RegisterViewController"];
+    vc.isFound = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 -(BOOL)checkText {
@@ -82,8 +89,10 @@
             _noticeLabel.hidden = NO;
             _noticeLabel.text = responseObject[@"message"];
         }else if ([responseObject[@"status"] isEqualToString:@"ok"]){
+            NSMutableDictionary *res = [NSMutableDictionary dictionary];
+            [res setValue:responseObject[@"data"] forKey:@"id"];
             //登录成功
-            UserManager *um = [UserManager mj_objectWithKeyValues:responseObject];
+            UserManager *um = [UserManager mj_objectWithKeyValues:res];
             [um archiver];
             [um goToMain];
         }else{
