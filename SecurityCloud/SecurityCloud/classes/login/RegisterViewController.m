@@ -27,6 +27,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _noticeLabel.hidden = YES;
+    
+    UIImageView *telM = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    UIView *telMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [telMV addSubview:telM];
+    telM.image = [UIImage imageNamed:@"手机"];
+    _phoneTextField.leftView = telMV;
+    _phoneTextField.leftViewMode = UITextFieldViewModeAlways;
+//
+    UIImageView *codeM = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    codeM.image = [UIImage imageNamed:@"验证码验证"];
+    UIView *codeMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [codeMV addSubview:codeM];
+    
+    _verificationCodeTextField.leftView = codeMV;
+    _verificationCodeTextField.leftViewMode = UITextFieldViewModeAlways;
+//
+    UIImageView *pwdM = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    pwdM.image = [UIImage imageNamed:@"密码"];
+    UIView *pwdMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [pwdMV addSubview:pwdM];
+    _passwordTextField.leftView = pwdMV;
+    _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
+//
+    UIImageView *pwdSM = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    pwdSM.image = [UIImage imageNamed:@"确认密码"];
+    UIView *pwdSMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [pwdSMV addSubview:pwdSM];
+    _surePasswordTextField.leftView = pwdSMV;
+    _surePasswordTextField.leftViewMode = UITextFieldViewModeAlways;
     // Do any additional setup after loading the view.
 }
 
