@@ -21,5 +21,6 @@
 @property (nonatomic,copy) NSString *img;
 @property (nonatomic,copy) NSString *imgurl;
 @property (nonatomic,copy) NSString *tj;
+@property (nonatomic,copy) NSString *jifen;
 
 @end

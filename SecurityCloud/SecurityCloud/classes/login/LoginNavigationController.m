@@ -24,9 +24,10 @@
 //  
 //    //设置字体颜色
 //    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];
-    [self.navigationBar setBackgroundImage:[self createImageWithColor:navColor] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[self createImageWithColor:navColor] forBarMetrics:UIBarMetricsDefault]; 
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.barTintColor = navColor;
+    self.navigationBar.translucent = NO;
     self.navigationBar.tintColor = [UIColor whiteColor];
     //设置字体颜色
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil]];

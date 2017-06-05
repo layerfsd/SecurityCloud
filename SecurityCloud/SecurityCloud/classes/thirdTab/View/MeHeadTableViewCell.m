@@ -33,7 +33,7 @@
     _model = model;
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
     _nameLabel.text = _model.name;
-    _scoreLabel.text = @"积分：11.02分";
+    _scoreLabel.text = [NSString stringWithFormat:@"积分：%@分",_model.jifen];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
