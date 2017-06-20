@@ -14,6 +14,7 @@
 #import "ImagesTableViewCell.h"
 #import "AdoptedTableViewCell.h"
 #import "HanderMsgView.h"
+#import "AdminHanderListViewController.h"
 @interface DetailInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray<NSArray<InfoDetailCellModel*>*> *models;
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"情报详情";
+    self.title = @"信息详情";
     
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,9 +75,16 @@
 
 -(void)setNaviItem {
     NSInteger status = [self.model.zhuangtai integerValue];
-    if (status <= 4 && [UserManager sharedManager].admin != nil) {
-         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"处理" style:UIBarButtonItemStylePlain target:self action:@selector(hander)];
+    NSArray *vcs = self.navigationController.viewControllers;
+    UIViewController *par = vcs[vcs.count - 2];
+    if ([par isKindOfClass:[AdminHanderListViewController class]]) {
+        if (status <= 4 && [UserManager sharedManager].admin != nil) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"处理" style:UIBarButtonItemStylePlain target:self action:@selector(hander)];
+        }
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
     }
+    
    
 }
 
@@ -108,17 +116,17 @@
 
 
 -(void)initData {
-    InfoDetailCellModel *model0 = [[InfoDetailCellModel alloc] initWithTitle:@"情报级别:" showValue:self.model.jibie cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model1 = [[InfoDetailCellModel alloc] initWithTitle:@"情报类别:" showValue:self.model.leibie cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model0 = [[InfoDetailCellModel alloc] initWithTitle:@"信息级别:" showValue:self.model.jibie cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model1 = [[InfoDetailCellModel alloc] initWithTitle:@"信息类别:" showValue:self.model.leibie cellType:CustomCellTypeLabel];
     InfoDetailCellModel *model2 = [[InfoDetailCellModel alloc] initWithTitle:@"关键字:" showValue:self.model.guanjianzi cellType:CustomCellTypeLabel];
     InfoDetailCellModel *model3 = [[InfoDetailCellModel alloc] initWithTitle:@"发布时间:" showValue:self.model.time cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model4 = [[InfoDetailCellModel alloc] initWithTitle:@"情报内容:" showValue:self.model.neirong cellType:CustomCellTypeLabel];
-    InfoDetailCellModel *model5 = [[InfoDetailCellModel alloc] initWithTitle:@"情报录音:" showValue:self.model.luyinchakan.firstObject.url cellType:CustomCellTypeButton];
+    InfoDetailCellModel *model4 = [[InfoDetailCellModel alloc] initWithTitle:@"信息内容:" showValue:self.model.neirong cellType:CustomCellTypeLabel];
+    InfoDetailCellModel *model5 = [[InfoDetailCellModel alloc] initWithTitle:@"信息录音:" showValue:self.model.luyinchakan.firstObject.url cellType:CustomCellTypeButton];
     NSMutableArray *imgurls = [NSMutableArray array];
     for (FileModel *model in self.model.imgchakan) {
         [imgurls addObject:model.url];
     }
-    InfoDetailCellModel *model6 = [[InfoDetailCellModel alloc] initWithTitle:@"情报图片:" showValue:imgurls cellType:CustomCellTypeImages];
+    InfoDetailCellModel *model6 = [[InfoDetailCellModel alloc] initWithTitle:@"信息图片:" showValue:imgurls cellType:CustomCellTypeImages];
     [self.models addObject:@[model0,model1,model2,model3,model4,model5,model6]];
     
 //    NSInteger status = [self.model.zhuangtai integerValue];
@@ -126,7 +134,7 @@
         //已处理的
         NSMutableArray *flows = [NSMutableArray array];
         for (FlowModel *flowModel in self.model.banliliucheng) {
-            NSString *flowTitleStr = [NSString stringWithFormat:@"%@ 查看了情报，目前状态：%@",flowModel.name,flowModel.qingbaozhuangtai];
+            NSString *flowTitleStr = [NSString stringWithFormat:@"%@ 查看了信息，目前状态：%@",flowModel.name,flowModel.qingbaozhuangtai];
             InfoDetailCellModel *item = [[InfoDetailCellModel alloc] initWithTitle:flowTitleStr showValue: [NSString stringWithFormat:@"积分：%@分",flowModel.jifen] cellType:CustomCellTypeAdopted];
             item.moreValue = flowModel.time;
             [flows addObject:item];

@@ -253,7 +253,7 @@
                 [localContext MR_saveToPersistentStoreAndWait];
             }
             
-            //保存情报信息
+            //保存信息
             Info *info = [Info MR_createEntityInContext:localContext];
             info.content = _textView.text;
             info.images = [self imagesPath];

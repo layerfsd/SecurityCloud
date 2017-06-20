@@ -40,7 +40,7 @@
     
     [self APNs];
     
-    [JPUSHService setupWithOption:launchOptions appKey:@"af55afec821a3f02ad0013c3"
+    [JPUSHService setupWithOption:launchOptions appKey:@"c593b289e09ca1ebf409b197"
                           channel:@""
                  apsForProduction:NO];
     
@@ -75,7 +75,7 @@
 - (void)configUSharePlatforms
 {
         /* 设置微信的appKey和appSecret */
-//        [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+        [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx0982005eb18945a9" appSecret:@"30a5fa2881bda2c939e08ce6c655ee83" redirectURL:[NSString stringWithFormat:@"%@%@",advertiseUrl,UserID]];
         /*
          * 移除相应平台的分享，如微信收藏
          */
@@ -259,7 +259,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
     // 需要后台定位的话，可以设置此属性为YES。
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    [self.locationManager setAllowsBackgroundLocationUpdates:NO];
     
     // 如果需要POI信息的话，根据所需要的级别来设定，定位结果将会根据设定的POI级别来返回，如：
     [self.locationManager setRequestLevel:TencentLBSRequestLevelName];
@@ -324,7 +324,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    NSLog(@"location:%@", location.location);
     [UserManager sharedManager].address = location.address;
     [UserManager sharedManager].location = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.latitude,location.location.coordinate.longitude];
+    [self upLocation:[NSString stringWithFormat:@"%f,%f",location.location.coordinate.latitude,location.location.coordinate.longitude]];
     [self.locationManager stopUpdatingLocation];
+}
+
+-(void)upLocation:(NSString*)zuobiao {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:UserID forKey:@"id"];
+    [parameters setValue:zuobiao forKey:@"zuobiao"];
+    
+    [HttpTool postWithoutOK:@"/qingbaoyuandizhi.html" parameters:parameters success:^(id responseObject) {
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
 }
 
 @end

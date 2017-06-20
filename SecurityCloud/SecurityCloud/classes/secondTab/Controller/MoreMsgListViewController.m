@@ -106,6 +106,10 @@
     MsgLitterModel *model = self.models[indexPath.row];
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",webUrl,model.msgLitterID];
     RxWebViewController* webViewController = [[RxWebViewController alloc] initWithUrl:[NSURL URLWithString:urlStr]];
+    webViewController.titleStr = model.fenlei;
+    webViewController.imageUrl = model.img;
+    webViewController.contentStr = model.biaoti;
+    
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 -(UITableView *)tableView {

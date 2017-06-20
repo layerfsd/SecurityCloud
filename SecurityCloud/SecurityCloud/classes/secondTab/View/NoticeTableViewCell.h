@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-
+@class MsgLitterModel;
 @class NoticeModel;
 @protocol MsgClikedDelegate <NSObject>
 
--(void)msgCliked:(NSString*)msgID;
+-(void)msgCliked:(MsgLitterModel*)model;
 
 @end
 

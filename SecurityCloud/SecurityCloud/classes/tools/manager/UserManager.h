@@ -40,6 +40,8 @@
 //+(void)setLocation:(NSString*)location;
 //+(NSString*)getLocation;
 + (BOOL)deleteFile;
+
+
 @end
 
 //标签

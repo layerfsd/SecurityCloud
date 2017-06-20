@@ -15,6 +15,12 @@
  */
 @property (nonatomic)NSURL* url;
 
+@property (nonatomic,copy)NSString* imageUrl;
+
+@property (nonatomic,copy)NSString* titleStr;
+@property (nonatomic,copy)NSString* contentStr;
+
+
 /**
  *  embed webView
  */

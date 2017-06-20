@@ -101,7 +101,7 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"RankingTableViewCell" owner:nil options:nil].firstObject;
     }
     cell.model = _models[indexPath.row];
-    cell.rankLabel.text = [NSString stringWithFormat:@"第 %ld 名",(long)indexPath.row];
+    cell.rankLabel.text = [NSString stringWithFormat:@"第 %ld 名",(long)indexPath.row + 1];
     return cell;
 }
 

@@ -19,6 +19,7 @@
 #import "MsgListViewController.h"
 #import "AdminHanderListViewController.h"
 #import "AdoptedListViewController.h"
+#import "WZLBadgeImport.h"
 #define cellW (kScreenWidth-20) / _column
 #define cellH cellW * 100 / 80.0
 #define scanW 45
@@ -43,6 +44,65 @@
     [self initCollectionView];
 //    [self setNaviItem];
     [self updateNotice];
+//    [self loadRedCount];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadRedCount];
+}
+
+-(void)loadRedCount {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:UserID forKey:@"yonghuid"];
+    [HttpTool postWithoutOK:@"/xinxizhongxinweidu.html" parameters:parameters success:^(id responseObject) {
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:3 inSection:0]];
+        NSInteger unReadCount = [responseObject[@"count"] integerValue];
+//        unReadCount = 8;
+        if (cell && unReadCount > 0) {
+            for (UIView *item in cell.contentView.subviews) {
+                if ([item isKindOfClass:[UILabel class]]) {
+                    [item showBadgeWithStyle:WBadgeStyleNumber value:unReadCount animationType:WBadgeAnimTypeNone ];
+                    item.badgeCenterOffset = CGPointMake(-8, -5);
+                }
+            }
+            
+        }
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+                
+    }];
+
+    //qingbaoshoulitongji
+    if (_models.count <= 4) {
+        return;
+    }
+    NSMutableDictionary *parameters0 = [NSMutableDictionary dictionary];
+    [parameters setValue:UserID forKey:@"adminid"];
+    [HttpTool postWithoutOK:@"/qingbaoshoulitongji.html" parameters:parameters0 success:^(id responseObject) {
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:4 inSection:0]];
+        NSInteger unReadCount = [responseObject[@"count"] integerValue];
+        //        unReadCount = 8;
+        if (cell && unReadCount > 0) {
+            for (UIView *item in cell.contentView.subviews) {
+                if ([item isKindOfClass:[UILabel class]]) {
+                    [item showBadgeWithStyle:WBadgeStyleNumber value:unReadCount animationType:WBadgeAnimTypeNone ];
+                    item.badgeCenterOffset = CGPointMake(-8, -5);
+                }
+            }
+            
+        }
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
 }
 
 -(void)setNaviItem {
@@ -136,6 +196,7 @@
     }
     if (indexPath.item == 3) {
         //信息中心
+        
         MsgListViewController *vc = [[MsgListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         
@@ -171,6 +232,8 @@
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             UIAlertAction *sure = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 //确认更新
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl]];
+
                 
             }];
             [alert addAction:cancel];

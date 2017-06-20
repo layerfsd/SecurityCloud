@@ -9,7 +9,7 @@
 #import "RxWebViewController.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
-
+#import <UShareUI/UShareUI.h>
 #define boundsWidth self.view.bounds.size.width
 #define boundsHeight self.view.bounds.size.height
 @interface RxWebViewController ()<UIWebViewDelegate,UINavigationControllerDelegate,UINavigationBarDelegate,NJKWebViewProgressDelegate>
@@ -82,7 +82,52 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
     
     [self.navigationController.navigationBar addSubview:self.progressView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     // Do any additional setup after loading the view.
+}
+
+-(void)share {
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
+    
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        NSString* thumbURL = @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
+//        if (self.imageUrl) {
+//            thumbURL = self.imageUrl;
+//        }
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.titleStr descr:self.contentStr thumImage:thumbURL];
+        //设置网页地址
+        shareObject.webpageUrl = [self.url absoluteString];
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            if (error) {
+                UMSocialLogInfo(@"************Share fail with error %@*********",error);
+                [SVProgressHUD showErrorWithStatus:error.localizedFailureReason];
+            }else{
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    [SVProgressHUD showErrorWithStatus:resp.message];
+                    UMSocialLogInfo(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                }else{
+                    [SVProgressHUD showErrorWithStatus:data];
+                    UMSocialLogInfo(@"response data is %@",data);
+                }
+            }
+            
+        }];
+    }];
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated{

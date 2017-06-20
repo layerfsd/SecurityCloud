@@ -65,7 +65,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MsgLitterModel *model = _model.zixunliebiao[indexPath.row];
     if (_delegate && [_delegate respondsToSelector:@selector(msgCliked:)]) {
-        [_delegate msgCliked:model.msgLitterID];
+        [_delegate msgCliked:model];
     }
 }
 @end

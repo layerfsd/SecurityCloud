@@ -130,6 +130,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MsgCenterModel *model = self.models[indexPath.row];
+    model.zhuangtai = @"0";
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:model.msgID forKey:@"id"];
     [parameters setValue:UserID forKey:@"yonghuid"];

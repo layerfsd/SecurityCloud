@@ -23,6 +23,10 @@
 		180290731ED9555D00868BE3 /* BindTelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180290711ED9555D00868BE3 /* BindTelViewController.xib */; };
 		180290771ED9663400868BE3 /* VisitorConfirmPasswardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180290751ED9663400868BE3 /* VisitorConfirmPasswardViewController.m */; };
 		180290781ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180290761ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib */; };
+		1833558E1EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 183355821EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.m */; };
+		1833558F1EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 183355841EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m */; };
+		183355901EF552ED00F75EE0 /* CAAnimation+WAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 183355871EF552ED00F75EE0 /* CAAnimation+WAnimation.m */; };
+		183355911EF552ED00F75EE0 /* UIView+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */; };
 		1853DDA81EDD4EA600A151AB /* MsgListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */; };
 		1853DDA91EDD4EA600A151AB /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */; };
 		1853DDB01EDD528A00A151AB /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDAE1EDD528A00A151AB /* MsgDetailViewController.m */; };
@@ -397,6 +401,16 @@
 		180290741ED9663400868BE3 /* VisitorConfirmPasswardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisitorConfirmPasswardViewController.h; sourceTree = "<group>"; };
 		180290751ED9663400868BE3 /* VisitorConfirmPasswardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisitorConfirmPasswardViewController.m; sourceTree = "<group>"; };
 		180290761ED9663400868BE3 /* VisitorConfirmPasswardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorConfirmPasswardViewController.xib; sourceTree = "<group>"; };
+		183355811EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WZLBadge.h"; sourceTree = "<group>"; };
+		183355821EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WZLBadge.m"; sourceTree = "<group>"; };
+		183355831EF552ED00F75EE0 /* UITabBarItem+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarItem+WZLBadge.h"; sourceTree = "<group>"; };
+		183355841EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarItem+WZLBadge.m"; sourceTree = "<group>"; };
+		183355861EF552ED00F75EE0 /* CAAnimation+WAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+WAnimation.h"; sourceTree = "<group>"; };
+		183355871EF552ED00F75EE0 /* CAAnimation+WAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+WAnimation.m"; sourceTree = "<group>"; };
+		183355891EF552ED00F75EE0 /* WZLBadgeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeProtocol.h; sourceTree = "<group>"; };
+		1833558B1EF552ED00F75EE0 /* UIView+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WZLBadge.h"; sourceTree = "<group>"; };
+		1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WZLBadge.m"; sourceTree = "<group>"; };
+		1833558D1EF552ED00F75EE0 /* WZLBadgeImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeImport.h; sourceTree = "<group>"; };
 		1853DDA51EDD4EA600A151AB /* MsgListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListTableViewCell.h; sourceTree = "<group>"; };
 		1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListTableViewCell.m; sourceTree = "<group>"; };
 		1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
@@ -967,6 +981,55 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1833557F1EF552ED00F75EE0 /* WZLBadge */ = {
+			isa = PBXGroup;
+			children = (
+				183355801EF552ED00F75EE0 /* BarItem */,
+				183355851EF552ED00F75EE0 /* CategorySupport */,
+				183355881EF552ED00F75EE0 /* Protocol */,
+				1833558A1EF552ED00F75EE0 /* View */,
+				1833558D1EF552ED00F75EE0 /* WZLBadgeImport.h */,
+			);
+			path = WZLBadge;
+			sourceTree = "<group>";
+		};
+		183355801EF552ED00F75EE0 /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+				183355811EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.h */,
+				183355821EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.m */,
+				183355831EF552ED00F75EE0 /* UITabBarItem+WZLBadge.h */,
+				183355841EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m */,
+			);
+			path = BarItem;
+			sourceTree = "<group>";
+		};
+		183355851EF552ED00F75EE0 /* CategorySupport */ = {
+			isa = PBXGroup;
+			children = (
+				183355861EF552ED00F75EE0 /* CAAnimation+WAnimation.h */,
+				183355871EF552ED00F75EE0 /* CAAnimation+WAnimation.m */,
+			);
+			path = CategorySupport;
+			sourceTree = "<group>";
+		};
+		183355881EF552ED00F75EE0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				183355891EF552ED00F75EE0 /* WZLBadgeProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1833558A1EF552ED00F75EE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1833558B1EF552ED00F75EE0 /* UIView+WZLBadge.h */,
+				1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		189E92BD1ED158E300DBD4FC = {
 			isa = PBXGroup;
 			children = (
@@ -1302,6 +1365,7 @@
 		189E93291ED1590900DBD4FC /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				1833557F1EF552ED00F75EE0 /* WZLBadge */,
 				18EBDD251EDC0520006B0248 /* DHGuidePageHUD */,
 				18EBDCFD1EDADDEC006B0248 /* RxWebViewController */,
 				1802903E1ED916C100868BE3 /* SDCycleScrollView */,
@@ -1870,7 +1934,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -2312,12 +2376,14 @@
 				187C258C1ED85346001D9925 /* ImagesTableViewCell.m in Sources */,
 				18EBDD341EDC3D12006B0248 /* AdoptedListViewController.m in Sources */,
 				EC795DAD1ED6C6C90061C5E1 /* PostedListViewController.m in Sources */,
+				1833558E1EF552ED00F75EE0 /* UIBarButtonItem+WZLBadge.m in Sources */,
 				187C25BF1ED88131001D9925 /* LableOnlyTableViewCell.m in Sources */,
 				1853DDBE1EDD995800A151AB /* RankingTableViewCell.m in Sources */,
 				18A7C8E11ED322060004136A /* Model.xcdatamodeld in Sources */,
 				187C25BA1ED880AC001D9925 /* LabelLitterImageTableViewCell.m in Sources */,
 				187C25831ED84F4D001D9925 /* InfoDetailCellModel.m in Sources */,
 				ECAC59111ED2B6B500628E85 /* PostModel.m in Sources */,
+				183355901EF552ED00F75EE0 /* CAAnimation+WAnimation.m in Sources */,
 				EC79374C1ED7C4550038123D /* LBXScanNetAnimation.m in Sources */,
 				1853DDBA1EDD985000A151AB /* RankingViewController.m in Sources */,
 				1802904F1ED916C100868BE3 /* TAAnimatedDotView.m in Sources */,
@@ -2343,6 +2409,7 @@
 				18EBDD231EDB2674006B0248 /* TagHeaderCollectionReusableView.m in Sources */,
 				ECAC590B1ED2A9A300628E85 /* FirstTabCellModel.m in Sources */,
 				ECAC591F1ED2BCB500628E85 /* PostMainViewController.m in Sources */,
+				183355911EF552ED00F75EE0 /* UIView+WZLBadge.m in Sources */,
 				18EBDD111EDAE4DF006B0248 /* MoreMsgListViewController.m in Sources */,
 				EC3A74971ED983BF00201A1E /* TextFieldViewController.m in Sources */,
 				18EBDD1A1EDAFDDE006B0248 /* UIImage+QRCode.m in Sources */,
@@ -2358,6 +2425,7 @@
 				1853EEDB1EE01A8C0086391D /* AboutAppViewController.m in Sources */,
 				EC3A74921ED97D3900201A1E /* PersonImageViewController.m in Sources */,
 				189E93421ED1590900DBD4FC /* ThirdViewController.m in Sources */,
+				1833558F1EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m in Sources */,
 				EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */,
 				1802904E1ED916C100868BE3 /* TAAbstractDotView.m in Sources */,
 				189E93391ED1590900DBD4FC /* RegisterViewController.m in Sources */,
@@ -2611,6 +2679,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "SecurityCloud/classes/coreData/SecurityCloud-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2688,6 +2757,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SecurityCloud/classes/coreData/SecurityCloud-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

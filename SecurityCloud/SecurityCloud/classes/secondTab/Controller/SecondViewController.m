@@ -99,6 +99,10 @@
     MsgLitterModel *model = self.banners[index];
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",webUrl,model.msgLitterID];
     RxWebViewController* webViewController = [[RxWebViewController alloc] initWithUrl:[NSURL URLWithString:urlStr]];
+    webViewController.titleStr = model.fenlei;
+    webViewController.imageUrl = model.img;
+    webViewController.contentStr = model.biaoti;
+    
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
@@ -149,9 +153,13 @@
 
 #pragma mark msgClickedDelegate
 
--(void)msgCliked:(NSString *)msgID {
-    NSString* urlStr = [NSString stringWithFormat:@"%@%@",webUrl,msgID];
+-(void)msgCliked:(MsgLitterModel *)model {
+    NSString* urlStr = [NSString stringWithFormat:@"%@%@",webUrl,model.msgLitterID];
     RxWebViewController* webViewController = [[RxWebViewController alloc] initWithUrl:[NSURL URLWithString:urlStr]];
+    webViewController.titleStr = model.fenlei;
+    webViewController.imageUrl = model.img;
+    webViewController.contentStr = model.biaoti;
+
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 

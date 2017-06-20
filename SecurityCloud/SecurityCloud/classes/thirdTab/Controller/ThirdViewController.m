@@ -168,9 +168,9 @@
         
         //创建网页内容对象
         NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"推荐您使用龙防云" descr:@"龙防云是一款适合所有人使用，并且可以与民警合作的应用" thumImage:thumbURL];
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"推荐您使用龙防云" descr:shareContent thumImage:thumbURL];
         //设置网页地址
-        shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@",@"http://cntp31.lysoo.com/guanli/index.php/Admin/yaoqing/zhuceyaoqing/yaoqingid/",UserID];
+        shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@",advertiseUrl,UserID];
         
         //分享消息对象设置分享内容对象
         messageObject.shareObject = shareObject;

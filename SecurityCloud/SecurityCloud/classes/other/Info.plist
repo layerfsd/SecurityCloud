@@ -41,9 +41,17 @@
 				<string>QQ41ef2a4c</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx0982005eb18945a9</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqzone</string>
@@ -65,8 +73,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>龙防云需要访问您的相机功能</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>龙防云需要访问您的位置功能</string>
 	<key>NSLocationUsageDescription</key>
 	<string>龙防云需要访问您的位置功能</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -75,10 +81,6 @@
 	<string>龙防云需要访问您的麦克风功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>龙防云需要访问您的相册功能</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
