@@ -59,7 +59,7 @@
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:3 inSection:0]];
         NSInteger unReadCount = [responseObject[@"count"] integerValue];
 //        unReadCount = 8;
-        if (cell && unReadCount > 0) {
+        if (cell) {
             for (UIView *item in cell.contentView.subviews) {
                 if ([item isKindOfClass:[UILabel class]]) {
                     [item showBadgeWithStyle:WBadgeStyleNumber value:unReadCount animationType:WBadgeAnimTypeNone ];
@@ -86,7 +86,7 @@
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:4 inSection:0]];
         NSInteger unReadCount = [responseObject[@"count"] integerValue];
         //        unReadCount = 8;
-        if (cell && unReadCount > 0) {
+        if (cell) {
             for (UIView *item in cell.contentView.subviews) {
                 if ([item isKindOfClass:[UILabel class]]) {
                     [item showBadgeWithStyle:WBadgeStyleNumber value:unReadCount animationType:WBadgeAnimTypeNone ];
