@@ -26,7 +26,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Model"];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Model"];
+    
     self.keyCheck = [[QAppKeyCheck alloc] init];
     [self.keyCheck start:@"BIIBZ-EOBAS-6CFOT-624LR-G7N3K-Q3BHD" withDelegate:self];
    
@@ -40,7 +41,7 @@
     
     [self APNs];
     
-    [JPUSHService setupWithOption:launchOptions appKey:@"c593b289e09ca1ebf409b197"
+    [JPUSHService setupWithOption:launchOptions appKey:@"af55afec821a3f02ad0013c3"
                           channel:@""
                  apsForProduction:NO];
     
@@ -154,6 +155,7 @@
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     [application setApplicationIconBadgeNumber:0];   //清除角标
     [application cancelAllLocalNotifications];
+    [self.locationManager startUpdatingLocation];
 }
 
 
@@ -333,7 +335,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [parameters setValue:UserID forKey:@"id"];
     [parameters setValue:zuobiao forKey:@"zuobiao"];
     
-    [HttpTool postWithoutOK:@"/qingbaoyuandizhi.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool postWithoutProgress:@"/qingbaoyuandizhi.html" parameters:parameters success:^(id responseObject) {
         
         
     } failure:^(NSError *error) {

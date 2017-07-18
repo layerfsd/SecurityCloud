@@ -102,8 +102,9 @@
 
 -(void)bindSuperMan:(NSString*)superManID {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *userid = [superManID lastPathComponent];
     [parameters setValue:UserID forKey:@"yonghuid"];
-    [parameters setValue:superManID forKey:@"shangxianid"];
+    [parameters setValue:userid forKey:@"shangxianid"];
     [HttpTool postWithoutOK:@"/yonghushangxianbangding.html" parameters:parameters success:^(id responseObject) {
         [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {

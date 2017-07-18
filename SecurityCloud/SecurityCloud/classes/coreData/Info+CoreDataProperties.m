@@ -2,7 +2,7 @@
 //  Info+CoreDataProperties.m
 //  SecurityCloud
 //
-//  Created by hsgene_xu on 2017/5/25.
+//  Created by apple on 2017/7/18.
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
@@ -18,6 +18,8 @@
 @dynamic creatTime;
 @dynamic images;
 @dynamic userID;
+@dynamic videoPath;
 @dynamic voicePath;
+@dynamic videoImagePath;
 
 @end

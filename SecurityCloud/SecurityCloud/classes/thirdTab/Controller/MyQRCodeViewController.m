@@ -11,6 +11,7 @@
 #import "UIImage+QRCode.h"
 #import "UserManager.h"
 #import <UShareUI/UShareUI.h>
+#import "SGQRCodeGenerateManager.h"
 @interface MyQRCodeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageVIew;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -30,10 +31,14 @@
 }
 
 -(void)share {
+    
 }
 -(void)initData {
    [_iconImageVIew sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"placeholderImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-       UIImage *qrImage =  [UIImage qrImageForString:[NSString stringWithFormat:@"%@%@",advertiseUrl,_model.userID] imageSize:70 logoImageSize:10 logo:image];
+       UIImage *qrImage = [SGQRCodeGenerateManager SG_generateWithLogoQRCodeData:[NSString stringWithFormat:@"%@%@",advertiseUrl,_model.userID]  logoImageName:image logoScaleToSuperView:0.14];
+       
+       
+      
        _qRCodeImageView.image = qrImage;
    }];
     _nameLabel.text = _model.name;

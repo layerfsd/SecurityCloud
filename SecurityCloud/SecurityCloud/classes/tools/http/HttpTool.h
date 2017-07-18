@@ -25,7 +25,10 @@
            parameters:(id)parameters
               success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure;
-
++ (void)postWithoutProgress:(NSString *)URLString
+                 parameters:(id)parameters
+                    success:(void (^)(id responseObject))success
+                    failure:(void (^)(NSError *error))failure;
 //上传图片
 + (void)post:(NSString *)URLString
   parameters:(id)parameters

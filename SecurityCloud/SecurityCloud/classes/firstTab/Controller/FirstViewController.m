@@ -81,7 +81,12 @@
         return;
     }
     NSMutableDictionary *parameters0 = [NSMutableDictionary dictionary];
-    [parameters setValue:UserID forKey:@"adminid"];
+    if ([UserManager sharedManager].admin) {
+        [parameters0 setValue:[UserManager sharedManager].admin.userID forKey:@"adminid"];
+    }else{
+        [parameters0 setValue:UserID forKey:@"adminid"];
+    }
+    
     [HttpTool postWithoutOK:@"/qingbaoshoulitongji.html" parameters:parameters0 success:^(id responseObject) {
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:4 inSection:0]];
         NSInteger unReadCount = [responseObject[@"count"] integerValue];
@@ -155,6 +160,12 @@
 }
 
 - (IBAction)pressed:(UIButton *)sender {
+//    [HttpTool post:@"" parameters:nil success:^(id responseObject) {
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+    
     PostMainViewController *vc = [[PostMainViewController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

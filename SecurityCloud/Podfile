@@ -17,6 +17,8 @@ target 'SecurityCloud' do
   pod 'DateTools'
   pod 'JPush'
   pod 'ActionSheetPicker-3.0'
+  pod 'KZSmallVideoRecorder', '~> 1.0.4'
+  pod "Qiniu", "~> 7.1"
   pod ‘UMengUShare/UI’
   
   

@@ -2,7 +2,7 @@
 //  Info+CoreDataProperties.h
 //  SecurityCloud
 //
-//  Created by hsgene_xu on 2017/5/25.
+//  Created by apple on 2017/7/18.
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *creatTime;
 @property (nullable, nonatomic, copy) NSString *images;
 @property (nullable, nonatomic, copy) NSString *userID;
+@property (nullable, nonatomic, copy) NSString *videoPath;
 @property (nullable, nonatomic, copy) NSString *voicePath;
+@property (nullable, nonatomic, copy) NSString *videoImagePath;
 
 @end
 

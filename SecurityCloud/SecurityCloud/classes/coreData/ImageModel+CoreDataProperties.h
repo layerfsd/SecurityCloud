@@ -2,7 +2,7 @@
 //  ImageModel+CoreDataProperties.h
 //  SecurityCloud
 //
-//  Created by hsgene_xu on 2017/5/25.
+//  Created by apple on 2017/7/18.
 //  Copyright © 2017年 yc. All rights reserved.
 //
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<ImageModel *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *imageName;
 @property (nullable, nonatomic, retain) NSData *imageData;
+@property (nullable, nonatomic, copy) NSString *imageName;
 
 @end
 

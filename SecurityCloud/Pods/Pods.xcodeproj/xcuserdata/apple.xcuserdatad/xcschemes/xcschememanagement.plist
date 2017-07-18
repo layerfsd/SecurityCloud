@@ -24,7 +24,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KZSmallVideoRecorder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -60,6 +70,11 @@
 			<false/>
 		</dict>
 		<key>Pods-SecurityCloudUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Qiniu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,27 +122,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2CB923FBE22C04A4E4C602C440517BFF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3A40BB235093CD278C27BF9EBF659D5E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>417EA9844EC286C5B1B8FCB029C00130</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4BD4AB904C505FE03D87DE0F46B35E65</key>
+		<key>452ACB8EAA6632B0F60A130DBB1C9EEE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53B2B897D64E4516E75AC86348B86622</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>634A55E11116ABB1DF6E32CAE87FCCCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>675BF7B13B3DC1F6B2E14F96D468D63E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BEC207BF4D28EAAF969F9D237C57FDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,11 +182,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A74DDFAC3186FDCDD922B3E35DE59F6F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B36F6D48026E14827529F787D63D61B8</key>
 		<dict>
 			<key>primary</key>
@@ -177,7 +192,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E8C561BC0839508823CC9F109243FD41</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA27D39B8433232CFE31E4564E2BB101</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F298B9FF55F379A23A35E1A51CF665D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F65AEF8B17B3E255447A93FF5CE119B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

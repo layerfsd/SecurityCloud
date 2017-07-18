@@ -27,6 +27,12 @@
 		1833558F1EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 183355841EF552ED00F75EE0 /* UITabBarItem+WZLBadge.m */; };
 		183355901EF552ED00F75EE0 /* CAAnimation+WAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 183355871EF552ED00F75EE0 /* CAAnimation+WAnimation.m */; };
 		183355911EF552ED00F75EE0 /* UIView+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */; };
+		184A9A021F1D958B0087E732 /* HalleyAliveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184A9A011F1D958B0087E732 /* HalleyAliveSDK.framework */; };
+		184A9A061F1D97680087E732 /* SGQRCodeGenerateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A9A051F1D97680087E732 /* SGQRCodeGenerateManager.m */; };
+		184A9A111F1E117C0087E732 /* ImageModel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A9A0A1F1E117C0087E732 /* ImageModel+CoreDataClass.m */; };
+		184A9A121F1E117C0087E732 /* ImageModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A9A0C1F1E117C0087E732 /* ImageModel+CoreDataProperties.m */; };
+		184A9A131F1E117C0087E732 /* Info+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A9A0E1F1E117C0087E732 /* Info+CoreDataClass.m */; };
+		184A9A141F1E117C0087E732 /* Info+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 184A9A101F1E117C0087E732 /* Info+CoreDataProperties.m */; };
 		1853DDA81EDD4EA600A151AB /* MsgListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */; };
 		1853DDA91EDD4EA600A151AB /* MsgListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */; };
 		1853DDB01EDD528A00A151AB /* MsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853DDAE1EDD528A00A151AB /* MsgDetailViewController.m */; };
@@ -137,10 +143,6 @@
 		EC795D8D1ED670400061C5E1 /* DraftBoxListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D8C1ED670400061C5E1 /* DraftBoxListViewController.m */; };
 		EC795D911ED6705D0061C5E1 /* DraftBoxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D8F1ED6705D0061C5E1 /* DraftBoxTableViewCell.m */; };
 		EC795D921ED6705D0061C5E1 /* DraftBoxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC795D901ED6705D0061C5E1 /* DraftBoxTableViewCell.xib */; };
-		EC795D9D1ED681F00061C5E1 /* Info+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D9A1ED681F00061C5E1 /* Info+CoreDataClass.m */; };
-		EC795D9E1ED681F00061C5E1 /* Info+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795D9C1ED681F00061C5E1 /* Info+CoreDataProperties.m */; };
-		EC795DA91ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DA61ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m */; };
-		EC795DAA1ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DA81ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.m */; };
 		EC795DAD1ED6C6C90061C5E1 /* PostedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DAC1ED6C6C90061C5E1 /* PostedListViewController.m */; };
 		EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC795DAF1ED6D4160061C5E1 /* PostedInfoTableViewCell.m */; };
 		EC795DB21ED6D4160061C5E1 /* PostedInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC795DB01ED6D4160061C5E1 /* PostedInfoTableViewCell.xib */; };
@@ -341,7 +343,6 @@
 		EC949E1F1ED43A3C005FDD04 /* libYYImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC949E101ED43A3C005FDD04 /* libYYImage.a */; };
 		EC949E201ED43A3C005FDD04 /* libYYWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC949E111ED43A3C005FDD04 /* libYYWebImage.a */; };
 		EC949E221ED440DB005FDD04 /* TencentLBS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC949E211ED440DB005FDD04 /* TencentLBS.framework */; };
-		EC949E241ED440E7005FDD04 /* HalleyAliveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC949E231ED440E7005FDD04 /* HalleyAliveSDK.framework */; };
 		EC949E261ED441DB005FDD04 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC949E251ED441DB005FDD04 /* libz.1.2.5.tbd */; };
 		ECAC59031ED2A5E100628E85 /* FirstCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */; };
 		ECAC59041ED2A5E100628E85 /* FirstCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAC59021ED2A5E100628E85 /* FirstCollectionViewCell.xib */; };
@@ -411,6 +412,19 @@
 		1833558B1EF552ED00F75EE0 /* UIView+WZLBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WZLBadge.h"; sourceTree = "<group>"; };
 		1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WZLBadge.m"; sourceTree = "<group>"; };
 		1833558D1EF552ED00F75EE0 /* WZLBadgeImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeImport.h; sourceTree = "<group>"; };
+		184A9A011F1D958B0087E732 /* HalleyAliveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HalleyAliveSDK.framework; sourceTree = "<group>"; };
+		184A9A041F1D97680087E732 /* SGQRCodeGenerateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCodeGenerateManager.h; sourceTree = "<group>"; };
+		184A9A051F1D97680087E732 /* SGQRCodeGenerateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeGenerateManager.m; sourceTree = "<group>"; };
+		184A9A071F1DB7960087E732 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
+		184A9A081F1DB8410087E732 /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		184A9A091F1E117C0087E732 /* ImageModel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageModel+CoreDataClass.h"; sourceTree = "<group>"; };
+		184A9A0A1F1E117C0087E732 /* ImageModel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImageModel+CoreDataClass.m"; sourceTree = "<group>"; };
+		184A9A0B1F1E117C0087E732 /* ImageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		184A9A0C1F1E117C0087E732 /* ImageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		184A9A0D1F1E117C0087E732 /* Info+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataClass.h"; sourceTree = "<group>"; };
+		184A9A0E1F1E117C0087E732 /* Info+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataClass.m"; sourceTree = "<group>"; };
+		184A9A0F1F1E117C0087E732 /* Info+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataProperties.h"; sourceTree = "<group>"; };
+		184A9A101F1E117C0087E732 /* Info+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataProperties.m"; sourceTree = "<group>"; };
 		1853DDA51EDD4EA600A151AB /* MsgListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListTableViewCell.h; sourceTree = "<group>"; };
 		1853DDA61EDD4EA600A151AB /* MsgListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListTableViewCell.m; sourceTree = "<group>"; };
 		1853DDA71EDD4EA600A151AB /* MsgListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgListTableViewCell.xib; sourceTree = "<group>"; };
@@ -608,14 +622,6 @@
 		EC795D8E1ED6705D0061C5E1 /* DraftBoxTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraftBoxTableViewCell.h; sourceTree = "<group>"; };
 		EC795D8F1ED6705D0061C5E1 /* DraftBoxTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraftBoxTableViewCell.m; sourceTree = "<group>"; };
 		EC795D901ED6705D0061C5E1 /* DraftBoxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraftBoxTableViewCell.xib; sourceTree = "<group>"; };
-		EC795D991ED681F00061C5E1 /* Info+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataClass.h"; sourceTree = "<group>"; };
-		EC795D9A1ED681F00061C5E1 /* Info+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataClass.m"; sourceTree = "<group>"; };
-		EC795D9B1ED681F00061C5E1 /* Info+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Info+CoreDataProperties.h"; sourceTree = "<group>"; };
-		EC795D9C1ED681F00061C5E1 /* Info+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Info+CoreDataProperties.m"; sourceTree = "<group>"; };
-		EC795DA51ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageModel+CoreDataClass.h"; sourceTree = "<group>"; };
-		EC795DA61ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImageModel+CoreDataClass.m"; sourceTree = "<group>"; };
-		EC795DA71ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageModel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		EC795DA81ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ImageModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		EC795DAB1ED6C6C90061C5E1 /* PostedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostedListViewController.h; sourceTree = "<group>"; };
 		EC795DAC1ED6C6C90061C5E1 /* PostedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostedListViewController.m; sourceTree = "<group>"; };
 		EC795DAE1ED6D4160061C5E1 /* PostedInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostedInfoTableViewCell.h; sourceTree = "<group>"; };
@@ -855,7 +861,6 @@
 		EC949E101ED43A3C005FDD04 /* libYYImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYYImage.a; path = "../../../Library/Developer/Xcode/DerivedData/SecurityCloud-eardxwpijrmkkybyictinhowjubi/Build/Products/Debug-iphoneos/YYImage/libYYImage.a"; sourceTree = "<group>"; };
 		EC949E111ED43A3C005FDD04 /* libYYWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libYYWebImage.a; path = "../../../Library/Developer/Xcode/DerivedData/SecurityCloud-eardxwpijrmkkybyictinhowjubi/Build/Products/Debug-iphoneos/YYWebImage/libYYWebImage.a"; sourceTree = "<group>"; };
 		EC949E211ED440DB005FDD04 /* TencentLBS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentLBS.framework; sourceTree = "<group>"; };
-		EC949E231ED440E7005FDD04 /* HalleyAliveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HalleyAliveSDK.framework; sourceTree = "<group>"; };
 		EC949E251ED441DB005FDD04 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		ECAC59001ED2A5E100628E85 /* FirstCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCollectionViewCell.h; sourceTree = "<group>"; };
 		ECAC59011ED2A5E100628E85 /* FirstCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCollectionViewCell.m; sourceTree = "<group>"; };
@@ -879,7 +884,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC949E261ED441DB005FDD04 /* libz.1.2.5.tbd in Frameworks */,
-				EC949E241ED440E7005FDD04 /* HalleyAliveSDK.framework in Frameworks */,
 				EC949E221ED440DB005FDD04 /* TencentLBS.framework in Frameworks */,
 				EC949E121ED43A3C005FDD04 /* libAFNetworking.a in Frameworks */,
 				EC949E131ED43A3C005FDD04 /* libESPictureBrowser.a in Frameworks */,
@@ -893,6 +897,7 @@
 				EC949E1B1ED43A3C005FDD04 /* libSDWebImage.a in Frameworks */,
 				EC949E1C1ED43A3C005FDD04 /* libSVProgressHUD.a in Frameworks */,
 				EC949E1D1ED43A3C005FDD04 /* libTZImagePickerController.a in Frameworks */,
+				184A9A021F1D958B0087E732 /* HalleyAliveSDK.framework in Frameworks */,
 				EC949E1E1ED43A3C005FDD04 /* libYYCache.a in Frameworks */,
 				EC949E1F1ED43A3C005FDD04 /* libYYImage.a in Frameworks */,
 				EC949E201ED43A3C005FDD04 /* libYYWebImage.a in Frameworks */,
@@ -1028,6 +1033,15 @@
 				1833558C1EF552ED00F75EE0 /* UIView+WZLBadge.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		184A9A031F1D97680087E732 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				184A9A041F1D97680087E732 /* SGQRCodeGenerateManager.h */,
+				184A9A051F1D97680087E732 /* SGQRCodeGenerateManager.m */,
+			);
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 		189E92BD1ED158E300DBD4FC = {
@@ -1365,6 +1379,7 @@
 		189E93291ED1590900DBD4FC /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				184A9A031F1D97680087E732 /* QRCode */,
 				1833557F1EF552ED00F75EE0 /* WZLBadge */,
 				18EBDD251EDC0520006B0248 /* DHGuidePageHUD */,
 				18EBDCFD1EDADDEC006B0248 /* RxWebViewController */,
@@ -1433,14 +1448,14 @@
 		18A7C8DE1ED321EB0004136A /* coreData */ = {
 			isa = PBXGroup;
 			children = (
-				EC795DA51ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.h */,
-				EC795DA61ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m */,
-				EC795DA71ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.h */,
-				EC795DA81ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.m */,
-				EC795D991ED681F00061C5E1 /* Info+CoreDataClass.h */,
-				EC795D9A1ED681F00061C5E1 /* Info+CoreDataClass.m */,
-				EC795D9B1ED681F00061C5E1 /* Info+CoreDataProperties.h */,
-				EC795D9C1ED681F00061C5E1 /* Info+CoreDataProperties.m */,
+				184A9A091F1E117C0087E732 /* ImageModel+CoreDataClass.h */,
+				184A9A0A1F1E117C0087E732 /* ImageModel+CoreDataClass.m */,
+				184A9A0B1F1E117C0087E732 /* ImageModel+CoreDataProperties.h */,
+				184A9A0C1F1E117C0087E732 /* ImageModel+CoreDataProperties.m */,
+				184A9A0D1F1E117C0087E732 /* Info+CoreDataClass.h */,
+				184A9A0E1F1E117C0087E732 /* Info+CoreDataClass.m */,
+				184A9A0F1F1E117C0087E732 /* Info+CoreDataProperties.h */,
+				184A9A101F1E117C0087E732 /* Info+CoreDataProperties.m */,
 				18A7C8DF1ED322060004136A /* Model.xcdatamodeld */,
 				18A7C8E21ED323240004136A /* SecurityCloud-Bridging-Header.h */,
 				EC795D881ED66F080061C5E1 /* CoreDataHelper.h */,
@@ -1582,7 +1597,7 @@
 		EC949C761ED4375E005FDD04 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				EC949E231ED440E7005FDD04 /* HalleyAliveSDK.framework */,
+				184A9A011F1D958B0087E732 /* HalleyAliveSDK.framework */,
 				EC949E211ED440DB005FDD04 /* TencentLBS.framework */,
 				EC949C771ED43784005FDD04 /* QMapKit */,
 				EC949C9B1ED43784005FDD04 /* Resources */,
@@ -2386,10 +2401,10 @@
 				183355901EF552ED00F75EE0 /* CAAnimation+WAnimation.m in Sources */,
 				EC79374C1ED7C4550038123D /* LBXScanNetAnimation.m in Sources */,
 				1853DDBA1EDD985000A151AB /* RankingViewController.m in Sources */,
+				184A9A061F1D97680087E732 /* SGQRCodeGenerateManager.m in Sources */,
 				1802904F1ED916C100868BE3 /* TAAnimatedDotView.m in Sources */,
 				EC795D911ED6705D0061C5E1 /* DraftBoxTableViewCell.m in Sources */,
 				189E933C1ED1590900DBD4FC /* BaseTabBarController.m in Sources */,
-				EC795DA91ED6B3CE0061C5E1 /* ImageModel+CoreDataClass.m in Sources */,
 				189E93431ED1590900DBD4FC /* DES3Util.m in Sources */,
 				EC795D8A1ED66F080061C5E1 /* CoreDataHelper.m in Sources */,
 				189E933D1ED1590900DBD4FC /* BaseViewController.m in Sources */,
@@ -2399,7 +2414,6 @@
 				180290511ED916C100868BE3 /* TAPageControl.m in Sources */,
 				189E933B1ED1590900DBD4FC /* BaseNavigationController.m in Sources */,
 				1802905C1ED9196400868BE3 /* MsgModel.m in Sources */,
-				EC795DAA1ED6B3CE0061C5E1 /* ImageModel+CoreDataProperties.m in Sources */,
 				187C259A1ED86D7D001D9925 /* MyQRCodeViewController.m in Sources */,
 				189E933E1ED1590900DBD4FC /* AppDelegate.m in Sources */,
 				187C25B51ED88027001D9925 /* LabelLabelTableViewCell.m in Sources */,
@@ -2417,6 +2431,7 @@
 				189E93521ED16CEB00DBD4FC /* NSString+Utility.m in Sources */,
 				EC7937441ED7BDA90038123D /* MTBBarcodeScanner.m in Sources */,
 				18EBDD3A1EDC551C006B0248 /* HanderMsgView.m in Sources */,
+				184A9A131F1E117C0087E732 /* Info+CoreDataClass.m in Sources */,
 				18F1E14F1ED5B51400C16EE6 /* UserModel.m in Sources */,
 				EC7937471ED7BEE20038123D /* ScanQRViewController.m in Sources */,
 				189E93411ED1590900DBD4FC /* SecondViewController.m in Sources */,
@@ -2429,6 +2444,7 @@
 				EC79374D1ED7C4550038123D /* LBXScanView.m in Sources */,
 				1802904E1ED916C100868BE3 /* TAAbstractDotView.m in Sources */,
 				189E93391ED1590900DBD4FC /* RegisterViewController.m in Sources */,
+				184A9A141F1E117C0087E732 /* Info+CoreDataProperties.m in Sources */,
 				189E93441ED1590900DBD4FC /* GTMBase64.m in Sources */,
 				187C259D1ED87643001D9925 /* MyDetailViewController.m in Sources */,
 				18EBDD0C1EDADDEC006B0248 /* NJKWebViewProgressView.m in Sources */,
@@ -2438,8 +2454,8 @@
 				18EBDD1E1EDB1F16006B0248 /* TagCollectionViewCell.m in Sources */,
 				187C257F1ED84E85001D9925 /* LabelTableViewCell.m in Sources */,
 				189E93451ED1590900DBD4FC /* Md5Util.m in Sources */,
-				EC795D9E1ED681F00061C5E1 /* Info+CoreDataProperties.m in Sources */,
 				EC82F07D1EDEB947001C77C1 /* ChangePasswordViewController.m in Sources */,
+				184A9A111F1E117C0087E732 /* ImageModel+CoreDataClass.m in Sources */,
 				EC795D811ED65D6E0061C5E1 /* UITextView+Placeholder.m in Sources */,
 				18EBDD0B1EDADDEC006B0248 /* NJKWebViewProgress.m in Sources */,
 				180290521ED916C100868BE3 /* SDCollectionViewCell.m in Sources */,
@@ -2451,9 +2467,9 @@
 				189E93371ED1590900DBD4FC /* LoginViewController.m in Sources */,
 				EC82F0791EDE73F9001C77C1 /* OutSiderButton.m in Sources */,
 				18EBDCFB1ED99ED0006B0248 /* NoticeInsideTableViewCell.m in Sources */,
-				EC795D9D1ED681F00061C5E1 /* Info+CoreDataClass.m in Sources */,
 				EC795DB11ED6D4160061C5E1 /* PostedInfoTableViewCell.m in Sources */,
 				180290771ED9663400868BE3 /* VisitorConfirmPasswardViewController.m in Sources */,
+				184A9A121F1E117C0087E732 /* ImageModel+CoreDataProperties.m in Sources */,
 				EC7937401ED7B3C40038123D /* VerticalButton.m in Sources */,
 				1853DDB41EDD553400A151AB /* MsgCenterModel.m in Sources */,
 				187C25911ED854DC001D9925 /* ImageCollectionViewCell.m in Sources */,
@@ -2860,9 +2876,11 @@
 		18A7C8DF1ED322060004136A /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				184A9A081F1DB8410087E732 /* Model2.xcdatamodel */,
+				184A9A071F1DB7960087E732 /* 2.xcdatamodel */,
 				18A7C8E01ED322060004136A /* Model.xcdatamodel */,
 			);
-			currentVersion = 18A7C8E01ED322060004136A /* Model.xcdatamodel */;
+			currentVersion = 184A9A081F1DB8410087E732 /* Model2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

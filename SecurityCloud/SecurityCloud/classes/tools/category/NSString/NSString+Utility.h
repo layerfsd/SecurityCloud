@@ -169,4 +169,6 @@
    获取label高度
  */
 + (CGFloat)heightOfString:(NSString *)string width:(NSUInteger)width font:(UIFont *)font;
+
++(NSString *)randomStringWithLength:(NSInteger)len;
 @end

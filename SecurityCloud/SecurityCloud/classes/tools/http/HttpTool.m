@@ -7,7 +7,8 @@
 //
 
 #import "HttpTool.h"
-
+#import "NSString+Utility.h"
+#import "Md5Util.h"
 @implementation HttpTool
 + (void)get:(NSString *)URLString
  parameters:(id)parameters
@@ -17,7 +18,11 @@
     [SVProgressHUD show];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
-    [manager GET:urlStr parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    
+    NSMutableDictionary *para = [self postDict:parameters];
+    
+    
+    [manager GET:urlStr parameters:para progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
@@ -39,8 +44,13 @@
 {
     [SVProgressHUD show];
     AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
-    [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    
+    NSMutableDictionary *para = [self postDict:parameters];
+    
+    
+    [manager POST:urlStr parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
@@ -79,6 +89,31 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
+        failure(error);
+    }];
+    
+    
+}
++ (void)postWithoutProgress:(NSString *)URLString
+           parameters:(id)parameters
+              success:(void (^)(id responseObject))success
+              failure:(void (^)(NSError *error))failure
+{
+//    [SVProgressHUD show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
+    [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [SVProgressHUD dismiss];
+        
+        success(responseObject);
+        
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+//        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
     }];
     
@@ -156,6 +191,69 @@
         failure(error);
     }];
 }
+
+
++(NSString*)stringWithDict:(NSDictionary*)dict{
+    
+    NSArray *keys = [dict allKeys];
+    
+    NSArray *sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1,id obj2) {
+        
+        return[obj1 compare:obj2 options:NSNumericSearch];
+        
+    }];
+    
+    NSString *str = @"";
+    
+    for(NSString *categoryId in sortedArray) {
+        
+        id value = [dict objectForKey:categoryId];
+        
+        if([value isKindOfClass:[NSDictionary class]]) {
+            
+            value = [self stringWithDict:value];
+            
+        }
+        
+        
+        if([str length] !=0) {
+            
+            str = [str stringByAppendingString:@"&"];
+            
+        }
+        
+        str = [str stringByAppendingFormat:@"%@=%@",categoryId,value];
+        
+    }
+    
+    return str;
+    
+}
+
++(NSMutableDictionary*)postDict:(NSDictionary*)dict{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dict];
+    NSString *randomStr = [NSString randomStringWithLength:17];
+    [dic setValue:randomStr forKey:@"nonce_str"];
+    NSString *sign = [self sign:dict randomStr:randomStr];
+    [dic setValue:sign forKey:@"sign"];
+    return dic;
+}
+
++(NSString*)sign:(NSDictionary*)dict randomStr:(NSString*)randomStr {
+    NSString *str = [self stringWithDict:dict];
+    if (str.length != 0) {
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"&nonce_str=%@",randomStr]];
+    }else{
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"nonce_str=%@",randomStr]];
+    }
+    
+    NSString *stringSignTemp = [NSString stringWithFormat:@"%@&key=%@",str,@"m855afec7jsa3f02ad0013g6"];
+    NSString *md5 = [Md5Util encryptMD5:stringSignTemp];
+    NSString *sign = md5.uppercaseString;
+    
+    return sign;
+}
+
 
 @end
 @implementation AFHTTPSessionSingleton

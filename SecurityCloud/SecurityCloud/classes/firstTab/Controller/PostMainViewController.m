@@ -15,9 +15,12 @@
 #import "ImageModel+CoreDataClass.h"
 #import "UITextView+Placeholder.h"
 #import "CoreDataHelper.h"
+#import "KZVideoViewController.h"
+#import "KZVideoPlayer.h"
+#import "KZVideoConfig.h"
 #define colum 4
 #define cellWidth (kScreenWidth - 20)/colum
-@interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate,ESPictureBrowserDelegate>
+@interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate,ESPictureBrowserDelegate,KZVideoViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -36,10 +39,50 @@
 
 @property (nonatomic,strong) AVAudioPlayer *player;
 
+@property (nonatomic,strong) KZVideoModel *videoModel;
+@property (weak, nonatomic) IBOutlet UIView *videoPlayView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteVideoBtn;
+
 
 @end
 
 @implementation PostMainViewController
+
+
+- (IBAction)addVideo:(UIButton *)sender {
+    if (sender.tag == 1) {
+        //删除video
+        self.videoModel = nil;
+        for (UIView *item in _videoPlayView.subviews) {
+            [item removeFromSuperview];
+        }
+        sender.hidden = YES;
+    }else{
+        KZVideoViewController *videoVC = [[KZVideoViewController alloc] init];
+        videoVC.delegate = self;
+        [videoVC startAnimationWithType:KZVideoViewShowTypeSmall];
+    }
+    
+}
+
+- (void)videoViewController:(KZVideoViewController *)videoController didRecordVideo:(KZVideoModel *)videoModel{
+    //获取到视频
+    self.videoModel = videoModel;
+    for (UIView *item in _videoPlayView.subviews) {
+        [item removeFromSuperview];
+    }
+    UIImageView *thum = [[UIImageView alloc] initWithFrame:_videoPlayView.bounds];
+    thum.image = [UIImage imageWithContentsOfFile:videoModel.thumAbsolutePath];
+    [_videoPlayView addSubview:thum];
+    
+    KZVideoPlayer *player = [[KZVideoPlayer alloc] initWithFrame:_videoPlayView.bounds videoUrl:[NSURL fileURLWithPath:videoModel.videoAbsolutePath]];
+    [_videoPlayView addSubview:player];
+    
+    _deleteVideoBtn.hidden = NO;
+    
+    [player stop];
+}
+
 
 -(void)deleteFile:(NSString*)fileUrl {
     NSFileManager* fileManager=[NSFileManager defaultManager];
@@ -160,7 +203,7 @@
 }
 
 -(BOOL)check {
-    if (!self.filePath && self.images.count == 0 && [NSString isEmpty:_textView.text]) {
+    if (!self.filePath && self.images.count == 0 && [NSString isEmpty:_textView.text] && self.videoModel == nil) {
         return NO;
     }
     return YES;
@@ -213,6 +256,18 @@
                 }];
             }
         }
+        if (self.videoModel) {
+            dispatch_group_enter(group);
+            NSString *token = @"";
+            QNUploadManager *upManager = [QNUploadManager new];
+            NSData *videoData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.videoModel.videoAbsolutePath]];
+            
+            [upManager putData:videoData key:@"" token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                 dispatch_group_leave(group);
+            } option:nil];
+            
+        }
+        
         dispatch_group_notify(group, dispatch_get_main_queue(), ^(){
             //初始化页面或更新页面
             [self postToServerWithData];
@@ -234,6 +289,8 @@
             thisInfo.content = _textView.text;
             thisInfo.images = [self imagesPath];
             thisInfo.voicePath = self.filePath;
+            thisInfo.videoPath = self.videoModel.videoAbsolutePath;
+            thisInfo.videoImagePath = self.videoModel.thumAbsolutePath;
             thisInfo.userID = UserID;
             thisInfo.creatTime = [NSDate date];
             [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError * _Nullable error) {
@@ -258,6 +315,8 @@
             info.content = _textView.text;
             info.images = [self imagesPath];
             info.voicePath = self.filePath;
+            info.videoPath = self.videoModel.videoAbsolutePath;
+            info.videoImagePath = self.videoModel.thumAbsolutePath;
             info.userID = UserID;
             info.creatTime = [NSDate date];
             
@@ -319,7 +378,24 @@
     if (![NSString isEmpty:_info.content]) {
         _textView.text = _info.content;
     }
-   
+    if (_info.videoPath) {
+        KZVideoModel *model = [KZVideoModel new];
+        model.videoAbsolutePath = _info.videoPath;
+        model.thumAbsolutePath = _info.videoImagePath;
+        self.videoModel = model;
+        _deleteVideoBtn.hidden = NO;
+        
+        
+        NSString *path = [KZVideoUtil getVideoPath];
+        UIImageView *thum = [[UIImageView alloc] initWithFrame:_videoPlayView.bounds];
+        thum.image = [UIImage imageNamed:[path stringByAppendingPathComponent:model.thumAbsolutePath.lastPathComponent]];
+        [_videoPlayView addSubview:thum];
+       
+        
+        KZVideoPlayer *player = [[KZVideoPlayer alloc] initWithFrame:_videoPlayView.bounds videoUrl:[NSURL fileURLWithPath:[path stringByAppendingPathComponent:model.videoAbsolutePath.lastPathComponent] isDirectory:NO]];
+        [_videoPlayView addSubview:player];
+        [player stop];
+    }
 }
 
 - (void)viewDidLoad {
@@ -346,7 +422,7 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:@"CirclePostMessageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell"];
     [self collectionViewLayout];
-    
+    _deleteVideoBtn.hidden = YES;
     if (_info != nil) {
         //初始化数据
         [self initData];
@@ -354,6 +430,7 @@
         _showButton.enabled = NO;
     }
     _textView.placeholder = @"请输入举报内容";
+    
 }
 
 - (void)didReceiveMemoryWarning {

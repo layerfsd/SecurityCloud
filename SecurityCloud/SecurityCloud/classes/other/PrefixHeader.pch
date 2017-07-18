@@ -14,7 +14,7 @@
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
 #import "BaseTabBarController.h"
-
+#import "JPUSHService.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "HttpTool.h"
 #import "UserManager.h"
@@ -31,4 +31,5 @@
 #import "ESPictureBrowser.h"
 #import "ActionSheetPicker.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import <Qiniu/QiniuSDK.h>
 #endif /* PrefixHeader_pch */
