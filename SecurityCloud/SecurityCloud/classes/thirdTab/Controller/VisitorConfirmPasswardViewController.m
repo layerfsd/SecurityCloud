@@ -32,7 +32,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:_tel forKey:@"tel"];
     [parameters setValue:_code forKey:@"yanzheng"];
-    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
         [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         [UserManager setTelNum:_tel];

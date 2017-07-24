@@ -326,6 +326,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    NSLog(@"location:%@", location.location);
     [UserManager sharedManager].address = location.address;
     [UserManager sharedManager].location = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.latitude,location.location.coordinate.longitude];
+    
+    [UserManager sharedManager].latitude = [NSString stringWithFormat:@"%f",location.location.coordinate.latitude];
+    [UserManager sharedManager].longitude = [NSString stringWithFormat:@"%f",location.location.coordinate.longitude];
+    
     [self upLocation:[NSString stringWithFormat:@"%f,%f",location.location.coordinate.latitude,location.location.coordinate.longitude]];
     [self.locationManager stopUpdatingLocation];
 }
@@ -335,7 +339,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [parameters setValue:UserID forKey:@"id"];
     [parameters setValue:zuobiao forKey:@"zuobiao"];
     
-    [HttpTool postWithoutProgress:@"/qingbaoyuandizhi.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool postWithoutProgress:@"/api/qingbaoyuandizhi.html" parameters:parameters success:^(id responseObject) {
         
         
     } failure:^(NSError *error) {

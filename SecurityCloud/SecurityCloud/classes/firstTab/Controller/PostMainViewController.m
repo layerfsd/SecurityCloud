@@ -18,6 +18,7 @@
 #import "KZVideoViewController.h"
 #import "KZVideoPlayer.h"
 #import "KZVideoConfig.h"
+#import "MoviePlayerView.h"
 #define colum 4
 #define cellWidth (kScreenWidth - 20)/colum
 @interface PostMainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,CirclePostMessageCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate,AVAudioPlayerDelegate,ESPictureBrowserDelegate,KZVideoViewControllerDelegate>
@@ -33,8 +34,10 @@
 @property (weak, nonatomic) IBOutlet UIView *recordView;
 
 @property (nonatomic,strong) NSMutableArray<PostImageModel*> *images;
-@property (nonatomic,copy) NSMutableArray<NSString*> *postImageIDs;
-@property (nonatomic,copy) NSString *postVoiceID;
+@property (nonatomic,strong) NSMutableArray<NSMutableDictionary*> *postImageDicts;
+@property (nonatomic,strong) NSMutableDictionary *postVoiceDict;
+@property (nonatomic,strong) NSMutableDictionary *postVideoDict;
+
 @property (nonatomic,copy) NSString *filePath;
 
 @property (nonatomic,strong) AVAudioPlayer *player;
@@ -43,19 +46,27 @@
 @property (weak, nonatomic) IBOutlet UIView *videoPlayView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteVideoBtn;
 
+@property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
 
 @end
 
 @implementation PostMainViewController
+- (IBAction)playVideo:(UIButton *)sender {
+    NSString *path = [KZVideoUtil getVideoPath];
+    path = [path stringByAppendingPathComponent:self.videoModel.videoAbsolutePath.lastPathComponent];
+
+    NSURL * url = [NSURL fileURLWithPath:path];
+    MoviePlayerView * mPlayer = [[MoviePlayerView alloc]initWithUrl:url];
+    [mPlayer play];
+}
 
 
 - (IBAction)addVideo:(UIButton *)sender {
     if (sender.tag == 1) {
         //删除video
         self.videoModel = nil;
-        for (UIView *item in _videoPlayView.subviews) {
-            [item removeFromSuperview];
-        }
+        _videoPlayView.hidden = YES;
+       
         sender.hidden = YES;
     }else{
         KZVideoViewController *videoVC = [[KZVideoViewController alloc] init];
@@ -68,19 +79,15 @@
 - (void)videoViewController:(KZVideoViewController *)videoController didRecordVideo:(KZVideoModel *)videoModel{
     //获取到视频
     self.videoModel = videoModel;
-    for (UIView *item in _videoPlayView.subviews) {
-        [item removeFromSuperview];
-    }
-    UIImageView *thum = [[UIImageView alloc] initWithFrame:_videoPlayView.bounds];
-    thum.image = [UIImage imageWithContentsOfFile:videoModel.thumAbsolutePath];
-    [_videoPlayView addSubview:thum];
+  
     
-    KZVideoPlayer *player = [[KZVideoPlayer alloc] initWithFrame:_videoPlayView.bounds videoUrl:[NSURL fileURLWithPath:videoModel.videoAbsolutePath]];
-    [_videoPlayView addSubview:player];
+    NSString *path = [KZVideoUtil getVideoPath];
+    _videoImageView.image = [UIImage imageNamed:[path stringByAppendingPathComponent:videoModel.thumAbsolutePath.lastPathComponent]];
+    _videoPlayView.hidden = NO;
     
     _deleteVideoBtn.hidden = NO;
     
-    [player stop];
+ 
 }
 
 
@@ -146,7 +153,9 @@
            
             [self stop];
         }else{
-            BOOL fileexit = [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
+            NSString *voicePath = VoicePath;
+            voicePath = [voicePath stringByAppendingPathComponent:self.filePath.lastPathComponent];
+            BOOL fileexit = [[NSFileManager defaultManager] fileExistsAtPath:voicePath];
             if (!fileexit) {
                 [SVProgressHUD showErrorWithStatus:@"文件丢失"];
                 return;
@@ -156,7 +165,8 @@
             [session setCategory:AVAudioSessionCategoryPlayback error:&sessionError];
 
             NSError *playerError ;
-            _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.filePath] error:&playerError];
+            
+            _player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:voicePath] error:&playerError];
             _player.delegate = self;
             _player.volume = 1;
          
@@ -169,14 +179,20 @@
 
 -(void)postToServerWithData {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:UserID forKey:@"qingbaoyuanid"];
-    [parameters setValue:_textView.text forKey:@"neirong"];
-    [parameters setValue:[self.postImageIDs componentsJoinedByString:@","] forKey:@"img"];
-    [parameters setValue:self.postVoiceID forKey:@"luyin"];
-    [parameters setValue:[UserManager sharedManager].address forKey:@"dizhi"];
-    [parameters setValue:[UserManager sharedManager].location forKey:@"zuobiao"];
+    [parameters setValue:UserID forKey:@"user_id"];
+    [parameters setValue:_textView.text forKey:@"content"];
+//    [parameters setValue:[self.postImageIDs componentsJoinedByString:@","] forKey:@"img"];
+//    [parameters setValue:self.postVoiceID forKey:@"luyin"];
+    [parameters setValue:[UserManager sharedManager].address forKey:@"address"];
+//    [parameters setValue:[UserManager sharedManager].location forKey:@"zuobiao"];
+    [parameters setValue:[UserManager sharedManager].longitude forKey:@"longitude"];
+    [parameters setValue:[UserManager sharedManager].latitude forKey:@"latitude"];
     
-    [HttpTool post:@"/qingbaotianjia.html" parameters:parameters success:^(id responseObject) {
+    [parameters setValue:[JsonHelper jsonWithObj:self.postImageDicts]  forKey:@"image"];
+    [parameters setValue:[JsonHelper jsonWithObj:self.postVoiceDict] forKey:@"audio"];
+    [parameters setValue:[JsonHelper jsonWithObj:self.postVideoDict] forKey:@"video"];
+    
+    [HttpTool post:SubmitMsg parameters:parameters success:^(id responseObject) {
         //添加成功 退出页面 清楚本地数据
         [self cancelInfo];
         [SVProgressHUD showSuccessWithStatus:@"上传成功"];
@@ -185,6 +201,8 @@
         
     }];
 }
+
+
 
 -(void)cancelInfo {
     if (_info) {
@@ -230,12 +248,17 @@
         dispatch_group_t group = dispatch_group_create();
         
         if (self.filePath) {
-            NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.filePath]];
+            NSString *voicePath = VoicePath;
+            voicePath = [voicePath stringByAppendingPathComponent:self.filePath.lastPathComponent];
+            NSData *voiceData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:voicePath]];
             dispatch_group_enter(group);
-            [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"2"} voice:voiceData voiceName:self.filePath.lastPathComponent success:^(id responseObject) {
-                if ([responseObject[@"status"] isEqualToString:@"ok"]) {
-                    self.postVoiceID = responseObject[@"data"][@"id"];
-                }
+            [HttpTool post:Upload parameters:nil voice:voiceData voiceName:self.filePath.lastPathComponent success:^(id responseObject) {
+//                if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+                [self.postVoiceDict removeAllObjects];
+                [self.postVoiceDict setValue:responseObject[@"data"][@"url"] forKey:@"name"];
+                [self.postVoiceDict setValue:responseObject[@"data"][@"size"] forKey:@"size"];
+//                    self.postVoiceID = responseObject[@"data"][@"id"];
+//                }
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
                 dispatch_group_leave(group);
@@ -243,13 +266,17 @@
         }
         //有图片需要上传
         if (self.images.count > 0) {
-            [self.postImageIDs removeAllObjects];
+            [self.postImageDicts removeAllObjects];
             for (PostImageModel *model in self.images) {
                 dispatch_group_enter(group);
-                [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:model.image imageName:model.imageName success:^(id responseObject) {
-                    if ([responseObject[@"status"] isEqualToString:@"ok"]) {
-                        [self.postImageIDs addObject:responseObject[@"data"][@"id"]];
-                    }
+                [HttpTool post:Upload parameters:nil image:model.image imageName:model.imageName success:^(id responseObject) {
+                    [self.postImageDicts removeAllObjects];
+//                    if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+                        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+                        [dict setValue:responseObject[@"data"][@"url"] forKey:@"name"];
+                        [dict setValue:responseObject[@"data"][@"size"] forKey:@"size"];
+                        [self.postImageDicts addObject:dict];
+//                    }
                     dispatch_group_leave(group);
                 } failure:^(NSError *error) {
                     dispatch_group_leave(group);
@@ -258,13 +285,39 @@
         }
         if (self.videoModel) {
             dispatch_group_enter(group);
-            NSString *token = @"";
-            QNUploadManager *upManager = [QNUploadManager new];
-            NSData *videoData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:self.videoModel.videoAbsolutePath]];
-            
-            [upManager putData:videoData key:@"" token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                 dispatch_group_leave(group);
-            } option:nil];
+            [HttpTool getToken:@"http://cntp31.lysoo.com/guanli/index.php/Api/Common/token" parameters:nil success:^(id responseObject) {
+                NSString *token = responseObject[@"data"][@"token"];
+               
+                NSString *path = [KZVideoUtil getVideoPath];
+                NSString *filePather = [path stringByAppendingPathComponent:self.videoModel.videoAbsolutePath.lastPathComponent];
+                
+               
+                
+                QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+                    NSLog(@"percent == %.2f", percent);
+                }
+                                                                             params:nil
+                                                                           checkCrc:NO
+                                                                 cancellationSignal:nil];
+                QNConfiguration *config = [QNConfiguration build:^(QNConfigurationBuilder *builder) {
+                    builder.zone = [QNZone zone1];
+                }];
+                
+                QNUploadManager *upManager = [[QNUploadManager alloc] initWithConfiguration:config];
+                
+                [upManager putFile:filePather key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                    NSLog(@"info ===== %@", info);
+                    NSLog(@"resp ===== %@", resp);
+                    [self.postVideoDict removeAllObjects];
+                    [self.postVideoDict setValue:resp[@"name"] forKey:@"name"];
+                    [self.postVideoDict setValue:resp[@"size"] forKey:@"size"];
+                    dispatch_group_leave(group);
+                }
+                            option:uploadOption];
+            } failure:^(NSError *error) {
+                dispatch_group_leave(group);
+            }];
+           
             
         }
         
@@ -384,17 +437,14 @@
         model.thumAbsolutePath = _info.videoImagePath;
         self.videoModel = model;
         _deleteVideoBtn.hidden = NO;
-        
+        _videoPlayView.hidden = NO;
         
         NSString *path = [KZVideoUtil getVideoPath];
-        UIImageView *thum = [[UIImageView alloc] initWithFrame:_videoPlayView.bounds];
-        thum.image = [UIImage imageNamed:[path stringByAppendingPathComponent:model.thumAbsolutePath.lastPathComponent]];
-        [_videoPlayView addSubview:thum];
-       
+        _videoImageView.image = [UIImage imageNamed:[path stringByAppendingPathComponent:model.thumAbsolutePath.lastPathComponent]];
         
-        KZVideoPlayer *player = [[KZVideoPlayer alloc] initWithFrame:_videoPlayView.bounds videoUrl:[NSURL fileURLWithPath:[path stringByAppendingPathComponent:model.videoAbsolutePath.lastPathComponent] isDirectory:NO]];
-        [_videoPlayView addSubview:player];
-        [player stop];
+//        KZVideoPlayer *player = [[KZVideoPlayer alloc] initWithFrame:_videoPlayView.bounds videoUrl:[NSURL fileURLWithPath:[path stringByAppendingPathComponent:model.videoAbsolutePath.lastPathComponent] isDirectory:NO]];
+//        [_videoPlayView addSubview:player];
+//        [player stop];
     }
 }
 
@@ -423,6 +473,7 @@
     [_collectionView registerNib:[UINib nibWithNibName:@"CirclePostMessageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"CirclePostMessageCollectionViewCell"];
     [self collectionViewLayout];
     _deleteVideoBtn.hidden = YES;
+    _videoPlayView.hidden = YES;
     if (_info != nil) {
         //初始化数据
         [self initData];
@@ -574,7 +625,7 @@
 
 
 -(void)postVoice:(NSData*)voice voiceName:(NSString*)voiceName finished:(void (^)(NSString *responseID))block{
-    [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"2"} voice:voice voiceName:voiceName success:^(id responseObject) {
+    [HttpTool post:@"/api/wenjianshangchuan.html" parameters:@{@"fenlei":@"2"} voice:voice voiceName:voiceName success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
             block(responseObject[@"data"][@"id"]);
         }
@@ -584,7 +635,7 @@
 }
 
 -(void)postImages:(UIImage*)image imageName:(NSString*)imageName finished:(void (^)(NSString *responseID))block{
-    [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
+    [HttpTool post:@"/api/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
             block(responseObject[@"data"][@"id"]);
         }
@@ -617,12 +668,25 @@
     [self.collectionView reloadData];
 }
 
--(NSMutableArray *)postImageIDs {
-    if (_postImageIDs == nil) {
-        _postImageIDs = [NSMutableArray array];
+-(NSMutableDictionary *)postVideoDict{
+    if (_postVideoDict == nil) {
+        _postVideoDict = [NSMutableDictionary dictionary];
     }
-    return _postImageIDs;
+    return _postVideoDict;
 }
+-(NSMutableDictionary *)postVoiceDict{
+    if (_postVoiceDict == nil) {
+        _postVoiceDict = [NSMutableDictionary dictionary];
+    }
+    return _postVoiceDict;
+}
+-(NSMutableArray<NSMutableDictionary *> *)postImageDicts{
+    if (_postImageDicts == nil) {
+        _postImageDicts = [NSMutableArray array];
+    }
+    return _postImageDicts;
+}
+
 
 -(NSMutableArray *)images {
     if (_images == nil) {

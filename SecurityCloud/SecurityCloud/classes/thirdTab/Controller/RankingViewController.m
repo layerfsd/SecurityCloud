@@ -60,7 +60,7 @@
     [parameters setValue:UserID forKey:@"yonghuid"];
 //    [parameters setValue:@(_page) forKey:@"page"];
 //    [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
-    [HttpTool post:@"/jifenpaiming.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/jifenpaiming.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.models removeAllObjects];
         }

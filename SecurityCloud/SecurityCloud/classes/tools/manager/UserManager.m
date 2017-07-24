@@ -31,6 +31,7 @@ MJCodingImplementation
 +(NSDictionary *)mj_objectClassInArray {
     return @{
              @"biaoqian" : @"UserLabel",
+             @"biaoqian2" : @"UserLabel",
              };
 }
 

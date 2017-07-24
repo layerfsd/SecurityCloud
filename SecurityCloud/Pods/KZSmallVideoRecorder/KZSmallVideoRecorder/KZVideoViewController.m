@@ -199,13 +199,21 @@ static KZVideoViewController *__currentVideoVC = nil;
     
     _recoding_queue = dispatch_queue_create("com.kzsmallvideo.queue", DISPATCH_QUEUE_SERIAL);
     
-    NSArray *devicesVideo = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    _videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSArray *devicesAudio = [AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio];
     
-    AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:devicesVideo[0] error:nil];
+    AVCaptureDeviceInput *videoInput  = [[AVCaptureDeviceInput alloc]initWithDevice:_videoDevice error:nil];
     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:devicesAudio[0] error:nil];
     
-    _videoDevice = devicesVideo[0];
+//    _videoDevice = devicesVideo[0];
+    [_videoDevice lockForConfiguration:nil];
+    [_videoDevice setFlashMode:AVCaptureFlashModeAuto];
+    [_videoDevice setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+    if ([_videoDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
+        [_videoDevice setWhiteBalanceMode:AVCaptureWhiteBalanceModeAutoWhiteBalance];
+    }
+    [_videoDevice unlockForConfiguration];
+    
     
     _videoDataOut = [[AVCaptureVideoDataOutput alloc] init];
     _videoDataOut.videoSettings = @{(__bridge NSString *)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA)};
@@ -216,9 +224,11 @@ static KZVideoViewController *__currentVideoVC = nil;
     [_audioDataOut setSampleBufferDelegate:self queue:_recoding_queue];
     
     _videoSession = [[AVCaptureSession alloc] init];
-    if ([_videoSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
-        _videoSession.sessionPreset = AVCaptureSessionPreset640x480;
-    }
+  
+    
+//    if ([_videoSession canSetSessionPreset:AVCaptureSessionPreset640x480]) {
+//        _videoSession.sessionPreset = AVCaptureSessionPreset640x480;
+//    }
     if ([_videoSession canAddInput:videoInput]) {
         [_videoSession addInput:videoInput];
     }
@@ -247,7 +257,11 @@ static KZVideoViewController *__currentVideoVC = nil;
 - (void)viewWillAppear {
     _eyeView = [[KZEyeView alloc] initWithFrame:_videoView.bounds];
     [_videoView addSubview:_eyeView];
+    if (_videoDevice) {
+//        _videoDevice.focusMode = AVCaptureFocusModeAutoFocus;
+    }
 }
+
 
 - (void)viewDidAppear {
     
@@ -274,7 +288,7 @@ static KZVideoViewController *__currentVideoVC = nil;
         [btmView removeFromSuperview];
         [_eyeView removeFromSuperview];
         _eyeView = nil;
-        [self focusInPointAtVideoView:CGPointMake(_videoView.bounds.size.width/2, _videoView.bounds.size.height/2)];
+        //[self focusInPointAtVideoView:CGPointMake(_videoView.bounds.size.width/2, _videoView.bounds.size.height/2)];
     }];
     
     __block UILabel *zoomLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
@@ -301,13 +315,13 @@ static KZVideoViewController *__currentVideoVC = nil;
     NSError *error = nil;
     if ([_videoDevice lockForConfiguration:&error]) {
         if ([_videoDevice isFocusPointOfInterestSupported]) {
-            _videoDevice.focusPointOfInterest = cameraPoint;
+//            _videoDevice.focusPointOfInterest = cameraPoint;
         }
         if ([_videoDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
             _videoDevice.focusMode = AVCaptureFocusModeAutoFocus;
         }
         if ([_videoDevice isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
-            _videoDevice.exposureMode = AVCaptureExposureModeAutoExpose;
+//            _videoDevice.exposureMode = AVCaptureExposureModeAutoExpose;
         }
         if ([_videoDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
             _videoDevice.whiteBalanceMode = AVCaptureWhiteBalanceModeAutoWhiteBalance;
@@ -324,8 +338,8 @@ static KZVideoViewController *__currentVideoVC = nil;
 
 #pragma mark - Actions --
 - (void)focusAction:(UITapGestureRecognizer *)gesture {
-    CGPoint point = [gesture locationInView:_videoView];
-    [self focusInPointAtVideoView:point];
+//    CGPoint point = [gesture locationInView:_videoView];
+//    [self focusInPointAtVideoView:point];
 }
 
 - (void)zoomVideo:(UITapGestureRecognizer *)gesture {
@@ -486,7 +500,7 @@ static KZVideoViewController *__currentVideoVC = nil;
 }
 
 - (void)createWriter:(NSURL *)assetUrl {
-    _assetWriter = [AVAssetWriter assetWriterWithURL:assetUrl fileType:AVFileTypeQuickTimeMovie error:nil];
+    _assetWriter = [AVAssetWriter assetWriterWithURL:assetUrl fileType:AVFileTypeMPEG4 error:nil];
     int videoWidth = [KZVideoConfig defualtVideoSize].width;
     int videoHeight = [KZVideoConfig defualtVideoSize].height;
     /*
@@ -512,6 +526,15 @@ static KZVideoViewController *__currentVideoVC = nil;
                           AVVideoCodecKey : AVVideoCodecH264,
                           AVVideoWidthKey : @(videoHeight),
                           AVVideoHeightKey : @(videoWidth),
+                          AVVideoCompressionPropertiesKey: @{
+                          AVVideoPixelAspectRatioKey: @{
+                            AVVideoPixelAspectRatioHorizontalSpacingKey: @(1),
+                                                                                         AVVideoPixelAspectRatioVerticalSpacingKey: @(1)
+                          },
+                                                            AVVideoMaxKeyFrameIntervalKey: @(1),
+                                                            AVVideoAverageBitRateKey: @(1280000)
+                          },
+                      
                           AVVideoScalingModeKey:AVVideoScalingModeResizeAspectFill,
 //                          AVVideoCompressionPropertiesKey:codecSettings
                           };

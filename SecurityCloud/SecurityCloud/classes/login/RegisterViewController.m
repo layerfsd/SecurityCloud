@@ -81,7 +81,7 @@
     [parameters setValue:[Md5Util encryptMD5:_passwordTextField.text] forKey:@"password"];
     
     if (_isFound) {
-        [HttpTool post:@"/qingbaoyuanzhaohui.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/qingbaoyuanzhaohui.html" parameters:parameters success:^(id responseObject) {
             //注册完成 登录
             [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
@@ -91,7 +91,7 @@
             
         }];
     }else{
-        [HttpTool post:@"/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/qingbaoyuantianjia.html" parameters:parameters success:^(id responseObject) {
             //注册完成 登录
             [UserManager sharedManager].password = [Md5Util encryptMD5:_passwordTextField.text];
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
@@ -115,7 +115,7 @@
     }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:_phoneTextField.text forKey:@"tel"];
-    [HttpTool post:@"/shoujiyanzheng.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/shoujiyanzheng.html" parameters:parameters success:^(id responseObject) {
         [self codeGeted];
         [SVProgressHUD showSuccessWithStatus:@"验证码已发到您的手机上"];
     } failure:^(NSError *error) {

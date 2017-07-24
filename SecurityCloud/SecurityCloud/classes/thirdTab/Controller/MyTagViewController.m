@@ -39,7 +39,7 @@
     //我的标签
     NSMutableDictionary *parameters0 = [NSMutableDictionary dictionary];
     [parameters0 setValue:UserID forKey:@"id"];
-    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters0 success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuandenglu.html" parameters:parameters0 success:^(id responseObject) {
         [self.myTags removeAllObjects];
         UserManager *user = [UserManager mj_objectWithKeyValues:responseObject[@"data"]];
        
@@ -62,7 +62,7 @@
     [parameters setValue:@(100) forKey:@"fenyeshu"];
     [parameters setValue:UserID forKey:@"yonghuid"];
   
-    [HttpTool post:@"/biaoqiancha.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/biaoqiancha.html" parameters:parameters success:^(id responseObject) {
         NSArray *count = responseObject[@"count"];
         NSMutableArray *labels = [UserLabel mj_objectArrayWithKeyValuesArray:count];
         
@@ -131,7 +131,7 @@
     if (indexPath.section == 1) {
         //所有标签 添加
         NSDictionary *parameters = @{@"yonghuid": UserID,@"biaoqianid":label.labelID};
-        [HttpTool post:@"/yonghubiaoqianbangding.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/yonghubiaoqianbangding.html" parameters:parameters success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
             [self.allTags removeObject:label];
             [self.myTags addObject:label];
@@ -142,7 +142,7 @@
     }else{
         //我的标签 减掉
         NSDictionary *parameters = @{@"yonghuid": UserID,@"biaoqianid":label.labelID};
-        [HttpTool post:@"/yonghubiaoqianjiebang.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/yonghubiaoqianjiebang.html" parameters:parameters success:^(id responseObject) {
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
             [self.myTags removeObject:label];
             [self.allTags addObject:label];

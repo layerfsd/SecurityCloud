@@ -45,7 +45,7 @@
         [parameters setValue:_telTextField.text forKey:@"tel"];
         [parameters setValue:_codeTextField.text forKey:@"yanzheng"];
         [parameters  setValue:UserID forKey:@"id"];
-        [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
             
             [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
             [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
@@ -97,7 +97,7 @@
     }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:_telTextField.text forKey:@"tel"];
-    [HttpTool post:@"/shoujiyanzheng.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/shoujiyanzheng.html" parameters:parameters success:^(id responseObject) {
         [self codeGeted];
         [SVProgressHUD showSuccessWithStatus:@"验证码已发到您的手机上"];
     } failure:^(NSError *error) {

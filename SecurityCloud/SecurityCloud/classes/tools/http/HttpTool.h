@@ -15,7 +15,12 @@
  parameters:(id)parameters
     success:(void (^)(id responseObject))success
     failure:(void (^)(NSError *error))failure;
-    
+
++ (void)getToken:(NSString *)URLString
+ parameters:(id)parameters
+    success:(void (^)(id responseObject))success
+    failure:(void (^)(NSError *error))failure;
+
 + (void)post:(NSString *)URLString
   parameters:(id)parameters
      success:(void (^)(id responseObject))success
@@ -45,9 +50,12 @@
    voiceName:(NSString*)voiceName
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure;
+
+
 @end
 
 
 @interface AFHTTPSessionSingleton : NSObject
 +(AFHTTPSessionManager *)sharedHttpSessionManager;
++(AFHTTPSessionManager*) customManager;
 @end

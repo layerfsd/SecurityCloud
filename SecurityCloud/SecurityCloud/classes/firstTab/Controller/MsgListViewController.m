@@ -84,7 +84,7 @@
     [parameters setValue:UserID forKey:@"yonghuid"];
     [parameters setValue:@(_page) forKey:@"page"];
     [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
-    [HttpTool post:@"/xinxizhongxin.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/xinxizhongxin.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.models removeAllObjects];
         }
@@ -136,7 +136,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:model.msgID forKey:@"id"];
     [parameters setValue:UserID forKey:@"yonghuid"];
-    [HttpTool post:@"/xinxizhongxinxiangqing.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/xinxizhongxinxiangqing.html" parameters:parameters success:^(id responseObject) {
         [[NSNotificationCenter defaultCenter] postNotificationName:MsgListViewControllerReload object:nil];
         MsgCenterModel *modelDetail = [MsgCenterModel mj_objectWithKeyValues:responseObject[@"data"][0]];
         MsgDetailViewController *vc = [MsgDetailViewController new];

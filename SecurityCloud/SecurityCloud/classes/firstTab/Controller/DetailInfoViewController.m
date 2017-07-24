@@ -41,7 +41,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
    
     [parameters setValue:_qingbaoid forKey:@"id"];
-    [HttpTool post:@"/qingbaochakan.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaochakan.html" parameters:parameters success:^(id responseObject) {
        
         self.model = [PostModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self statusHander];
@@ -65,7 +65,7 @@
         [parameters setValue:[UserManager sharedManager].admin.userID forKey:@"adminid"];
         [parameters setValue:@(3) forKey:@"yuanzhuangtai"];
         [parameters setValue:@(4) forKey:@"zhuangtai"];
-        [HttpTool post:@"/qingbaozhuangtaibiangeng.html" parameters:nil success:^(id responseObject) {
+        [HttpTool post:@"/api/qingbaozhuangtaibiangeng.html" parameters:nil success:^(id responseObject) {
             
         } failure:^(NSError *error) {
             
@@ -102,7 +102,7 @@
             [parameters setValue:@(6) forKey:@"zhuangtai"];
         }
         
-        [HttpTool post:@"/qingbaozhuangtaibiangeng.html" parameters:parameters success:^(id responseObject) {
+        [HttpTool post:@"/api/qingbaozhuangtaibiangeng.html" parameters:parameters success:^(id responseObject) {
             [[NSNotificationCenter defaultCenter] postNotificationName:AdminHanderListViewControllerReload object:nil];
             [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
             [self.navigationController popViewControllerAnimated:YES];
@@ -127,6 +127,10 @@
         [imgurls addObject:model.url];
     }
     InfoDetailCellModel *model6 = [[InfoDetailCellModel alloc] initWithTitle:@"信息图片:" showValue:imgurls cellType:CustomCellTypeImages];
+    
+    
+//    InfoDetailCellModel *model7 = [[InfoDetailCellModel alloc] initWithTitle:@"信息视频:" showValue:imgurls cellType:CustomCellTypeImages];
+    
     [self.models addObject:@[model0,model1,model2,model3,model4,model5,model6]];
     
 //    NSInteger status = [self.model.zhuangtai integerValue];

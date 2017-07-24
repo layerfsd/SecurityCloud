@@ -51,7 +51,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"userID"];
     
-    [HttpTool post:@"/zixunzhuliebiao.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/zixunzhuliebiao.html" parameters:parameters success:^(id responseObject) {
        
         
         NSDictionary *data = responseObject[@"data"];
@@ -67,7 +67,7 @@
     NSMutableDictionary *parameters0 = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"userID"];
     
-    [HttpTool post:@"/zixunguanggao.html" parameters:parameters0 success:^(id responseObject) {
+    [HttpTool post:@"/api/zixunguanggao.html" parameters:parameters0 success:^(id responseObject) {
         
         
         NSArray *data = responseObject[@"data"];

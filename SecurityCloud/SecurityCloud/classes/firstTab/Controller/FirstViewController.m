@@ -55,7 +55,7 @@
 -(void)loadRedCount {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"yonghuid"];
-    [HttpTool postWithoutOK:@"/xinxizhongxinweidu.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool postWithoutOK:@"/api/xinxizhongxinweidu.html" parameters:parameters success:^(id responseObject) {
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:3 inSection:0]];
         NSInteger unReadCount = [responseObject[@"count"] integerValue];
 //        unReadCount = 8;
@@ -87,7 +87,7 @@
         [parameters0 setValue:UserID forKey:@"adminid"];
     }
     
-    [HttpTool postWithoutOK:@"/qingbaoshoulitongji.html" parameters:parameters0 success:^(id responseObject) {
+    [HttpTool postWithoutOK:@"/api/qingbaoshoulitongji.html" parameters:parameters0 success:^(id responseObject) {
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:4 inSection:0]];
         NSInteger unReadCount = [responseObject[@"count"] integerValue];
         //        unReadCount = 8;
@@ -228,7 +228,7 @@
 
 #pragma mark update 
 -(void)updateNotice {
-    [HttpTool post:@"/appbanben.html" parameters:nil success:^(id responseObject) {
+    [HttpTool post:@"/api/appbanben.html" parameters:nil success:^(id responseObject) {
         NSString *appVersion = @"";
         NSArray *versions = responseObject[@"data"];
         for (NSDictionary *temp in versions) {

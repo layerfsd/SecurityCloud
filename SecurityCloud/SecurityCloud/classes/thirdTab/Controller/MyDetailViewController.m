@@ -45,7 +45,7 @@
 -(void)loadUserInfo {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"id"];
-    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         self.model = [UserModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self initData];
         [self.tableView reloadData];

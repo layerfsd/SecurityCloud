@@ -9,6 +9,7 @@
 #import "HttpTool.h"
 #import "NSString+Utility.h"
 #import "Md5Util.h"
+#import "DeviceHelper.h"
 @implementation HttpTool
 + (void)get:(NSString *)URLString
  parameters:(id)parameters
@@ -16,7 +17,8 @@
     failure:(void (^)(NSError *error))failure
 {
     [SVProgressHUD show];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
+    
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     
     NSMutableDictionary *para = [self postDict:parameters];
@@ -36,15 +38,40 @@
         failure(error);
     }];
 }
++ (void)getToken:(NSString *)URLString
+      parameters:(id)parameters
+         success:(void (^)(id responseObject))success
+         failure:(void (^)(NSError *error))failure{
+//    [SVProgressHUD show];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
+//    NSMutableDictionary *para = [self postDict:parameters];
+    
+    
+    [manager GET:URLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [SVProgressHUD dismiss];
+//        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+            success(responseObject);
+//        }else{
+//            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
+//        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
+        failure(error);
+    }];
+
+}
 + (void)post:(NSString *)URLString
   parameters:(id)parameters
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
 {
     [SVProgressHUD show];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
+
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     
     NSMutableDictionary *para = [self postDict:parameters];
@@ -54,11 +81,9 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+
             success(responseObject);
-        }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-        }
+
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -75,7 +100,7 @@
      failure:(void (^)(NSError *error))failure
 {
     [SVProgressHUD show];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
@@ -99,13 +124,13 @@
               success:(void (^)(id responseObject))success
               failure:(void (^)(NSError *error))failure
 {
-//    [SVProgressHUD show];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
     [manager POST:urlStr parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        [SVProgressHUD dismiss];
+
         
         success(responseObject);
         
@@ -113,7 +138,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-//        [SVProgressHUD showErrorWithStatus:@"服务器错误"];
+
         failure(error);
     }];
     
@@ -129,9 +154,10 @@
      failure:(void (^)(NSError *error))failure
 {
     [SVProgressHUD showWithStatus:@"提交数据中..."];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
+    NSDictionary *param = [self postDict:parameters];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
-    [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:urlStr parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *data = UIImageJPEGRepresentation(image,0.5);//把要上传的图片转成NSData
         NSString *fileName = [NSString stringWithFormat:@"%@.png", imageName];
         
@@ -141,11 +167,10 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+
             success(responseObject);
-        }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-        }
+
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
@@ -162,9 +187,12 @@
      failure:(void (^)(NSError *error))failure
 {
     [SVProgressHUD show];
-    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton customManager];
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",RootPath,URLString];
-    [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    
+    NSDictionary *para = [self postDict:parameters];
+    
+    [manager POST:urlStr parameters:para constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
      
         NSString *fileName = [NSString stringWithFormat:@"%@.wav", voiceName];
         
@@ -181,11 +209,10 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [SVProgressHUD dismiss];
-        if ([responseObject[@"status"] isEqualToString:@"ok"]) {
+
             success(responseObject);
-        }else{
-            [SVProgressHUD showErrorWithStatus:responseObject[@"message"]];
-        }
+
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"服务器错误"];
         failure(error);
@@ -209,13 +236,6 @@
         
         id value = [dict objectForKey:categoryId];
         
-        if([value isKindOfClass:[NSDictionary class]]) {
-            
-            value = [self stringWithDict:value];
-            
-        }
-        
-        
         if([str length] !=0) {
             
             str = [str stringByAppendingString:@"&"];
@@ -229,6 +249,7 @@
     return str;
     
 }
+
 
 +(NSMutableDictionary*)postDict:(NSDictionary*)dict{
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dict];
@@ -264,7 +285,19 @@ static AFHTTPSessionManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [AFHTTPSessionManager manager];
-    });
+           });
+    return manager;
+}
+
++(AFHTTPSessionManager*) customManager{
+    AFHTTPSessionManager *manager = [AFHTTPSessionSingleton sharedHttpSessionManager];
+
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+
+    [manager.requestSerializer setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:[DeviceHelper version] forHTTPHeaderField:@"Version"];
+    [manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"Platform"];
+    [manager.requestSerializer setValue:[DeviceHelper iphoneType] forHTTPHeaderField:@"DeviceType"];
     return manager;
 }
     

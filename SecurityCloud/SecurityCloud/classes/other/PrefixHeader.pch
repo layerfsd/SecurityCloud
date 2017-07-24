@@ -32,4 +32,5 @@
 #import "ActionSheetPicker.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <Qiniu/QiniuSDK.h>
+#import "JsonHelper.h"
 #endif /* PrefixHeader_pch */

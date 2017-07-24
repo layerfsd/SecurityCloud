@@ -82,6 +82,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
   install_resource "UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
+  install_resource "ZFPlayer/ZFPlayer/ZFPlayer.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "DateTools/DateTools/DateTools/DateTools.bundle"
@@ -92,6 +93,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
   install_resource "UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle"
   install_resource "UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
+  install_resource "ZFPlayer/ZFPlayer/ZFPlayer.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

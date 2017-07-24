@@ -29,7 +29,7 @@
     [parameters setValue:UserID forKey:@"id"];
     [parameters setValue:_textField.text forKey:@"name"];
     
-    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
         [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:MyDetailViewControllerReload object:nil];

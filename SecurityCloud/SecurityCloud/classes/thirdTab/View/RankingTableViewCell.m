@@ -22,9 +22,9 @@
 }
 -(void)setModel:(UserModel *)model {
     _model = model;
-    _userNameLabel.text = _model.name == nil ? @"无":_model.name;
-    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
-    _scoreLabel.text = _model.tj == nil ? @"无":[NSString stringWithFormat:@"%@分",_model.tj];
+    _userNameLabel.text = _model.name == nil ? @"无用户名":_model.name;
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:_model.img] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
+    _scoreLabel.text = _model.tj == nil ? @"0分":[NSString stringWithFormat:@"%@分",_model.tj];
 }
 
 @end

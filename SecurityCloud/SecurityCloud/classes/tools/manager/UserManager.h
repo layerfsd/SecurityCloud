@@ -14,13 +14,18 @@
 @property (nonatomic,copy) NSString *password;
 @property (nonatomic,copy) NSString *tel;
 @property (nonatomic,copy) NSString *time;
-@property (nonatomic,copy) NSArray<UserLabel *> *biaoqian;
+@property (nonatomic,strong) NSArray<UserLabel *> *biaoqian;
 @property (nonatomic,copy) NSString *address;
+
 @property (nonatomic,copy) NSString *location;
+@property (nonatomic,copy) NSString *longitude;
+@property (nonatomic,copy) NSString *latitude;
+
 @property (nonatomic,copy) NSString *imgurl;
 @property (nonatomic,strong) UserManager *shangxian;
 @property (nonatomic,strong) UserManager *admin;
-
+@property (nonatomic,assign) float jifen;
+@property (nonatomic,strong) NSArray<UserLabel *> *biaoqian2;
 +(UserManager *)sharedManager;
 
 -(void)archiver;

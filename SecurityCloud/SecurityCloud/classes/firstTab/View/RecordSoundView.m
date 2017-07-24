@@ -114,6 +114,8 @@
     //1.获取沙盒地址
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     
+    
+    
     NSString *fileName = [NSString stringWithFormat:@"/%@.wav",[self stringFromDate:[NSDate date]]];
     
     _filePath = [path stringByAppendingString:fileName];

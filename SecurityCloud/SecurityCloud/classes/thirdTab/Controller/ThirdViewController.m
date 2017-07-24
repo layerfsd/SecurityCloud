@@ -19,6 +19,7 @@
 #import "RankingViewController.h"
 #import "MsgListViewController.h"
 #import "AboutAppViewController.h"
+#import "OfflineMemebersViewController.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeadTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -47,23 +48,31 @@
 }
 
 -(void)initDatas {
-    NSArray *section0 = @[[MeCellData initWithTitle:@"我的标签" imageName:@"我的标签"],
-                          [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"],
-                          [MeCellData initWithTitle:@"消息中心" imageName:@"消息中心"]];
+    [self.datas removeAllObjects];
+    NSMutableArray *sect0 = [NSMutableArray arrayWithArray:
+  @[[MeCellData initWithTitle:@"我的标签" imageName:@"我的标签"],
+    [MeCellData initWithTitle:@"积分统计" imageName:@"积分统计"],
+    [MeCellData initWithTitle:@"消息中心" imageName:@"消息中心"]]];
+    if ([UserManager sharedManager].admin) {
+        //民警
+        [sect0 addObject:[MeCellData initWithTitle:@"下线管理" imageName:@"消息中心"]];
+    }
+    
+    
     
     NSArray *section1 = @[[MeCellData initWithTitle:@"积分排行" imageName:@"积分排行"],
                           /*[MeCellData initWithTitle:@"版本更新" imageName:@"版本更新"],*/
                           [MeCellData initWithTitle:@"关于APP" imageName:@"关于APP"],
                           [MeCellData initWithTitle:@"推荐给好友" imageName:@"推荐给好友"],
                           [MeCellData initWithTitle:@"退出登录" imageName:@"退出"]];
-    [self.datas addObject:section0];
+    [self.datas addObject:sect0];
     [self.datas addObject:section1];
 }
 
 -(void)loadUserInfo {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"id"];
-    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         self.userModel = [UserModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
@@ -143,6 +152,9 @@
             [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"推荐给好友"]){
             [self recommand];
+        }else if ([model.titleStr isEqualToString:@"下线管理"]){
+            OfflineMemebersViewController *vc = [OfflineMemebersViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else if ([model.titleStr isEqualToString:@"退出登录"]){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认退出" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];

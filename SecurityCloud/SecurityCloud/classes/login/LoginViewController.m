@@ -61,7 +61,7 @@
         return;
     }
     NSDictionary *parameters = @{@"tel":_userNameLabel.text,@"password":[Md5Util encryptMD5:_passwordLabel.text]};
-    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"fail"]) {
             _noticeLabel.hidden = NO;
             _noticeLabel.text = @"用户名或者密码错误";
@@ -84,7 +84,7 @@
 
 - (IBAction)visitorLogin:(UIButton *)sender {
     //游客登录
-    [HttpTool post:@"/qingbaoyuantianjia.html" parameters:nil success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuantianjia.html" parameters:nil success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"fail"]) {
             _noticeLabel.hidden = NO;
             _noticeLabel.text = responseObject[@"message"];

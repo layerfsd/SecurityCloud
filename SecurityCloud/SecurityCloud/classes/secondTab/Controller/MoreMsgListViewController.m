@@ -56,7 +56,7 @@
     [parameters setValue:_noticeID forKey:@"fenlei"];
     [parameters setValue:@(_page) forKey:@"page"];
     [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
-    [HttpTool post:@"/zixunliebiao.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/zixunliebiao.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.models removeAllObjects];
         }

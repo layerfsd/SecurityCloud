@@ -92,7 +92,7 @@
     [self postImages:photos.firstObject imageName:dateStr];
 }
 -(void)postImages:(UIImage*)image imageName:(NSString*)imageName {
-    [HttpTool post:@"/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
+    [HttpTool post:@"/api/wenjianshangchuan.html" parameters:@{@"fenlei":@"1"} image:image imageName:imageName success:^(id responseObject) {
         NSString *imageID = responseObject[@"data"][@"id"];
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:responseObject[@"data"][@"url"]] placeholderImage:[UIImage imageNamed:@"placeholderImage"]];
         [self changeInfo:imageID];
@@ -106,7 +106,7 @@
     [parameters setValue:UserID forKey:@"id"];
     [parameters setValue:imgID forKey:@"img"];
    
-    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         //注册完成 登录
         [[NSNotificationCenter defaultCenter] postNotificationName:FirstViewControllerReload object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:MyDetailViewControllerReload object:nil];

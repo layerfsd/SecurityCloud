@@ -31,7 +31,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:UserID forKey:@"id"];
     [parameters setValue:[Md5Util encryptMD5:_changedPwdTextField.text] forKey:@"password"];
-    [HttpTool post:@"/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuanxiugai.html" parameters:parameters success:^(id responseObject) {
         
         [SVProgressHUD showSuccessWithStatus:responseObject[@"message"]];
         if([UserManager deleteFile]){

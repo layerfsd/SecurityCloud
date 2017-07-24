@@ -67,7 +67,7 @@
     [parameters setValue:UserID forKey:@"yonghuid"];
     [parameters setValue:@(_page) forKey:@"page"];
     [parameters setValue:@(cellNum) forKey:@"fenyeshu"];
-    [HttpTool post:@"/qingbaoliebiao.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoliebiao.html" parameters:parameters success:^(id responseObject) {
         if (_page == 0) {
             [self.infos removeAllObjects];
         }

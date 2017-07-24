@@ -21,7 +21,7 @@
 - (IBAction)gotoLogin:(UIButton *)sender {
     //去登录
     NSDictionary *parameters = @{@"tel":[UserManager getTelNum],@"password":[UserManager sharedManager].password};
-    [HttpTool post:@"/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool post:@"/api/qingbaoyuandenglu.html" parameters:parameters success:^(id responseObject) {
         if ([responseObject[@"status"] isEqualToString:@"fail"]) {
         
         }else if ([responseObject[@"status"] isEqualToString:@"ok"]){

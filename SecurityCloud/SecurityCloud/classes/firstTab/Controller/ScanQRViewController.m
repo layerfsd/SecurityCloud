@@ -105,7 +105,7 @@
     NSString *userid = [superManID lastPathComponent];
     [parameters setValue:UserID forKey:@"yonghuid"];
     [parameters setValue:userid forKey:@"shangxianid"];
-    [HttpTool postWithoutOK:@"/yonghushangxianbangding.html" parameters:parameters success:^(id responseObject) {
+    [HttpTool postWithoutOK:@"/api/yonghushangxianbangding.html" parameters:parameters success:^(id responseObject) {
         [SVProgressHUD showInfoWithStatus:responseObject[@"message"]];
         if ([responseObject[@"status"] isEqualToString:@"ok"]) {
              [self.navigationController popViewControllerAnimated:YES];

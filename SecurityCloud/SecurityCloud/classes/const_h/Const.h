@@ -10,9 +10,23 @@
 #define Const_h
 //api 前部
 //#define RootPath @"http://cntp31.lysoo.com/guanli/index.php/admin/api"
-#define RootPath @"http://112.99.194.54:2166/guanli/index.php/admin/api"
-#define TestPath @"http://cntp31.lysoo.com/guanli/index.php/Api/"
+//#define RootPath @"http://112.99.194.54:2166/guanli/index.php/admin/api"
+
+#define RootPath @"http://cntp31.lysoo.com/guanli/index.php/Api/"
+
+//上传文件接口
+#define Upload @"/api/upload"
+#define SubmitMsg @"/Info/create"
+
+
+
+
+
+#define VoicePath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+
 #define UserID [UserManager sharedManager].userID
+
+#define PlaceHolderImage [UIImage imageNamed:@"placeholderImage"]
 
 #define navColor [UIColor colorWithRed:16.0/255 green:106.0/255 blue:219.0/255 alpha:1]
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width

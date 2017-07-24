@@ -73,76 +73,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/thirdTab/Controller/ScoreCountListViewController.m"
-            timestampString = "522031904.124482"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/PostMainViewController.m"
-            timestampString = "522064941.056181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "-postToServer:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/PostMainViewController.m"
-            timestampString = "522064941.056181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "-postToServer:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/PostMainViewController.m"
-            timestampString = "522064941.056181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "-postToServer:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SecurityCloud/classes/tools/http/HttpTool.m"
-            timestampString = "522057338.152148"
+            timestampString = "522299838.592609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "+get:parameters:success:failure:"
             landmarkType = "7">
             <Locations>
@@ -154,11 +90,11 @@
                   moduleName = "SecurityCloud"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/tools/http/HttpTool.m"
-                  timestampString = "522065147.390469"
+                  timestampString = "522300293.116766"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
                   offsetFromSymbolStart = "364">
                </Location>
                <Location
@@ -169,11 +105,11 @@
                   moduleName = "SecurityCloud"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/tools/http/HttpTool.m"
-                  timestampString = "522065147.392911"
+                  timestampString = "522300293.118621"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -185,13 +121,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/tools/http/HttpTool.m"
-            timestampString = "522057338.152148"
+            filePath = "SecurityCloud/classes/thirdTab/Controller/ScoreCountListViewController.m"
+            timestampString = "522203834.299912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "+post:parameters:success:failure:"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/thirdTab/Controller/ScoreCountListViewController.m"
+            timestampString = "522203848.809732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/thirdTab/Controller/OfflineMemebersViewController.m"
+            timestampString = "522205908.097096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoViewController.m"
-            timestampString = "522063778.706673"
+            timestampString = "522231102.590173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
-            landmarkName = "-createWriter:"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "-focusAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,11 +186,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoViewController.m"
-            timestampString = "522063816.876065"
+            timestampString = "522231102.590173"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "-focusAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoViewController.m"
+            timestampString = "522231102.590173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "-focusInPointAtVideoView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoViewController.m"
+            timestampString = "522231831.66583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "-ctrollVideoDidStart:"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,13 +233,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoConfig.m"
-            timestampString = "522064002.506642"
+            filePath = "SecurityCloud/classes/firstTab/Controller/PostMainViewController.m"
+            timestampString = "522292603.684777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "-postToServer:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/firstTab/Controller/MsgListViewController.m"
+            timestampString = "522299884.727017"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/firstTab/Controller/MsgListViewController.m"
+            timestampString = "522300285.515783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "+getVideoList"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MsgListViewController loadData]"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/firstTab/Controller/MsgListViewController.m"
+                  timestampString = "522300293.18726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[MsgListViewController loadData]_block_invoke"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/firstTab/Controller/MsgListViewController.m"
+                  timestampString = "522300293.190305"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/thirdTab/Controller/ThirdViewController.m"
+            timestampString = "522300371.654829"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-loadUserInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,13 +329,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SecurityCloud/classes/firstTab/Controller/PostMainViewController.m"
-            timestampString = "522064941.056181"
+            filePath = "SecurityCloud/classes/thirdTab/Controller/ThirdViewController.m"
+            timestampString = "522300373.542799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-videoViewController:didRecordVideo:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-loadUserInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ThirdViewController loadUserInfo]"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/thirdTab/Controller/ThirdViewController.m"
+                  timestampString = "522300373.764033"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[ThirdViewController loadUserInfo]_block_invoke"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/thirdTab/Controller/ThirdViewController.m"
+                  timestampString = "522300373.767867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/tools/http/HttpTool.m"
+            timestampString = "522300389.399361"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "+post:parameters:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,13 +393,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoConfig.m"
-            timestampString = "522064662.921197"
+            filePath = "SecurityCloud/classes/login/LoginViewController.m"
+            timestampString = "522300713.313891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "+getVideoList"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-loginAction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginViewController loginAction:]"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/login/LoginViewController.m"
+                  timestampString = "522300715.86261"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "492">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[LoginViewController loginAction:]_block_invoke"
+                  moduleName = "SecurityCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/SecurityCloud/SecurityCloud/SecurityCloud/classes/login/LoginViewController.m"
+                  timestampString = "522300715.867641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityCloud/classes/tools/http/HttpTool.m"
+            timestampString = "522300738.170832"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "+post:parameters:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -281,45 +457,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoConfig.m"
-            timestampString = "522065006.676749"
+            filePath = "SecurityCloud/classes/login/LoginViewController.m"
+            timestampString = "522300885.983999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "+getDocumentSubPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoConfig.m"
-            timestampString = "522065035.789926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "+getVideoPath"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/KZSmallVideoRecorder/KZSmallVideoRecorder/KZVideoConfig.m"
-            timestampString = "522065036.957963"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "+getDocumentSubPath:"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-loginAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
